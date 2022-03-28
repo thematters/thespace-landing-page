@@ -328,22 +328,28 @@
         bottom: 4px solid $black
       position: absolute
       top: 0
-      left: 0
       transform-origin: left center
       +min($md)
         width: 105%
-        left: initial
+        left: initial!important
         transform-origin: center center
       &.grey
         background-color: $grey-light
         transform: rotate(7deg) scale(.7)
+        left: -1%
         +min($md)
           transform: rotate(5deg)
+        .inner
+          animation: marquee 5s linear infinite
       &.lime
         background-color: $lime
         transform: rotate(-7deg) scale(.7)
+        left: 0
         +min($md)
           transform: rotate(-5deg)
+        .inner
+          margin-left: -508px
+          animation: marquee-reverse 5s linear infinite
       .inner
         +perf(transform)
         width: calc(100% + 508px)
@@ -352,12 +358,16 @@
           image: url(../img/about.svg)
           repeat: repeat-x
           position: left center
-        animation: marquee 5s linear infinite
         @keyframes marquee
           0%
             transform: translateX(0px)
           100%
             transform: translateX(-508px)
+        @keyframes marquee-reverse
+          0%
+            transform: translateX(0px)
+          100%
+            transform: translateX(508px)
     .title
       margin: 0 0 1.5rem 0
       h2
