@@ -1,0 +1,21 @@
+header#header
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  z-index: 8
+  padding: 48px 16px 16px 16px
+  background-color: $grey-light
+  border-bottom: 1px solid $border
+  +min($lg)
+    padding: 52px 72px 0 72px
+    position: absolute
+    background-color: transparent
+    border-bottom: none
+  .logo
+    +bg('../img/logo.png')
+    width: 74px
+    height: 24px
+    +min($lg)
+      width: 112px
+      height: 37px
