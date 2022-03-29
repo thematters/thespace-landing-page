@@ -16,7 +16,7 @@ block main
             figure
               img.img-fluid(src="img/intro-divider.svg")
           .title
-            h1
+            h1.bar
               | The Space: 
               br
               | an everlasting, Draw-to-Earn public space
@@ -27,6 +27,7 @@ block main
         .col-md-7.col-xl-8
           .d-flex.justify-content-end.align-items-end.h-100
             .tips
+              span.icon
   section.subscribe
     .container.d-flex.justify-content-center
       .form.text-center
@@ -66,7 +67,7 @@ block main
   section.features
     .container
       .title
-        h2 Features
+        h2.bar Features
       .content
         .feature
           .illu
@@ -118,75 +119,76 @@ block main
   section.social_media
     .container
       .title.d-flex.justify-content-between.align-items-center
-        h2 Social Media
+        h2.bar Social Media
         a.btn(href="https://twitter.com/thespace2022" target="_blank") View More
       .board
-        .row
-          .col-lg-4
-            blockquote.twitter-tweet(align='center')
-              p(lang='en' dir='ltr')
-                | “What is interesting is that Web3 and cryptocurrency brings to the table a new form of ownership that goes beyond capitalism and socialism that cannot be categorized. The closest description is a radical market: a genuinely open, free, and…” — 
-                a(href='https://twitter.com/Mattersw3b?ref_src=twsrc%5Etfw') @Mattersw3b
-                a(href='https://t.co/irzUsXLdZg') https://t.co/irzUsXLdZg
-              | — The Space (@thespace2022) 
-              a(href='https://twitter.com/thespace2022/status/1503968344961011713?ref_src=twsrc%5Etfw') March 16, 2022
-            blockquote.twitter-tweet(align='center')
-              p(lang='en' dir='ltr')
-                | "This collaborative drawing game was so much fun that I spent couple hours on it without noticing. Interacting with people around world in The Space is fascinating!"
-                a(href='https://twitter.com/hashtag/TheSpace2022?src=hash&ref_src=twsrc%5Etfw') #TheSpace2022
-                a(href='https://t.co/s11SZUjksT') https://t.co/s11SZUjksT
-              | — The Space (@thespace2022) 
-              a(href='https://twitter.com/thespace2022/status/1506871439265128455?ref_src=twsrc%5Etfw') March 24, 2022
-          .col-lg-4
-            blockquote.twitter-tweet(align='center')
-              p(lang='en' dir='ltr')
-                | A GM flag floating in 
-                a(href='https://twitter.com/hashtag/TheSpace?src=hash&ref_src=twsrc%5Etfw') #TheSpace
-                |  and the confliction between Apollonian and Dionysian. This night belongs to all artists of 
-                a(href='https://twitter.com/see_dao?ref_src=twsrc%5Etfw') @see_dao
-                |  who attended to the game-test event of The Space. Many thanks to 
-                a(href='https://twitter.com/baiyu2140?ref_src=twsrc%5Etfw') @baiyu2140
-                a(href='https://twitter.com/Diana19959295?ref_src=twsrc%5Etfw') @Diana19959295
-                a(href='https://t.co/HPFFvKQS2z') pic.twitter.com/HPFFvKQS2z
-              | — The Space (@thespace2022) 
-              a(href='https://twitter.com/thespace2022/status/1507365978849484800?ref_src=twsrc%5Etfw') March 25, 2022
-            blockquote.twitter-tweet(align='center')
-              p(lang='en' dir='ltr')
-                | "Will it be possible to have our private canvas, (just like a private chat room), where only the people with invitation can get full access.
-                br
-                | I am really curious about The Space. I cannot wait to see how it works after it is put on blockchain!"
-                a(href='https://t.co/Tjt6sMGLPW') https://t.co/Tjt6sMGLPW
-              | — The Space (@thespace2022) 
-              a(href='https://twitter.com/thespace2022/status/1506506441800118273?ref_src=twsrc%5Etfw') March 23, 2022
-          .col-lg-4
-            blockquote.twitter-tweet(align='center')
-              p(lang='en' dir='ltr')
-                | "Radical Market Can Work On Blockchain
-                br
-                | ", Sharing of The Space by 
-                a(href='https://twitter.com/AnnieJieping?ref_src=twsrc%5Etfw') @AnnieJieping
-                | , CEO of Matters Lab, with many NFT KOLs like 
-                a(href='https://twitter.com/mashbean?ref_src=twsrc%5Etfw') @mashbean
-                a(href='https://twitter.com/dAAAb?ref_src=twsrc%5Etfw') @dAAAb
-                |  in the Meetup hosted by 
-                a(href='https://twitter.com/StormMediaGrp?ref_src=twsrc%5Etfw') @StormMediaGrp
-                a(href='https://twitter.com/hashtag/%E7%93%B6%E8%93%8B%E5%B7%A5%E5%BB%A0%E5%8F%B0%E5%8C%97%E8%A3%BD%E9%80%A0%E6%89%80?src=hash&ref_src=twsrc%5Etfw') #瓶蓋工廠台北製造所
-                a(href='https://twitter.com/hashtag/TheSpace2022?src=hash&ref_src=twsrc%5Etfw') #TheSpace2022
-                a(href='https://twitter.com/hashtag/NFT?src=hash&ref_src=twsrc%5Etfw') #NFT
-                a(href='https://t.co/qVzhBdOXXh') pic.twitter.com/qVzhBdOXXh
-              | — The Space (@thespace2022) 
-              a(href='https://twitter.com/thespace2022/status/1506886219522662403?ref_src=twsrc%5Etfw') March 24, 2022
-            blockquote.twitter-tweet(align='center')
-              p(lang='en' dir='ltr')
-                | "Did you remember my words—“The Space is a social experiment”? Obviously, the result is positive. It's still possible to collectively create exquisite work without leaders within a community. And that’s why I love The Space — Collaboration is fascinating!"
-                a(href='https://t.co/gikuTGJP0N') https://t.co/gikuTGJP0N
-              | — The Space (@thespace2022) 
-              a(href='https://twitter.com/thespace2022/status/1506112851924058112?ref_src=twsrc%5Etfw') March 22, 2022
+        //- .row
+        //-   .col-lg-4
+        //-     blockquote.twitter-tweet(align='center')
+        //-       p(lang='en' dir='ltr')
+        //-         | “What is interesting is that Web3 and cryptocurrency brings to the table a new form of ownership that goes beyond capitalism and socialism that cannot be categorized. The closest description is a radical market: a genuinely open, free, and…” — 
+        //-         a(href='https://twitter.com/Mattersw3b?ref_src=twsrc%5Etfw') @Mattersw3b
+        //-         a(href='https://t.co/irzUsXLdZg') https://t.co/irzUsXLdZg
+        //-       | — The Space (@thespace2022) 
+        //-       a(href='https://twitter.com/thespace2022/status/1503968344961011713?ref_src=twsrc%5Etfw') March 16, 2022
+        //-     blockquote.twitter-tweet(align='center')
+        //-       p(lang='en' dir='ltr')
+        //-         | "This collaborative drawing game was so much fun that I spent couple hours on it without noticing. Interacting with people around world in The Space is fascinating!"
+        //-         a(href='https://twitter.com/hashtag/TheSpace2022?src=hash&ref_src=twsrc%5Etfw') #TheSpace2022
+        //-         a(href='https://t.co/s11SZUjksT') https://t.co/s11SZUjksT
+        //-       | — The Space (@thespace2022) 
+        //-       a(href='https://twitter.com/thespace2022/status/1506871439265128455?ref_src=twsrc%5Etfw') March 24, 2022
+        //-   .col-lg-4
+        //-     blockquote.twitter-tweet(align='center')
+        //-       p(lang='en' dir='ltr')
+        //-         | A GM flag floating in 
+        //-         a(href='https://twitter.com/hashtag/TheSpace?src=hash&ref_src=twsrc%5Etfw') #TheSpace
+        //-         |  and the confliction between Apollonian and Dionysian. This night belongs to all artists of 
+        //-         a(href='https://twitter.com/see_dao?ref_src=twsrc%5Etfw') @see_dao
+        //-         |  who attended to the game-test event of The Space. Many thanks to 
+        //-         a(href='https://twitter.com/baiyu2140?ref_src=twsrc%5Etfw') @baiyu2140
+        //-         a(href='https://twitter.com/Diana19959295?ref_src=twsrc%5Etfw') @Diana19959295
+        //-         a(href='https://t.co/HPFFvKQS2z') pic.twitter.com/HPFFvKQS2z
+        //-       | — The Space (@thespace2022) 
+        //-       a(href='https://twitter.com/thespace2022/status/1507365978849484800?ref_src=twsrc%5Etfw') March 25, 2022
+        //-     blockquote.twitter-tweet(align='center')
+        //-       p(lang='en' dir='ltr')
+        //-         | "Will it be possible to have our private canvas, (just like a private chat room), where only the people with invitation can get full access.
+        //-         br
+        //-         | I am really curious about The Space. I cannot wait to see how it works after it is put on blockchain!"
+        //-         a(href='https://t.co/Tjt6sMGLPW') https://t.co/Tjt6sMGLPW
+        //-       | — The Space (@thespace2022) 
+        //-       a(href='https://twitter.com/thespace2022/status/1506506441800118273?ref_src=twsrc%5Etfw') March 23, 2022
+        //-   .col-lg-4
+        //-     blockquote.twitter-tweet(align='center')
+        //-       p(lang='en' dir='ltr')
+        //-         | "Radical Market Can Work On Blockchain
+        //-         br
+        //-         | ", Sharing of The Space by 
+        //-         a(href='https://twitter.com/AnnieJieping?ref_src=twsrc%5Etfw') @AnnieJieping
+        //-         | , CEO of Matters Lab, with many NFT KOLs like 
+        //-         a(href='https://twitter.com/mashbean?ref_src=twsrc%5Etfw') @mashbean
+        //-         a(href='https://twitter.com/dAAAb?ref_src=twsrc%5Etfw') @dAAAb
+        //-         |  in the Meetup hosted by 
+        //-         a(href='https://twitter.com/StormMediaGrp?ref_src=twsrc%5Etfw') @StormMediaGrp
+        //-         a(href='https://twitter.com/hashtag/%E7%93%B6%E8%93%8B%E5%B7%A5%E5%BB%A0%E5%8F%B0%E5%8C%97%E8%A3%BD%E9%80%A0%E6%89%80?src=hash&ref_src=twsrc%5Etfw') #瓶蓋工廠台北製造所
+        //-         a(href='https://twitter.com/hashtag/TheSpace2022?src=hash&ref_src=twsrc%5Etfw') #TheSpace2022
+        //-         a(href='https://twitter.com/hashtag/NFT?src=hash&ref_src=twsrc%5Etfw') #NFT
+        //-         a(href='https://t.co/qVzhBdOXXh') pic.twitter.com/qVzhBdOXXh
+        //-       | — The Space (@thespace2022) 
+        //-       a(href='https://twitter.com/thespace2022/status/1506886219522662403?ref_src=twsrc%5Etfw') March 24, 2022
+        //-     blockquote.twitter-tweet(align='center')
+        //-       p(lang='en' dir='ltr')
+        //-         | "Did you remember my words—“The Space is a social experiment”? Obviously, the result is positive. It's still possible to collectively create exquisite work without leaders within a community. And that’s why I love The Space — Collaboration is fascinating!"
+        //-         a(href='https://t.co/gikuTGJP0N') https://t.co/gikuTGJP0N
+        //-       | — The Space (@thespace2022) 
+        //-       a(href='https://twitter.com/thespace2022/status/1506112851924058112?ref_src=twsrc%5Etfw') March 22, 2022
+        a.twitter-timeline(href="https://twitter.com/thespace2022" data-tweet-limit="1" data-width="500") Tweets by @thespace2022
         script(async='' src='https://platform.twitter.com/widgets.js' charset='utf-8')
   section.follow_us
-    .ribbon.lime
+    a.ribbon.lime(href="https://matters-lab.io/" target="_blank")
       .inner
-    .ribbon.grey
+    a.ribbon.grey(href="https://matters-lab.io/" target="_blank")
       .inner
     .container
       .title.text-center
