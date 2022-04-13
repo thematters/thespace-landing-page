@@ -1,0 +1,44 @@
+@mixin anm($where, $time: .3s, $ease: cubic-bezier(.34,.07,.095,.995))
+  transition-property: $where
+  transition-duration: $time
+  transition-timing-function: $ease
+
+@mixin flex($direction, $wrap, $justify, $align)
+  display: flex
+  flex-flow: $direction $wrap
+  justify-content: $justify
+  align-items: $align
+
+@mixin min($width)
+  @media (min-width: $width)
+    @content
+
+@mixin max($width)
+  @media (max-width: $width - 1px)
+    @content
+
+@mixin perf($where)
+  will-change: $where
+  transform: translateZ(0)
+  backface-visibility: hidden
+  perspective: 1000px
+
+@mixin bg($img, $size: contain)
+  background:
+    image: url($img),
+    position: center center
+    repeat: no-repeat
+    size: $size
+
+@mixin mask($img, $color, $size: contain)
+  background-color: $color
+  mask:
+    image: url($img),
+    position: center center
+    repeat: no-repeat
+    size: $size
+  -webkit-mask:
+    image: url($img),
+    position: center center
+    repeat: no-repeat
+    size: $size
