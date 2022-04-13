@@ -1,7 +1,7 @@
 main.index
-  padding: 103px 0 0 0
+  padding: 6.4375rem 0 0 0
   +min($lg)
-    padding: 119px 0 0 0
+    padding: 7.4375rem 0 0 0
   section
     .bar
       position: relative
@@ -10,13 +10,13 @@ main.index
         display: block
         background-color: $lime
         position: absolute
-        top: 0px
-        left: 0px
+        top: 0rem
+        left: 0rem
         z-index: -1
         transform: skew(-30deg)
         +min($md)
-          top: -5px
-          left: -50px
+          top: -0.3125rem
+          left: -3.125rem
   section.intro
     position: relative
     margin: 0 0 3.75rem 0
@@ -25,15 +25,15 @@ main.index
     .divider
       margin: 0 0 2rem 0
       +min($xl)
-        margin: 217px 0 6rem 0
+        margin: 13.5625rem 0 6rem 0
       figure img
-        height: 29px
+        height: 1.8125rem
         +min($md)
           height: auto
     .illu
-      margin: 0 -8px
+      margin: 0 -0.5rem
       +min($md)
-        margin: 0 -10px
+        margin: 0 -0.625rem
       +min($xl)
         position: absolute
         z-index: 0
@@ -45,11 +45,11 @@ main.index
       h1
         @extend %section-title
         &::before
-          width: 120px
-          height: 30px
+          width: 7.5rem
+          height: 1.875rem
           +min($md)
-            width: 270px
-            height: 70px
+            width: 16.875rem
+            height: 4.375rem
     .text
       margin: 0 0 1.5rem 0
       p
@@ -59,15 +59,15 @@ main.index
       +min($md)
         text-align: left
     .tips
-      width: 18px
-      height: 64px
+      width: 1.125rem
+      height: 4rem
       margin: 3rem auto 0 auto
       position: relative
       overflow: hidden
       +min($md)
-        width: 31px
-        height: 113px
-        margin: 0 0 80px 0
+        width: 1.9375rem
+        height: 7.0625rem
+        margin: 0 0 5rem 0
       span.icon
         +perf(transform)
         +bg('/img/intro-tips.svg')
@@ -88,7 +88,7 @@ main.index
     margin: 0 0 12rem 0
     .form
       width: 100%
-      max-width: 450px
+      max-width: 28.125rem
       .title
         margin: 0 0 2rem 0
         h2
@@ -126,7 +126,7 @@ main.index
     .illu
       figure
         img
-          height: 98px
+          height: 6.125rem
           +min($md)
             height: auto
   section.features
@@ -136,11 +136,11 @@ main.index
       h2
         @extend %section-title
         &::before
-          width: 90px
-          height: 30px
+          width: 5.625rem
+          height: 1.875rem
           +min($md)
-            width: 220px
-            height: 50px
+            width: 13.75rem
+            height: 3.125rem
     .content
       .feature
         +flex(row, wrap, initial, center)
@@ -151,7 +151,7 @@ main.index
           width: 100%
           margin: 0 0 1.5rem 0
           +min($md)
-            width: 200px
+            width: 12.5rem
             margin: 0
         .text
           flex: 1
@@ -193,7 +193,7 @@ main.index
           margin: 0
         figure
           img
-            height: 167px
+            height: 10.4375rem
             +min($md)
               height: auto
     .content
@@ -205,28 +205,28 @@ main.index
         position: absolute
         background-color: $black
         z-index: 0
-        width: 4px
+        width: 0.25rem
         height: 100%
         +min($md)
           width: 100%
-          height: 4px
-          margin: 8px 0 0 0
+          height: 0.25rem
+          margin: 0.5rem 0 0 0
         &::after
           +bg('/img/roadmap-arrow.svg')
           content: ''
           display: block
-          width: 22px
-          height: 18px
+          width: 1.375rem
+          height: 1.125rem
           position: absolute
           transform-origin: left center
           transform: rotate(90deg)
           bottom: 0
-          left: 2px
+          left: 0.125rem
           +min($md)
             bottom: initial
             left: initial
-            right: -22px
-            top: -7px
+            right: -1.375rem
+            top: -0.4375rem
             transform: rotate(0deg)
       .plan
         +flex(row, nowrap, space-between, center)
@@ -241,15 +241,15 @@ main.index
           display: block
           &.date
             @extend %article-title
-            width: calc(50% - 10px)
+            width: calc(50% - 0.625rem)
             text-align: right
             +min($md)
               width: 100%
               text-align: center
           &.dot
-            width: 20px
-            height: 20px
-            border: 4px solid $black
+            width: 1.25rem
+            height: 1.25rem
+            border: 0.25rem solid $black
             background-color: $grey-light
             border-radius: 50%
             margin: 0 1rem
@@ -257,7 +257,7 @@ main.index
               margin: 1.25rem auto 1.125rem auto
           &.text
             @extend %article-body
-            width: calc(50% - 10px)
+            width: calc(50% - 0.625rem)
             text-align: left
             +min($md)
               width: 100%
@@ -271,11 +271,11 @@ main.index
       h2
         @extend %section-title
         &::before
-          width: 120px
-          height: 30px
+          width: 7.5rem
+          height: 1.875rem
           +min($md)
-            width: 220px
-            height: 50px
+            width: 13.75rem
+            height: 3.125rem
     .board
       +flex(row, wrap, center, initial)
   section.follow_us
@@ -295,10 +295,10 @@ main.index
     a.ribbon
       display: block
       width: 150%
-      height: 100px
+      height: 6.25rem
       border:
-        top: 4px solid $black
-        bottom: 4px solid $black
+        top: 0.25rem solid $black
+        bottom: 0.25rem solid $black
       position: absolute
       top: 0
       transform-origin: left center
@@ -321,11 +321,11 @@ main.index
         +min($md)
           transform: rotate(-5deg)
         .inner
-          margin-left: -390px
+          margin-left: -24.375rem
           animation: marquee-reverse 5s linear infinite
       .inner
         +perf(transform)
-        width: calc(100% + 390px)
+        width: calc(100% + 24.375rem)
         height: 100%
         background:
           image: url(/img/about.svg)
@@ -333,14 +333,14 @@ main.index
           position: left center
         @keyframes marquee
           0%
-            transform: translateX(0px)
+            transform: translateX(0rem)
           100%
-            transform: translateX(-390px)
+            transform: translateX(-24.375rem)
         @keyframes marquee-reverse
           0%
-            transform: translateX(0px)
+            transform: translateX(0rem)
           100%
-            transform: translateX(390px)
+            transform: translateX(24.375rem)
     .title
       margin: 0 0 1.5rem 0
       h2
@@ -350,15 +350,15 @@ main.index
         +flex(row, wrap, center, center)
         +anm(background)
         display: inline-flex
-        width: 48px
-        height: 48px
+        width: 3rem
+        height: 3rem
         border-radius: 50%
         background-color: $black
-        border: 4px solid $black
+        border: 0.25rem solid $black
         margin: 0 1rem
         +min($md)
-          width: 56px
-          height: 56px
+          width: 3.5rem
+          height: 3.5rem
           margin: 0 1.5rem
         &:hover
           background-color: transparent
@@ -376,8 +376,8 @@ main.index
             +mask('/img/icon-discord.svg', $white)
         span.icon
           +anm(background)
-          width: 24px
-          height: 24px
+          width: 1.5rem
+          height: 1.5rem
           +min($md)
-            width: 32px
-            height: 32px
+            width: 2rem
+            height: 2rem
