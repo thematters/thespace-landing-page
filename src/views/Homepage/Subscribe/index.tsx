@@ -1,5 +1,7 @@
 import React, { useRef, useState } from 'react';
 
+import styles from "./styles.module.sass";
+
 const Subscribe = () => {
   // 1. Create a reference to the input so we can fetch/clear it's value.
   const inputEl = useRef(null);
@@ -35,25 +37,25 @@ const Subscribe = () => {
   };
 
   return (
-    <div id="mc_embed_signup">
-      <form onSubmit={subscribe} className="validate" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form">
-        <div id="mc_embed_signup_scroll">
-          <div className="mc-field-group">
-            <label htmlFor="mce-EMAIL">Email Address <span className="asterisk">*</span></label>
+    <div id={styles.mc_embed_signup}>
+      <form onSubmit={subscribe} className={styles.validate} id={styles["mc-embedded-subscribe-form"]} name="mc-embedded-subscribe-form">
+        <div id={styles.mc_embed_signup_scroll}>
+          <div className={styles["mc-field-group"]}>
+            <label htmlFor="mce-EMAIL">Email Address <span className={styles.asterisk}>*</span></label>
             <input
-              id="mce-EMAIL"
+              id={styles["mce-EMAIL"]}
               name="EMAIL"
               placeholder="Enter your e-mail to subscribe for Updates"
               ref={inputEl}
               type="email"
             />
           </div>
-          {message && <div className="clear foot" id="mce-responses">
-            <div className="response" id="mce-error-response">{message}</div>
+          {message && <div className={`${styles.clear} ${styles.foot}`} id={styles["mce-responses"]}>
+            <div className={styles.response} id={styles["mce-error-response"]}>{message}</div>
           </div>}
-          <div className="optionalParent">
-            <div className="clear foot">
-              <input className="button" id="mc-embedded-subscribe" type="submit" value="Submit" name="subscribe" /><span className="icon"></span>
+          <div className={styles.optionalParent}>
+            <div className={`${styles.clear} ${styles.foot}`}>
+              <input className={styles.button} id={styles["mc-embedded-subscribe"]} type="submit" value="Submit" name="subscribe" /><span className={styles.icon}></span>
             </div>
           </div>
         </div>
