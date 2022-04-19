@@ -1,0 +1,28 @@
+header#header
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  z-index: 8
+  padding: 2.75rem 1rem 0.75rem 1rem
+  background-color: $grey-light
+  border-bottom: 0.0625rem solid $border
+  +min($lg)
+    padding: 2rem 3.75rem
+  .logo
+    width: 4.625rem
+    height: 1.6875rem
+    +min($lg)
+      width: 7rem
+      height: 2.5rem
+    a
+      +bg('/img/logo.svg')
+      width: 100%
+      height: 100%
+  .buttons
+    .btn
+      margin: 0 0 0 0.5rem
+      +min($lg)
+        margin: 0 0 0 1.5rem
+      &:first-child
+        margin: 0

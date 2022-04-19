@@ -57,6 +57,7 @@ html, body
       @extend %article-title
       +anm(all)
       display: inline-block
+<<<<<<< Updated upstream:sass/helpers/_base.sass
       padding: 8px 16px
       background-color: $black
       box-shadow: 0px 4px 12px rgba(51, 51, 51, 0.16)
@@ -69,6 +70,23 @@ html, body
         background-color: transparent
         color: $black
         box-shadow: none
+=======
+      text-align: center
+      box-shadow: 0rem 0.25rem 0.75rem rgba(51, 51, 51, 0.16)
+      border-radius: 1.75rem
+      border: 0.1875rem solid $black
+      padding: 0.5625rem 1.6875rem
+      +min($md)
+        padding: 9px 21px
+>>>>>>> Stashed changes:src/styles/globals.sass
       &:active
-        background-color: $black
+        box-shadow: none
+      &.fill
         color: $white
+        background-color: $black
+      &.frame
+        color: $black
+        background-color: transparent
+      &:hover
+        color: $black
+        background-color: $lime
