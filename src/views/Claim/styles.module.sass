@@ -1,22 +1,22 @@
-<<<<<<< Updated upstream:sass/pages/_index.sass
-#main.index
+main.index
   padding: 103px 0 0 0
   +min($lg)
     padding: 119px 0 0 0
-  .bar
-    position: relative
-    &::before
-      content: ''
-      display: block
-      background-color: $lime
-      position: absolute
-      top: 0px
-      left: 0px
-      z-index: -1
-      transform: skew(-30deg)
-      +min($md)
-        top: -5px
-        left: -50px
+  section
+    .bar
+      position: relative
+      &::before
+        content: ''
+        display: block
+        background-color: $lime
+        position: absolute
+        top: 0px
+        left: 0px
+        z-index: -1
+        transform: skew(-30deg)
+        +min($md)
+          top: -5px
+          left: -50px
   section.intro
     position: relative
     margin: 0 0 3.75rem 0
@@ -70,7 +70,7 @@
         margin: 0 0 80px 0
       span.icon
         +perf(transform)
-        +bg('../img/intro-tips.svg')
+        +bg('/img/intro-tips.svg')
         display: block
         width: 100%
         height: 100%
@@ -149,7 +149,7 @@
               border-radius: 24px
             span.icon
               +anm(background)
-              +mask('../img/icon-send.svg', $white)
+              +mask('/img/icon-send.svg', $white)
               display: block
               position: absolute
               width: 16px
@@ -280,7 +280,7 @@
           height: 4px
           margin: 8px 0 0 0
         &::after
-          +bg('../img/roadmap-arrow.svg')
+          +bg('/img/roadmap-arrow.svg')
           content: ''
           display: block
           width: 22px
@@ -396,7 +396,7 @@
         width: calc(100% + 390px)
         height: 100%
         background:
-          image: url(../img/about.svg)
+          image: url(/img/about.svg)
           repeat: repeat-x
           position: left center
         @keyframes marquee
@@ -438,10 +438,10 @@
             background-color: $lime!important
         &.twitter
           span.icon
-            +mask('../img/icon-twitter.svg', $white)
+            +mask('/img/icon-twitter.svg', $white)
         &.discord
           span.icon
-            +mask('../img/icon-discord.svg', $white)
+            +mask('/img/icon-discord.svg', $white)
         span.icon
           +anm(background)
           width: 24px
