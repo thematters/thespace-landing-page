@@ -197,6 +197,7 @@ const Homepage: NextPage = () => {
             <div className={`${styles.buttons} buttons d-flex justify-content-end`}>
               <a className="btn fill" href="https://discord.gg/thespace" target="_blank">Ask on Discord</a>
             </div>
+            <div className={`${styles.social} text-center`}><a className={styles.twitter} href="https://twitter.com/thespace2022" target="_blank"><span className={styles.icon}></span></a><a className={styles.discord} href="https://discord.gg/thespace" target="_blank"><span className={styles.icon}></span></a></div>
           </div>
         </section>
         <section className={styles.about_the_team}>
