@@ -25,7 +25,7 @@ const Homepage: NextPage = () => {
                 <div className={styles.text}>
                   <p>The Space is a pixel map where players can tokenize, own, trade and color pixels. Pixels are tokenized as ERC721 tokens and traded under Harberger Tax, while owners of pixels receive Universal Basic Income(UBI). In the Future, The administration of The Space will be transfered to SpaceDAO, a decentralized autonomous organization formed by all $SPACE token holders.</p>
                 </div>
-                <div className={`${styles.buttons} buttons`}><a className="btn" href="https://discord.gg/rbsfr4KMR7" target="_blank">Join Discord</a></div>
+                <div className={`${styles.buttons} buttons`}><a className="btn" href="https://discord.gg/thespace" target="_blank">Join Discord</a></div>
               </div>
               <div className="col-md-7 col-xl-8">
                 <div className="d-flex justify-content-end align-items-end h-100">
@@ -138,7 +138,7 @@ const Homepage: NextPage = () => {
             <div className={`${styles.title} text-center`}>
               <h2>[ Follow Us ]</h2>
             </div>
-            <div className={`${styles.social} text-center`}><a className={styles.twitter} href="https://twitter.com/thespace2022" target="_blank"><span className={styles.icon}></span></a><a className={styles.discord} href="https://discord.gg/rbsfr4KMR7" target="_blank"><span className={styles.icon}></span></a></div>
+            <div className={`${styles.social} text-center`}><a className={styles.twitter} href="https://twitter.com/thespace2022" target="_blank"><span className={styles.icon}></span></a><a className={styles.discord} href="https://discord.gg/thespace" target="_blank"><span className={styles.icon}></span></a></div>
           </div>
         </section>
       </main>
