@@ -1,0 +1,78 @@
+section.airdrop
+  padding: 4rem 0 0 0
+  .title
+    margin: 0 0 2.5rem 0
+    h2
+      @extend %section-title
+      position: relative
+      &::before
+        content: ''
+        display: block
+        background-color: $lime
+        position: absolute
+        top: 0rem
+        left: 0rem
+        z-index: -1
+        transform: skew(-30deg)
+        width: 5.625rem
+        height: 1.875rem
+        +min($md)
+          width: 7.5rem
+          height: 3.125rem
+          top: -0.3125rem
+          left: -3.125rem
+  .wallet_address
+    @extend %article-body
+    font-weight: 400
+    margin: 0 0 1rem 0
+    a
+      font-weight: 500
+      &::after
+        +bg('/img/icon-link.svg')
+        content: ''
+        display: inline-block
+        width: 16px
+        height: 16px
+        margin: 0 0 0 0.5rem
+        transform: translateY(1px)
+  .empty
+    .text
+      margin: 0 0 2.5rem 0
+      p
+        @extend %article-title
+  .content
+    .claim_time
+      @extend %article-title
+      margin: 0 0 2.5rem 0
+      .claim_time_date
+      .claim_time_countdown
+        background-color: $lime
+        padding: 0 0.25rem
+        &::before
+          +bg('/img/icon-clock.svg')
+          content: ''
+          display: inline-block
+          width: 24px
+          height: 24px
+          margin: 0 0.5rem 0 0
+          transform: translateY(3px)
+    .table
+      @extend %article-body
+      .row
+        padding: 1rem 0
+      .table_head
+        .row
+          border-bottom: 2px solid $black
+      .table_body
+        font-weight: 400
+        .row
+          border-bottom: 1px solid $grey
+          &:last-child
+            border-bottom: none
+      .table_foot
+        .row
+          border-top: 2px solid $black
+    .buttons
+      margin: 2rem 0 0 0
+      button
+        min-width: 220px

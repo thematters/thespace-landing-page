@@ -3,8 +3,11 @@ import styles from "./styles.module.sass";
 const Entrance = () => {
   return (
     <>
-      <section className={styles.entrance}>
-        <div className="container">
+      <section className={`${styles.entrance} text-center`}>
+        <div className={styles.illu}>
+          <figure><img className="img-fluid" src="/img/entrance-illu.svg"/></figure>
+        </div>
+        <div className={`${styles.container} container`}>
           <div className={styles.title}>
             <h2>Claim your Token</h2>
           </div>
@@ -13,12 +16,8 @@ const Entrance = () => {
             <span>Before claim Logbook 2.0, let's connect your wallet first.</span>
           </div>
           <div className={styles.wallet}>
-            <button className={styles.metamask}>
-              <span className={styles.icon}></span>Metamask
-            </button>
-            <button className={styles.walletconnect}>
-              <span className={styles.icon}></span>WalletConnect
-            </button>
+            <button className={styles.metamask}>Metamask</button>
+            <button className={styles.walletconnect}>WalletConnect</button>
           </div>
         </div>
       </section>

@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 
 import Subscribe from "./Subscribe";
+import FollowUs from "~/components/FollowUs";
 import styles from "./styles.module.sass";
 
 const Homepage: NextPage = () => {
@@ -26,7 +27,7 @@ const Homepage: NextPage = () => {
                   <p>The Space is a pixel map where players can tokenize, own, trade and color pixels. Pixels are tokenized as ERC721 tokens and traded under Harberger Tax, while owners of pixels receive Universal Basic Income(UBI). In the Future, The administration of The Space will be transfered to SpaceDAO, a decentralized autonomous organization formed by all $SPACE token holders.</p>
                 </div>
                 <div className={`${styles.buttons} buttons`}>
-                  <a className="btn frame" href="https://discord.gg/rbsfr4KMR7" target="_blank">Join Discord</a>
+                  <a className="btn frame" href="https://discord.gg/thespace" target="_blank">Join Discord</a>
                   <a className="btn fill" href="https://forms.gle/rbuzdsdARaLaCDoB6" target="_blank">Sign-up Beta</a>
                 </div>
               </div>
@@ -194,20 +195,19 @@ const Homepage: NextPage = () => {
               </details>
             </div>
             <div className={`${styles.buttons} buttons d-flex justify-content-end`}>
-              <a className="btn fill" href="https://discord.gg/rbsfr4KMR7" target="_blank">Ask on Discord</a>
+              <a className="btn fill" href="https://discord.gg/thespace" target="_blank">Ask on Discord</a>
             </div>
           </div>
         </section>
-        <section className={styles.follow_us}><a className={`${styles.ribbon} ${styles.lime}`} href="https://matters-lab.io/" target="_blank">
-            <div className={styles.inner}></div></a><a className={`${styles.ribbon} ${styles.grey}`} href="https://matters-lab.io/" target="_blank">
-            <div className={styles.inner}></div></a>
-          <div className="container">
-            <div className={`${styles.title} text-center`}>
-              <h2>[ Follow Us ]</h2>
-            </div>
-            <div className={`${styles.social} text-center`}><a className={styles.twitter} href="https://twitter.com/thespace2022" target="_blank"><span className={styles.icon}></span></a><a className={styles.discord} href="https://discord.gg/rbsfr4KMR7" target="_blank"><span className={styles.icon}></span></a></div>
-          </div>
+        <section className={styles.about_the_team}>
+          <a className={`${styles.ribbon} ${styles.lime}`} href="https://matters-lab.io/" target="_blank">
+            <div className={styles.inner}></div>
+          </a>
+          <a className={`${styles.ribbon} ${styles.grey}`} href="https://matters-lab.io/" target="_blank">
+            <div className={styles.inner}></div>
+          </a>
         </section>
+        <FollowUs />
       </main>
     </>
   )

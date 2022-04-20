@@ -70,9 +70,19 @@ html, body
       &.fill
         color: $white
         background-color: $black
+        &:hover
+          color: $black
+          background-color: transparent
+          box-shadow: none
       &.frame
         color: $black
         background-color: transparent
-      &:hover
-        color: $black
-        background-color: $lime
+        &:hover
+          border-color: $grey-dark
+          color: $grey-dark
+          box-shadow: none
+      &.disabled
+        pointer-events: none
+        opacity: .2
+          
+      
