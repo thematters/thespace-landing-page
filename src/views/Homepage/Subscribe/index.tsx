@@ -4,17 +4,17 @@ import styles from "./styles.module.sass";
 
 const Subscribe = () => {
   // 1. Create a reference to the input so we can fetch/clear it's value.
-  const inputEl = useRef(null);
+  const inputEl = useRef<HTMLInputElement>(null);
   // 2. Hold a message in state to handle the response from our API.
   const [message, setMessage] = useState('');
 
-  const subscribe = async (e) => {
-    e.preventDefault();
+  const subscribe = async (event: any) => {
+    event.preventDefault();
 
     // 3. Send a request to our API with the user's email address.
     const res = await fetch('/api/subscribe', {
       body: JSON.stringify({
-        email: inputEl.current.value
+        email: inputEl.current?.value
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -32,7 +32,7 @@ const Subscribe = () => {
     }
 
     // 5. Clear the input value and show a success message.
-    inputEl.current.value = '';
+    if (inputEl.current) inputEl.current.value = "";
     setMessage('Success! 🎉 You are now subscribed to the newsletter.');
   };
 
