@@ -38,6 +38,8 @@ section.airdrop
   .empty
     .text
       margin: 0 0 2.5rem 0
+      +min($lg)
+        margin: 0
       p
         @extend %article-title
   .content
@@ -45,6 +47,7 @@ section.airdrop
       @extend %article-title
       margin: 0 0 2.5rem 0
       .claim_time_date
+        margin: 0 0 0.5rem 0
       .claim_time_countdown
         background-color: $lime
         padding: 0 0.25rem
@@ -75,4 +78,6 @@ section.airdrop
     .buttons
       margin: 2rem 0 0 0
       button
-        min-width: 220px
+        min-width: 100%
+        +min($md)
+          min-width: 220px

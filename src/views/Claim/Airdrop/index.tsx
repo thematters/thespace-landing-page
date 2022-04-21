@@ -1,11 +1,43 @@
+import React, { useEffect, useState } from "react";
+
 import styles from "./styles.module.sass";
-import moment from 'moment'
 
 export interface AirdropProps {
   wallet?: object | React.ReactNode;
 }
 
 const Airdrop = ({ wallet }: AirdropProps) => {
+  const [isClaimed, setIsClaimed] = useState(false);
+  const [canClaim, setCanClaim] = useState(false);
+  const [days, setDays] = useState(0);
+  const [hours, setHours] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    const target = new Date("05/01/2022 00:00:00");
+    
+    const interval = setInterval(() => {
+      const now = new Date();
+      const difference = target.getTime() - now.getTime();
+      const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+      setDays(d);
+      const h = Math.floor(
+        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      setHours(h);
+      const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      setMinutes(m);
+      const s = Math.floor((difference % (1000 * 60)) / 1000);
+      setSeconds(s);
+      if (d <= 0 && h <= 0 && m <= 0 && s <= 0) {
+        setCanClaim(true);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       <section className={styles.airdrop}>
@@ -18,13 +50,15 @@ const Airdrop = ({ wallet }: AirdropProps) => {
           </div>
           {wallet ? (
             <div className={styles.content}>
-              <div className={`${styles.claim_time} d-flex justify-content-between align-items-start`}>
+              <div className={`${styles.claim_time} d-flex flex-column flex-lg-row justify-content-between align-items-start`}>
                 <span className={styles.claim_time_date}>
                   Claim Time: May 1st 2022 - May 15th 2022
                 </span>
-                <span className={styles.claim_time_countdown}>
-                  5 Days 12 hours 13 min 30 sec
-                </span>
+                {!canClaim && 
+                  <span className={styles.claim_time_countdown}>
+                    {days} Days {hours} hours {minutes} min {seconds} sec
+                  </span>
+                }
               </div>
               <div className={styles.table}>
                 <div className={styles.table_head}>
@@ -55,9 +89,17 @@ const Airdrop = ({ wallet }: AirdropProps) => {
                 </div>
               </div>
               <div className={`${styles.buttons} buttons text-end`}>
-                <button className="btn fill disabled">Claim</button>
-                <button className="btn fill">Claim</button>
-                <button className="btn fill disabled">Claimed</button>
+                {canClaim ?
+                  <>
+                    {isClaimed ?
+                      <button className="btn fill disabled">Claimed</button>
+                    :
+                      <button className="btn fill">Claim</button>
+                    }
+                  </>
+                :
+                  <button className="btn fill disabled">Claim</button>
+                }
               </div>
             </div>
           ) : (
