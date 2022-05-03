@@ -1,0 +1,42 @@
+.toast
+  position: fixed
+  top: 75px
+  left: 0
+  right: 0
+  z-index: 9
+  color: $white
+  width: calc(100% - 2rem)
+  max-width: 640px
+  margin: 0 auto
+  border-radius: 8px
+  padding: 1rem
+  pointer-events: none
+  opacity: 0
+  transform: translateY(-30px)
+  animation: fadeIn 5s ease forwards
+  @keyframes fadeIn
+    0%
+      opacity: 0
+      transform: translateY(-30px)
+    10%
+      opacity: 1
+      transform: translateY(0px)
+    90%
+      opacity: 1
+      transform: translateY(0px)
+    100%
+      opacity: 0
+      transform: translateY(-30px)
+  span.icon
+    display: block
+    width: 24px
+    height: 24px
+    margin: 0 0 0 0.5rem
+  &.success
+    background-color: $black
+    span.icon
+      +bg('/img/icon-success.svg')
+  &.failed
+    background-color: $error
+    span.icon
+      +bg('/img/icon-failed.svg')

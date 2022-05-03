@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 
 import Entrance from "./Entrance";
 import Airdrop from "./Airdrop";
+import Toast from "./Toast";
 import FollowUs from "~/components/FollowUs";
 
 import styles from "./styles.module.sass";
@@ -10,6 +11,7 @@ const Claim: NextPage = () => {
   return (
     <>
       <main className={styles.claim} id="main">
+        <Toast status={'failed'}/>
         <Entrance />
         <Airdrop wallet="{}"/>
         <section className={`${styles.about} text-center`}>
