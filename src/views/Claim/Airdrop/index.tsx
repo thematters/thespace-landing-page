@@ -1,42 +1,59 @@
 import React, { useEffect, useState } from "react";
+import { useAccount } from "wagmi";
+import { useCountdown } from "~/hooks";
+import { fetchWrapper, toPolygonAddressUrl } from "~/utils";
+
+import Empty from "./Empty";
+import ClaimDetail from "./ClaimDetail";
 
 import styles from "./styles.module.sass";
+import Spinner from "~/components/Spinner";
+
+type ClaimData = {
+  proof: string[];
+  total: number;
+} & { [key: string]: string };
 
 export interface AirdropProps {
-  wallet?: object | React.ReactNode;
+  back?: () => void;
 }
 
-const Airdrop = ({ wallet }: AirdropProps) => {
+const Airdrop: React.FC<AirdropProps> = ({ back }) => {
+  const { data: accountData } = useAccount();
+  const account = accountData?.address;
+
   const [isClaimed, setIsClaimed] = useState(false);
   const [canClaim, setCanClaim] = useState(false);
-  const [days, setDays] = useState(0);
-  const [hours, setHours] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(0);
+  const { days, hours, minutes, seconds } = useCountdown({
+    end: "05/18/2022 00:00:00",
+    onEnd: () => setCanClaim(true),
+  });
+
+  const [claimData, setClaimData] = useState<ClaimData>();
+  const [loading, setLoading] = useState(false);
+  const getAccountClaimData = async (account: string) => {
+    setLoading(true);
+
+    try {
+      const data = await fetchWrapper.get(`/proofs/${account}.json`);
+      setClaimData(data);
+      console.log(data);
+    } catch (e) {
+      console.error(e);
+    }
+
+    setLoading(false);
+  };
 
   useEffect(() => {
-    const target = new Date("05/01/2022 00:00:00");
-    
-    const interval = setInterval(() => {
-      const now = new Date();
-      const difference = target.getTime() - now.getTime();
-      const d = Math.floor(difference / (1000 * 60 * 60 * 24));
-      setDays(d);
-      const h = Math.floor(
-        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      setHours(h);
-      const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      setMinutes(m);
-      const s = Math.floor((difference % (1000 * 60)) / 1000);
-      setSeconds(s);
-      if (d <= 0 && h <= 0 && m <= 0 && s <= 0) {
-        setCanClaim(true);
-      }
-    }, 1000);
+    if (!account) {
+      return;
+    }
 
-    return () => clearInterval(interval);
-  }, []);
+    getAccountClaimData(account);
+  }, [account]);
+
+  const total = claimData?.total || 0;
 
   return (
     <>
@@ -46,81 +63,56 @@ const Airdrop = ({ wallet }: AirdropProps) => {
             <h2>Airdrop claim</h2>
           </div>
           <div className={styles.wallet_address}>
-            Wallet Address: <a href="#" target="_blank">0x7A...AdF9</a>
+            Wallet Address:{" "}
+            <a
+              href={toPolygonAddressUrl(account || "").url}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {toPolygonAddressUrl(account || "").maskedAddress}
+            </a>
           </div>
-          {wallet ? (
+
+          {loading && <Spinner />}
+
+          {!loading && total > 0 && (
             <div className={styles.content}>
-              <div className={`${styles.claim_time} d-flex flex-column flex-lg-row justify-content-between align-items-start`}>
+              <div
+                className={`${styles.claim_time} d-flex flex-column flex-lg-row justify-content-between align-items-start`}
+              >
                 <span className={styles.claim_time_date}>
                   Claim Time: May 1st 2022 - May 15th 2022
                 </span>
-                {!canClaim && 
+                {!canClaim && (
                   <span className={styles.claim_time_countdown}>
                     {days} Days {hours} hours {minutes} min {seconds} sec
                   </span>
-                }
+                )}
               </div>
-              <div className={styles.table}>
-                <div className={styles.table_head}>
-                  <div className={`${styles.row} row`}>
-                    <div className="col-9">Category</div>
-                    <div className="col-3 text-end">Token</div>
-                  </div>
-                </div>
-                <div className={styles.table_body}>
-                  <div className={`${styles.row} row`}>
-                    <div className="col-9">Travelogers Holders </div>
-                    <div className="col-3 text-end">1,000,000</div>
-                  </div>
-                  <div className={`${styles.row} row`}>
-                    <div className="col-9">Matters POAP holder </div>
-                    <div className="col-3 text-end">1,000,000</div>
-                  </div>
-                  <div className={`${styles.row} row`}>
-                    <div className="col-9">Testnet Participants</div>
-                    <div className="col-3 text-end">1,000,000</div>
-                  </div>
-                </div>
-                <div className={styles.table_foot}>
-                  <div className={`${styles.row} row`}>
-                    <div className="col-9">Total Token</div>
-                    <div className="col-3 text-end">3,000,000</div>
-                  </div>
-                </div>
-              </div>
+
+              <ClaimDetail categories={claimData as any} total={total} />
+
               <div className={`${styles.buttons} buttons text-end`}>
-                {canClaim ?
+                {canClaim ? (
                   <>
-                    {isClaimed ?
+                    {isClaimed ? (
                       <button className="btn fill disabled">Claimed</button>
-                    :
+                    ) : (
                       <button className="btn fill">Claim</button>
-                    }
+                    )}
                   </>
-                :
+                ) : (
                   <button className="btn fill disabled">Claim</button>
-                }
-              </div>
-            </div>
-          ) : (
-            <div className={`${styles.empty}`}>
-              <div className={`${styles.text} text-center`}>
-                <p>Oops! You don’t have any token.</p>
-              </div>
-              <div className="illu text-center">
-                <figure>
-                  <img className="img-fluid" src="/img/airdrop-illu.svg" />
-                </figure>
-              </div>
-              <div className="buttons text-end">
-                <a className="btn fill" href="https://discord.gg/thespace" target="_blank">Join Discord</a>
+                )}
               </div>
             </div>
           )}
+
+          {!loading && total <= 0 && <Empty />}
         </div>
       </section>
     </>
-  )
-}
+  );
+};
 
-export default Airdrop
+export default Airdrop;
