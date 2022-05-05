@@ -1,5 +1,6 @@
 {
   "token-0x8515ba8ef2cf2f2ba44b26ff20337d7a2bc5e6d8": 100,
+  "token-0xcdf8d568ec808de5fcbb35849b5bafb5d444d4c0": 50,
   "proof": [
     "0x8169430bd0392b9a008635bcc989de241d7b289d2e274c97aa1c0fa418e9babd",
     "0x6a0d2726e783ac01b0badfc51dc8ccd55335897357757a656ba0480e5bcc9503",
@@ -15,6 +16,5 @@
     "0xbd767f857b8210755013a3af108b78c369f164739ddbc08516d6f7c64a70e230"
   ],
   "index": 455,
-  "total": 150,
-  "token-0xcdf8d568ec808de5fcbb35849b5bafb5d444d4c0": 50
+  "total": 150
 }

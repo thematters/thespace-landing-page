@@ -1,4 +1,5 @@
 {
+  "token-0x8515ba8ef2cf2f2ba44b26ff20337d7a2bc5e6d8": 200,
   "poap-18004": 5,
   "proof": [
     "0x08a94a003726fff270d488f54b8df3a72689062d10ce69b3945c0c35c7d262a4",
@@ -15,6 +16,5 @@
     "0xbd767f857b8210755013a3af108b78c369f164739ddbc08516d6f7c64a70e230"
   ],
   "index": 94,
-  "total": 205,
-  "token-0x8515ba8ef2cf2f2ba44b26ff20337d7a2bc5e6d8": 200
+  "total": 205
 }

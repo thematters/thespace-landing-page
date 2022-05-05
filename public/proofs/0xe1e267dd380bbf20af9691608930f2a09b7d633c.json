@@ -1,5 +1,6 @@
 {
   "poap-31209": 20,
+  "transfer-0x70bf60048d634173e29ceda160c0b4300bdba973": 10,
   "proof": [
     "0xb829cd63610efe53827e880d9cbecfe36e0712625195006a6219e989eb827a21",
     "0x58bb96c76e13ce914ae429ab288c5d310ef9f457b74dd849e12a7ab5c876ad67",
@@ -15,6 +16,5 @@
     "0xbd767f857b8210755013a3af108b78c369f164739ddbc08516d6f7c64a70e230"
   ],
   "index": 1649,
-  "total": 30,
-  "transfer-0x70bf60048d634173e29ceda160c0b4300bdba973": 10
+  "total": 30
 }

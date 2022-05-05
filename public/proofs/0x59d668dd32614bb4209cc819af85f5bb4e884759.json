@@ -1,4 +1,5 @@
 {
+  "token-0x8515ba8ef2cf2f2ba44b26ff20337d7a2bc5e6d8": 100,
   "poap-31209": 20,
   "proof": [
     "0xfb88b326248adbbb5eab3a1dff21419431b7e956edf5d0a021f60d9ba17c7696",
@@ -15,6 +16,5 @@
     "0xbd767f857b8210755013a3af108b78c369f164739ddbc08516d6f7c64a70e230"
   ],
   "index": 416,
-  "total": 120,
-  "token-0x8515ba8ef2cf2f2ba44b26ff20337d7a2bc5e6d8": 100
+  "total": 120
 }

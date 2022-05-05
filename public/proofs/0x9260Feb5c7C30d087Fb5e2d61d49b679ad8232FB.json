@@ -1,5 +1,6 @@
 {
   "transfer-0x70bf60048d634173e29ceda160c0b4300bdba973": 10,
+  "transfer-0xa69b77089b1d2b01212128593146125f28f0a7fd": 10,
   "proof": [
     "0xe4dacb61c8659f51819a89de21cc2f7023a1ddb1662ce3e86546db5df3502d90",
     "0xc8aae1878205291b2228e33fe78e7afaac11a5352dd7c10df9c7e37a065ed24a",
@@ -14,6 +15,5 @@
     "0x88d96ce741dc67dab56e6f574b3f6afb1814266550f72fecf0a1a1c1702bd35c"
   ],
   "index": 2049,
-  "total": 20,
-  "transfer-0xa69b77089b1d2b01212128593146125f28f0a7fd": 10
+  "total": 20
 }

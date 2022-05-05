@@ -1,6 +1,9 @@
 {
+  "token-0x8515ba8ef2cf2f2ba44b26ff20337d7a2bc5e6d8": 100,
+  "token-0xcdf8d568ec808de5fcbb35849b5bafb5d444d4c0": 50,
   "poap-19036": 10,
   "poap-31209": 20,
+  "transfer-0x70bf60048d634173e29ceda160c0b4300bdba973": 50,
   "proof": [
     "0xd7a915fbd1a3515ba60a03ae7eae16ce7773180518313a8e2dd1da430e41deda",
     "0xe3e9b835e8eae93dec717d48c106e5073912ac3c201ca03fc39d409771bee51a",
@@ -16,8 +19,5 @@
     "0xbd767f857b8210755013a3af108b78c369f164739ddbc08516d6f7c64a70e230"
   ],
   "index": 362,
-  "total": 230,
-  "token-0x8515ba8ef2cf2f2ba44b26ff20337d7a2bc5e6d8": 100,
-  "token-0xcdf8d568ec808de5fcbb35849b5bafb5d444d4c0": 50,
-  "transfer-0x70bf60048d634173e29ceda160c0b4300bdba973": 50
+  "total": 230
 }
