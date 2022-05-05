@@ -3,6 +3,7 @@ import { Provider, createClient } from "wagmi";
 
 import Entrance from "./Entrance";
 import Airdrop from "./Airdrop";
+import Toast from "./Toast";
 import FollowUs from "~/components/FollowUs";
 
 import {
@@ -31,6 +32,8 @@ const Claim: NextPage = () => {
         {isEntrance && <Entrance next={() => setIsEntrance(false)} />}
 
         {!isEntrance && <Airdrop back={() => setIsEntrance(true)} />}
+
+        <Toast status="failed" />
 
         <section className={`${styles.about} text-center`}>
           <div className={`${styles.container} container`}>
