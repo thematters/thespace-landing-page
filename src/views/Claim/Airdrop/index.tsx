@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useAccount } from "wagmi";
+import { useAccount, useDisconnect } from "wagmi";
 import { useCountdown } from "~/hooks";
 import { fetchWrapper, toPolygonAddressUrl } from "~/utils";
 
@@ -15,11 +15,12 @@ type ClaimData = {
 } & { [key: string]: string };
 
 export interface AirdropProps {
-  back?: () => void;
+  back: () => void;
 }
 
 const Airdrop: React.FC<AirdropProps> = ({ back }) => {
   const { data: accountData } = useAccount();
+  const { disconnect } = useDisconnect();
   const account = accountData?.address;
 
   const [isClaimed, setIsClaimed] = useState(false);
@@ -47,6 +48,7 @@ const Airdrop: React.FC<AirdropProps> = ({ back }) => {
 
   useEffect(() => {
     if (!account) {
+      back();
       return;
     }
 
@@ -60,7 +62,7 @@ const Airdrop: React.FC<AirdropProps> = ({ back }) => {
       <section className={styles.airdrop}>
         <div className="container">
           <div className={styles.title}>
-            <h2>Airdrop claim</h2>
+            <h2>Claim Your $SPACE</h2>
           </div>
           <div className={styles.wallet_address}>
             Wallet Address:{" "}
@@ -71,6 +73,13 @@ const Airdrop: React.FC<AirdropProps> = ({ back }) => {
             >
               {toPolygonAddressUrl(account || "").maskedAddress}
             </a>
+            <button
+              className={styles.disconnect}
+              type="button"
+              onClick={() => disconnect()}
+            >
+              Change
+            </button>
           </div>
 
           {loading && <Spinner />}
