@@ -1,9 +1,4 @@
 {
-  "token-0x8515ba8ef2cf2f2ba44b26ff20337d7a2bc5e6d8": 100,
-  "token-0xcdf8d568ec808de5fcbb35849b5bafb5d444d4c0": 50,
-  "poap-19036": 10,
-  "poap-31209": 20,
-  "transfer-0x70bf60048d634173e29ceda160c0b4300bdba973": 100,
   "proof": [
     "0x7e9162688723b48cc97bc65910442246713a3fcc6163f6f1a7d0b2352604f427",
     "0x4e3339fc0efeddbde7f739e9113afb28a10197ee9472dba0edbc49b75323d3eb",

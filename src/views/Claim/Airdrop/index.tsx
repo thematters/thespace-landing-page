@@ -39,7 +39,9 @@ const Airdrop: React.FC<AirdropProps> = ({ back }) => {
     setLoading(true);
 
     try {
-      const data = await fetchWrapper.get(`/proofs/${account}.json`);
+      const data = await fetchWrapper.get(
+        `/proofs/${account.toLocaleLowerCase()}.json`
+      );
       setClaimData(data);
       console.log(data);
     } catch (e) {
