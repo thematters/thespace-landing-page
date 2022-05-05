@@ -1,4 +1,7 @@
 {
+  "token-0x8515ba8ef2cf2f2ba44b26ff20337d7a2bc5e6d8": 100,
+  "token-0xcdf8d568ec808de5fcbb35849b5bafb5d444d4c0": 50,
+  "transfer-0x70bf60048d634173e29ceda160c0b4300bdba973": 100,
   "proof": [
     "0xbbf09523a5f0ffb25b44286394046ea25797d3f0a08f4421f7b797a522f1a9d0",
     "0xf6d1cde8d707fcdbc2e076b4701de8aaf62ad075cd9684e148b5fe965a3ff936",
