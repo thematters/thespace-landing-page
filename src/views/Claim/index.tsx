@@ -3,7 +3,6 @@ import { Provider, createClient } from "wagmi";
 
 import Entrance from "./Entrance";
 import Airdrop from "./Airdrop";
-import Toast from "./Toast";
 import FollowUs from "~/components/FollowUs";
 
 import {
@@ -33,8 +32,6 @@ const Claim: NextPage = () => {
 
         {!isEntrance && <Airdrop back={() => setIsEntrance(true)} />}
 
-        <Toast status="failed" />
-
         <section className={`${styles.about} text-center`}>
           <div className={`${styles.container} container`}>
             <div className={styles.illu_1}>
@@ -59,9 +56,9 @@ const Claim: NextPage = () => {
                 Income(UBI) based on the number of pixel they own.
               </p>
             </div>
-            <div className={`${styles.buttons} buttons`}>
+            {/* <div className={`${styles.buttons} buttons`}>
               <button className="btn fill">Whitepaper</button>
-            </div>
+            </div> */}
           </div>
         </section>
 

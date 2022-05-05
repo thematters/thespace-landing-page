@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useConnect, useAccount, useNetwork } from "wagmi";
+import classNames from "classnames";
 
 import { injectedConnector, walletConnectConnector } from "~/utils";
 
@@ -13,7 +14,6 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
   const {
     activeConnector,
     connect,
-    connectors,
     error: connectError,
     isConnecting,
     pendingConnector,
@@ -46,6 +46,21 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
     }
 
     next();
+  }, [account, isUnsupportedNetwork]);
+
+  const metaMaskClasses = classNames({
+    [styles.metamask]: true,
+    // [styles.disabled]: !injectedConnector.ready,
+    [styles.connecting]:
+      isConnecting && pendingConnector?.id === injectedConnector.id,
+    [styles.active]: activeConnector?.id === injectedConnector.id,
+  });
+  const walletConnectClasses = classNames({
+    [styles.walletconnect]: true,
+    // [styles.disabled]: !walletConnectConnector.ready,
+    [styles.connecting]:
+      isConnecting && pendingConnector?.id === walletConnectConnector.id,
+    [styles.active]: activeConnector?.id === walletConnectConnector.id,
   });
 
   return (
@@ -61,7 +76,7 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
             <h2>Claim your Token</h2>
           </div>
           <div className={styles.text}>
-            <strong>May 1st 2022 - May 15th 2022</strong>
+            <strong>May 11, 2022 - May 15, 2022</strong>
             <span>
               Before claim $SPACE, let&apos;s connect your wallet first.
             </span>
@@ -69,16 +84,14 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
 
           <div className={styles.wallet}>
             <button
-              className={styles.metamask}
-              // disabled={!activeConnector?.ready}
+              className={metaMaskClasses}
               onClick={() => connect(injectedConnector)}
             >
               MetaMask
             </button>
 
             <button
-              className={styles.walletconnect}
-              // disabled={!activeConnector?.ready}
+              className={walletConnectClasses}
               onClick={() => connect(walletConnectConnector)}
             >
               WalletConnect
@@ -98,6 +111,12 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
                 {errorMessage ?? "Failed to connect"}
               </p>
             )}
+
+            {/* {account && (
+              <p className={styles.info}>
+                {toPolygonAddressUrl(account || "").maskedAddress}
+              </p>
+            )} */}
           </div>
         </div>
       </section>

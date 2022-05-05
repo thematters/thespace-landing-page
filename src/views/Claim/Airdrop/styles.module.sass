@@ -23,6 +23,9 @@ section.airdrop
           left: -3.125rem
   .wallet_address
     @extend %article-body
+    display: flex
+    justify-content: flex-start
+    align-items: center
     font-weight: 400
     margin: 0 0 1rem 0
     a
@@ -36,14 +39,12 @@ section.airdrop
         margin: 0 0 0 0.5rem
         transform: translateY(1px)
     .disconnect
-      padding-left: .5rem
-  .empty
-    .text
-      margin: 0 0 2.5rem 0
-      +min($lg)
-        margin: 0
-      p
-        @extend %article-title
+      font-size: 12px
+      font-weight: 500
+      line-height: 1
+      padding: 6px 8px
+      border-radius: 20px
+      border: 2px solid #333
   .content
     .claim_time
       @extend %article-title
@@ -61,25 +62,3 @@ section.airdrop
           height: 24px
           margin: 0 0.5rem 0 0
           transform: translateY(3px)
-    .table
-      @extend %article-body
-      .row
-        padding: 1rem 0
-      .table_head
-        .row
-          border-bottom: 2px solid $black
-      .table_body
-        font-weight: 400
-        .row
-          border-bottom: 1px solid $grey
-          &:last-child
-            border-bottom: none
-      .table_foot
-        .row
-          border-top: 2px solid $black
-    .buttons
-      margin: 2rem 0 0 0
-      button
-        min-width: 100%
-        +min($md)
-          min-width: 220px

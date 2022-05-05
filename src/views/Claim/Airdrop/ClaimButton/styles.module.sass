@@ -1,0 +1,22 @@
+.buttons
+  margin: 2rem 0 0 0
+  button
+    min-width: 100%
+    +min($md)
+      min-width: 220px
+.loading
+  &::before
+    +bg('/img/icon-spinner.svg')
+    content: ''
+    display: inline-block
+    position: absolute
+    left: calc(50% - 16px)
+    width: 32px
+    height: 32px
+    animation: spinning 1s infinite linear
+
+@keyframes spinning
+  from
+    transform: rotate(0deg)
+  to
+    transform: rotate(360deg)
