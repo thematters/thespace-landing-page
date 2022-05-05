@@ -3,7 +3,7 @@ import classNames from "classnames";
 import styles from "./styles.module.sass";
 
 export interface AirdropProps {
-  status: String;
+  status?: 'success' | 'failed'
 }
 
 const Toast = ({ status }: AirdropProps) => {
