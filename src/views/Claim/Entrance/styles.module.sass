@@ -57,3 +57,25 @@ section.entrance
         +bg('/img/icon-metamask.svg')
       &.walletconnect::before
         +bg('/img/icon-walletconnect.svg')
+      &.connecting::after
+        +bg('/img/icon-spinner-black.svg')
+        animation: spinning 1s infinite linear
+        width: 24px
+        height: 24px
+      &.active::after
+        +bg('/img/icon-green-dot.svg')
+      &.disabled
+        pointer-events: none
+        opacity: .5
+    .error, .info
+      text-align: left
+      [role="button"]
+        color: #333
+    .error
+      color: #C85C41
+
+@keyframes spinning
+  from
+    transform: rotate(0deg)
+  to
+    transform: rotate(360deg)

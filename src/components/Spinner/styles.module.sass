@@ -1,0 +1,21 @@
+.spinner
+  position: relative
+  padding: 4rem 0
+  line-height: 1
+  text-align: center
+  animation: spinning 1s infinite linear
+  display: flex
+  justify-content: center
+  align-items: center
+  &::before
+    content: ''
+    display: inline-block
+    width: 48px
+    height: 48px
+    +bg('/img/icon-spinner-black.svg')
+
+@keyframes spinning
+  from
+    transform: rotate(0deg)
+  to
+    transform: rotate(360deg)

@@ -1,0 +1,16 @@
+.claim_time
+  @extend %article-title
+  margin: 0 0 2.5rem 0
+  .claim_time_date
+    margin: 0 0 0.5rem 0
+  .claim_time_countdown
+    background-color: $lime
+    padding: 0 0.25rem
+    &::before
+      +bg('/img/icon-clock.svg')
+      content: ''
+      display: inline-block
+      width: 24px
+      height: 24px
+      margin: 0 0.5rem 0 0
+      transform: translateY(3px)
