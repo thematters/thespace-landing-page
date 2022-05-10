@@ -62,6 +62,10 @@ const Airdrop: React.FC<AirdropProps> = ({ back }) => {
   }, [account, isUnsupportedNetwork]);
 
   const total = claimData?.total || 0;
+  const polygonScanToken = toPolygonAddressUrl(
+    process.env.NEXT_PUBLIC_CONTRACT_TOKEN || ""
+  );
+  const polygonScanAccount = toPolygonAddressUrl(account || "");
 
   return (
     <>
@@ -70,14 +74,16 @@ const Airdrop: React.FC<AirdropProps> = ({ back }) => {
           <div className={styles.title}>
             <h2>Claim Your $SPACE</h2>
           </div>
-          <div className={styles.wallet_address}>
+          <div className={styles.address}>
+            Token Address:&nbsp;{" "}
+            <a href={polygonScanToken.url} target="_blank" rel="noreferrer">
+              {polygonScanToken.maskedAddress}
+            </a>
+          </div>
+          <div className={styles.address}>
             Wallet Address:&nbsp;
-            <a
-              href={toPolygonAddressUrl(account || "").url}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {toPolygonAddressUrl(account || "").maskedAddress}
+            <a href={polygonScanAccount.url} target="_blank" rel="noreferrer">
+              {polygonScanAccount.maskedAddress}
             </a>
             &nbsp;&nbsp;
             <button

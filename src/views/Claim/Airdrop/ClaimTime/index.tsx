@@ -25,7 +25,7 @@ const ClaimTime: React.FC<ClaimTimeProps> = ({
   return (
     <div className={classes}>
       <span className={styles.claim_time_date}>
-        Claim Time: May 11, 2022 - May 15, 2022
+        {/* Claim Time: May 11, 2022 - May 15, 2022 */}
       </span>
 
       {!isStarted && (days || hours || minutes || seconds) ? (
