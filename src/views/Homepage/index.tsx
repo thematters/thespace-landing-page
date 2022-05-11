@@ -1,7 +1,18 @@
 import type { NextPage } from 'next'
+import Image from 'next/image'
 
 import Subscribe from "./Subscribe";
 import styles from "./styles.module.sass";
+
+import introIlluSvg from '../../../public/img/intro-illu.svg'
+import introDividerSvg from '../../../public/img/intro-divider.svg'
+import sampleThumbPic from '../../../public/img/sample-thumb.png'
+import sampleIlluSvg from '../../../public/img/sample-illu.svg'
+import roadmapIlluSvg from '../../../public/img/roadmap-illu.svg'
+
+import features1Svg from '../../../public/img/features-1.svg'
+import features2Svg from '../../../public/img/features-2.svg'
+import features3Svg from '../../../public/img/features-3.svg'
 
 const Homepage: NextPage = () => {
   return (
@@ -12,12 +23,12 @@ const Homepage: NextPage = () => {
             <div className="row">
               <div className="col-12 p-0">
                 <div className={styles.illu}>
-                  <figure className="text-end"><img className="img-fluid" src="/img/intro-illu.svg"/></figure>
+                  <figure className="text-end"><Image className="img-fluid" src={introIlluSvg} alt="Intro Illustration" /></figure>
                 </div>
               </div>
               <div className="col-md-5 col-xl-4">
                 <div className={styles.divider}>
-                  <figure><img className="img-fluid" src="/img/intro-divider.svg"/></figure>
+                  <figure><Image className="img-fluid" src={introDividerSvg} alt="Intro Divider" /></figure>
                 </div>
                 <div className={styles.title}>
                   <h1 className={styles.bar}>The Space: <br/>an everlasting, Draw-to-Earn public space</h1>
@@ -50,7 +61,7 @@ const Homepage: NextPage = () => {
             <div className="row align-items-center">
               <div className="col-md-6">
                 <div className={styles.thumb}>
-                  <figure><img className="img-fluid" src="/img/sample-thumb.png"/></figure>
+                  <figure><Image className="img-fluid" src={sampleThumbPic} alt="Sample Thumbnail" /></figure>
                 </div>
               </div>
               <div className="col-md-5 offset-md-1">
@@ -58,7 +69,7 @@ const Homepage: NextPage = () => {
                   <h2>Buy, Sell, Pay Tax and Collect Dividend</h2>
                 </div>
                 <div className={styles.illu}>
-                  <figure className="text-end"><img className="img-fluid" src="/img/sample-illu.svg"/></figure>
+                  <figure className="text-end"><Image className="img-fluid" src={sampleIlluSvg} alt="Sample Illustration" /></figure>
                 </div>
               </div>
             </div>
@@ -72,7 +83,7 @@ const Homepage: NextPage = () => {
             <div className={styles.content}>
               <div className={styles.feature}>
                 <div className={styles.illu}>
-                  <figure className="text-center"><img className="img-fluid" src="/img/features-1.svg"/></figure>
+                  <figure className="text-center"><Image className="img-fluid" src={features1Svg} alt="Create with others" /></figure>
                 </div>
                 <div className={styles.text}>
                   <h3>Create with others</h3>
@@ -81,7 +92,7 @@ const Homepage: NextPage = () => {
               </div>
               <div className={styles.feature}>
                 <div className={styles.illu}>
-                  <figure className="text-center"><img className="img-fluid" src="/img/features-2.svg"/></figure>
+                  <figure className="text-center"><Image className="img-fluid" src={features2Svg} alt="Radical Market" /></figure>
                 </div>
                 <div className={styles.text}>
                   <h3>Radical Market</h3>
@@ -90,7 +101,7 @@ const Homepage: NextPage = () => {
               </div>
               <div className={styles.feature}>
                 <div className={styles.illu}>
-                  <figure className="text-center"><img className="img-fluid" src="/img/features-3.svg"/></figure>
+                  <figure className="text-center"><Image className="img-fluid" src={features3Svg} alt="DAO" /></figure>
                 </div>
                 <div className={styles.text}>
                   <h3>Decentralized Autonomous Organization</h3>
@@ -104,7 +115,7 @@ const Homepage: NextPage = () => {
           <div className="container">
             <div className={`${styles.title} text-center`}>
               <div className={styles.illu}>
-                <figure className="text-center"><img className="img-fluid" src="img/roadmap-illu.svg"/></figure>
+                <figure className="text-center"><Image className="img-fluid" src={roadmapIlluSvg} alt="Roadmap Illustration" /></figure>
               </div>
               <h2>[ Roadmap ]</h2>
             </div>
