@@ -15,6 +15,7 @@ const ClaimDetail: React.FC<ClaimDetailProps> = ({ categories, total }) => {
     "poap-18004": "POAP#18004",
     "poap-19036": "POAP#19036",
     "poap-31209": "POAP#31209",
+    "beta-test-3": "Third round Beta test",
   };
 
   return (
@@ -45,7 +46,7 @@ const ClaimDetail: React.FC<ClaimDetailProps> = ({ categories, total }) => {
         <div className={`${styles.row} row`}>
           <div className="col-9">Total Token</div>
           <div className="col-3 text-end">
-            $SPACE {total.toLocaleString("en-US")}
+            $STK {total.toLocaleString("en-US")}
           </div>
         </div>
       </div>

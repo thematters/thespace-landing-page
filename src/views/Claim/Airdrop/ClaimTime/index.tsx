@@ -22,10 +22,17 @@ const ClaimTime: React.FC<ClaimTimeProps> = ({
       true,
   });
 
+  const start = new Date(
+    process.env.NEXT_PUBLIC_CLAIM_START_AT || 0
+  ).toLocaleString();
+  const end = new Date(
+    process.env.NEXT_PUBLIC_CLAIM_END_AT || 0
+  ).toLocaleString();
+
   return (
     <div className={classes}>
       <span className={styles.claim_time_date}>
-        {/* Claim Time: May 11, 2022 - May 15, 2022 */}
+        Claim Time: {start} - {end}
       </span>
 
       {!isStarted && (days || hours || minutes || seconds) ? (

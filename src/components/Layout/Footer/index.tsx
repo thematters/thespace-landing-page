@@ -33,7 +33,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link href="/claim">
-                    <a>Claim $SPACE</a>
+                    <a>Claim $STK</a>
                   </Link>
                 </li>
                 {/* <li><a href="" target="_blank" rel="noreferrer">The Space playground</a></li> */}

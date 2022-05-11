@@ -7,10 +7,10 @@ class TheSpaceDocument extends Document {
         <Head>
           <meta charSet="UTF-8" />
           <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-          <meta
+          {/* <meta
             name="description"
-            content="The Space is a pixel map where players can tokenize, own, trade and color pixels. Pixels are tokenized as ERC721 tokens and traded under Harberger Tax, while owners of pixels receive Universal Basic Income(UBI). In the Future, The administration of The Space will be transfered to SpaceDAO, a decentralized autonomous organization formed by all $SPACE token holders."
-          />
+            content="The Space is a pixel map where players can tokenize, own, trade and color pixels. Pixels are tokenized as ERC721 tokens and traded under Harberger Tax, while owners of pixels receive Universal Basic Income(UBI). In the Future, The administration of The Space will be transfered to SpaceDAO, a decentralized autonomous organization formed by all $STK token holders."
+          /> */}
           <meta
             property="og:title"
             content="The Space: an everlasting, Draw-to-Earn public space"
@@ -22,18 +22,18 @@ class TheSpaceDocument extends Document {
           />
           <meta property="og:url" content="https://www.thespace.game/" />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta
+          {/* <meta
             property="og:description"
-            content="The Space is a pixel map where players can tokenize, own, trade and color pixels. Pixels are tokenized as ERC721 tokens and traded under Harberger Tax, while owners of pixels receive Universal Basic Income(UBI). In the Future, The administration of The Space will be transfered to SpaceDAO, a decentralized autonomous organization formed by all $SPACE token holders."
-          />
+            content="The Space is a pixel map where players can tokenize, own, trade and color pixels. Pixels are tokenized as ERC721 tokens and traded under Harberger Tax, while owners of pixels receive Universal Basic Income(UBI). In the Future, The administration of The Space will be transfered to SpaceDAO, a decentralized autonomous organization formed by all $STK token holders."
+          /> */}
           <meta
             property="og:site_name"
             content="The Space: an everlasting, Draw-to-Earn public space"
           />
-          <meta
+          {/* <meta
             name="twitter:image:alt"
-            content="The Space is a pixel map where players can tokenize, own, trade and color pixels. Pixels are tokenized as ERC721 tokens and traded under Harberger Tax, while owners of pixels receive Universal Basic Income(UBI). In the Future, The administration of The Space will be transfered to SpaceDAO, a decentralized autonomous organization formed by all $SPACE token holders."
-          />
+            content="The Space is a pixel map where players can tokenize, own, trade and color pixels. Pixels are tokenized as ERC721 tokens and traded under Harberger Tax, while owners of pixels receive Universal Basic Income(UBI). In the Future, The administration of The Space will be transfered to SpaceDAO, a decentralized autonomous organization formed by all $STK token holders."
+          /> */}
           <meta property="fb:app_id" content="" />
           <meta name="twitter:site" content="" />
           <link rel="shortcut icon" href="/favicon.ico" />

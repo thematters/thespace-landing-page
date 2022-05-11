@@ -44,8 +44,8 @@ const Claim: NextPage = () => {
                 <img className="img-fluid" src="/img/about-illu-2.svg" />
               </figure>
             </div>
-            <div className={styles.title}>
-              <h2>About $SPACE</h2>
+            {/* <div className={styles.title}>
+              <h2>About $STK</h2>
             </div>
             <div className={styles.text}>
               <p>
@@ -55,7 +55,7 @@ const Claim: NextPage = () => {
                 under Harberger Tax, while members receive Universal Basic
                 Income(UBI) based on the number of pixel they own.
               </p>
-            </div>
+            </div> */}
             {/* <div className={`${styles.buttons} buttons`}>
               <button className="btn fill">Whitepaper</button>
             </div> */}

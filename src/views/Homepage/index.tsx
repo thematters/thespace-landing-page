@@ -38,7 +38,7 @@ const Homepage: NextPage = () => {
                     pixels receive Universal Basic Income(UBI). In the Future,
                     The administration of The Space will be transfered to
                     SpaceDAO, a decentralized autonomous organization formed by
-                    all $SPACE token holders.
+                    all $STK token holders.
                   </p>
                 </div>
                 <div className={`${styles.buttons} buttons`}>
@@ -46,6 +46,7 @@ const Homepage: NextPage = () => {
                     className="btn frame"
                     href="https://discord.gg/thespace"
                     target="_blank"
+                    rel="noreferrer"
                   >
                     Join Discord
                   </a>
@@ -53,6 +54,7 @@ const Homepage: NextPage = () => {
                     className="btn fill"
                     href="https://forms.gle/rbuzdsdARaLaCDoB6"
                     target="_blank"
+                    rel="noreferrer"
                   >
                     Sign-up Beta
                   </a>
@@ -204,6 +206,7 @@ const Homepage: NextPage = () => {
                   className="btn fill"
                   href="https://twitter.com/thespace2022"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   View More
                 </a>
@@ -243,6 +246,7 @@ const Homepage: NextPage = () => {
                     className="btn fill"
                     href="https://github.com/thematters/developer-resource"
                     target="_blank"
+                    rel="noreferrer"
                   >
                     GitHub
                   </a>
@@ -265,7 +269,7 @@ const Homepage: NextPage = () => {
             </div>
             <div className={styles.content}>
               <details>
-                <summary>What is NFT? What is $SPACE ?</summary>
+                <summary>What is NFT? What is $STK ?</summary>
                 <div className={styles.text}>
                   <p>
                     NFT stands for "non-fungible token". It is a special and
@@ -281,7 +285,7 @@ const Homepage: NextPage = () => {
                 </div>
               </details>
               <details>
-                <summary>How do I use $SPACE ?</summary>
+                <summary>How do I use $STK ?</summary>
                 <div className={styles.text}>
                   <p></p>
                 </div>
@@ -314,6 +318,7 @@ const Homepage: NextPage = () => {
                 className="btn fill"
                 href="https://discord.gg/thespace"
                 target="_blank"
+                rel="noreferrer"
               >
                 Ask on Discord
               </a>
@@ -323,6 +328,7 @@ const Homepage: NextPage = () => {
                 className={styles.twitter}
                 href="https://twitter.com/thespace2022"
                 target="_blank"
+                rel="noreferrer"
               >
                 <span className={styles.icon}></span>
               </a>
@@ -330,6 +336,7 @@ const Homepage: NextPage = () => {
                 className={styles.discord}
                 href="https://discord.gg/thespace"
                 target="_blank"
+                rel="noreferrer"
               >
                 <span className={styles.icon}></span>
               </a>
@@ -341,6 +348,7 @@ const Homepage: NextPage = () => {
             className={`${styles.ribbon} ${styles.lime}`}
             href="https://matters-lab.io/"
             target="_blank"
+            rel="noreferrer"
           >
             <div className={styles.inner}></div>
           </a>
@@ -348,6 +356,7 @@ const Homepage: NextPage = () => {
             className={`${styles.ribbon} ${styles.grey}`}
             href="https://matters-lab.io/"
             target="_blank"
+            rel="noreferrer"
           >
             <div className={styles.inner}></div>
           </a>

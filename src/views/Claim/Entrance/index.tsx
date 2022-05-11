@@ -73,12 +73,12 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
         </div>
         <div className={`${styles.container} container`}>
           <div className={styles.title}>
-            <h2>Claim your $SPACE</h2>
+            <h2>Claim your $STK</h2>
           </div>
           <div className={styles.text}>
             {/* <strong>May 11, 2022 - May 15, 2022</strong> */}
             <span>
-              Before claiming $SPACE, let&apos;s connect your wallet first.
+              Before claiming $STK, let&apos;s connect your wallet first.
             </span>
           </div>
 
