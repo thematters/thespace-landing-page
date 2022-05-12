@@ -68,72 +68,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="col-12 col-md-6">
-            <div className={styles.social}>
-              <a
-                className={styles.twitter}
-                href="https://twitter.com/thespace2022"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <i className={styles.icon}></i>
-              </a>
-              <a
-                className={styles.discord}
-                href="https://discord.gg/thespace"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <i className={styles.icon}></i>
-              </a>
-              <a
-                className={styles.telegram}
-                href="https://t.me/joinchat/BXzlWUhXaWNZ-TXJZJCzDQ"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <i className={styles.icon}></i>
-              </a>
-              <a
-                className={styles.youtube}
-                href="https://www.youtube.com/c/Matterslab"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <i className={styles.icon}></i>
-              </a>
-              <a
-                className={styles.opensea}
-                href="https://opensea.io/collection/traveloggers"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <i className={styles.icon}></i>
-              </a>
-              <a
-                className={styles.medium}
-                href="https://matterslab.medium.com/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <i className={styles.icon}></i>
-              </a>
-              <a
-                className={styles.instagram}
-                href="https://www.instagram.com/matterslab2018/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <i className={styles.icon}></i>
-              </a>
-              <a
-                className={styles.facebook}
-                href="https://www.facebook.com/MattersLab2018/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <i className={styles.icon}></i>
-              </a>
-            </div>
+            <div className={styles.social}><a className={styles.twitter} href="https://twitter.com/thespace2022" target="_blank" rel="noreferrer"><i className={styles.icon}></i></a><a className={styles.discord} href="https://discord.gg/thespace" target="_blank" rel="noreferrer"><i className={styles.icon}></i></a><a className={styles.telegram} href="https://t.me/joinchat/BXzlWUhXaWNZ-TXJZJCzDQ" target="_blank" rel="noreferrer"><i className={styles.icon}></i></a><a className={styles.youtube} href="https://www.youtube.com/c/Matterslab" target="_blank" rel="noreferrer"><i className={styles.icon}></i></a><a className={styles.opensea} href="https://opensea.io/collection/space-game-test" target="_blank" rel="noreferrer"><i className={styles.icon}></i></a><a className={styles.medium} href="https://matterslab.medium.com/" target="_blank" rel="noreferrer"><i className={styles.icon}></i></a><a className={styles.instagram} href="https://www.instagram.com/matterslab2018/" target="_blank" rel="noreferrer"><i className={styles.icon}></i></a><a className={styles.facebook} href="https://www.facebook.com/MattersLab2018/" target="_blank" rel="noreferrer"><i className={styles.icon}></i></a></div>
           </div>
           <div className="col-12 d-md-none">
             <div className={`${styles.copyright} text-center`}>
