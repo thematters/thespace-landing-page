@@ -1,6 +1,5 @@
 {
-  "poap-31209": 20,
-  "transfer-0x70bf60048d634173e29ceda160c0b4300bdba973": 50,
+  "beta-test-3": 2000,
   "proof": [
     "0xe0f8c4ce068ed66d210dff8607548d4fb6c3945c02e1129af3ba53bc81937fca",
     "0xa3c53ea4cb688600beeaa54ced5896f073831c43a41721d93f534c934f99a3f8",
@@ -12,6 +11,5 @@
     "0xfec18af57126f0b8405c4ff6849b872514f3265d5c2cce991dc5c6afcdedcf2f"
   ],
   "index": 125,
-  "total": 2000,
-  "beta-test-3": 2000
+  "total": 2000
 }

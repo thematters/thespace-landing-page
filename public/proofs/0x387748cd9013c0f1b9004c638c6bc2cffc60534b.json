@@ -1,5 +1,5 @@
 {
-  "token-0x8515ba8ef2cf2f2ba44b26ff20337d7a2bc5e6d8": 100,
+  "beta-test-3": 2000,
   "proof": [
     "0x9d8b136f0d6d2956e2f54d7a469e4ae98af11ede7114900f4285912a647f3016",
     "0x7d604a03c0d7d96f8477938a5dde6ecfe892caea5d645b7f5e9c09e1cc823255",
@@ -11,6 +11,5 @@
     "0xfec18af57126f0b8405c4ff6849b872514f3265d5c2cce991dc5c6afcdedcf2f"
   ],
   "index": 126,
-  "total": 2000,
-  "beta-test-3": 2000
+  "total": 2000
 }

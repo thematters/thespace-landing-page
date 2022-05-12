@@ -1,5 +1,5 @@
 {
-  "poap-18004": 5,
+  "beta-test-3": 2000,
   "proof": [
     "0xf09bb57e109fb83c93a99e84df5e0494e1ab7a8541b8df107c14123a2d4cf342",
     "0xf258255ae9fb0d3f5599473eb4b6a48044e966575a86b877c2a417852654a2e6",
@@ -11,6 +11,5 @@
     "0xa2cb4390539437ec492a2c3ae3e5d52375d8dfc985d68a3e51ba29cdd8481447"
   ],
   "index": 158,
-  "total": 2000,
-  "beta-test-3": 2000
+  "total": 2000
 }

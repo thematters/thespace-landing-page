@@ -1,5 +1,5 @@
 {
-  "transfer-0xa69b77089b1d2b01212128593146125f28f0a7fd": 50,
+  "beta-test-3": 2000,
   "proof": [
     "0xca5d49d177bacce05c6c39c5321ee7f863b869343118c76f50292b85977aceec",
     "0x61c41d7d9a3884859c785564d812a58b9f21721f8a20067929eeabbbc6c34d8e",
@@ -11,6 +11,5 @@
     "0xfec18af57126f0b8405c4ff6849b872514f3265d5c2cce991dc5c6afcdedcf2f"
   ],
   "index": 90,
-  "total": 2000,
-  "beta-test-3": 2000
+  "total": 2000
 }

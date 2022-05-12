@@ -1,8 +1,5 @@
 {
-  "token-0x8515ba8ef2cf2f2ba44b26ff20337d7a2bc5e6d8": 100,
-  "token-0xcdf8d568ec808de5fcbb35849b5bafb5d444d4c0": 50,
-  "transfer-0x70bf60048d634173e29ceda160c0b4300bdba973": 100,
-  "transfer-0xa69b77089b1d2b01212128593146125f28f0a7fd": 100,
+  "beta-test-3": 2000,
   "proof": [
     "0x6ef1c74cb8ca971fc77f67724da12ac6222c24d50d4a039155cd7eb3a047871c",
     "0xf258255ae9fb0d3f5599473eb4b6a48044e966575a86b877c2a417852654a2e6",
@@ -14,6 +11,5 @@
     "0xa2cb4390539437ec492a2c3ae3e5d52375d8dfc985d68a3e51ba29cdd8481447"
   ],
   "index": 159,
-  "total": 2000,
-  "beta-test-3": 2000
+  "total": 2000
 }
