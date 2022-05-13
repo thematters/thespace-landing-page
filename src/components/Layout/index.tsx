@@ -7,14 +7,14 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
-function Layout({ children }:LayoutProps) {
+function Layout({ children }: LayoutProps) {
   return (
     <div id="wrapper">
       <Header />
       {children}
       <Footer />
     </div>
-  )
+  );
 }
 
 export default Layout;
