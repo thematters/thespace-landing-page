@@ -96,18 +96,42 @@ const Homepage: NextPage = () => (
             min-width="400"
           >
             <div data-style="clean">
-              <ul className="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
-              <div data-element="fields" data-stacked="false" className="seva-fields formkit-fields">
-                <div className={styles['formkit-field']}>
+              <ul
+                className="formkit-alert formkit-alert-error"
+                data-element="errors"
+                data-group="alert"
+              ></ul>
+              <div
+                data-element="fields"
+                data-stacked="false"
+                className="seva-fields formkit-fields"
+              >
+                <div className={styles["formkit-field"]}>
                   <label>Email *</label>
-                  <input className="formkit-input" name="email_address" aria-label="Email *" placeholder="Enter your email" required type="email" />
+                  <input
+                    className="formkit-input"
+                    name="email_address"
+                    aria-label="Email *"
+                    placeholder="Enter your email"
+                    required
+                    type="email"
+                  />
                 </div>
-                <div className={styles['formkit-field']}>
+                <div className={styles["formkit-field"]}>
                   <label>ETH Address</label>
-                  <input className="formkit-input" aria-label="ETH Address" name="fields[first_name]" placeholder="Enter your ETH Address" type="text" />
+                  <input
+                    className="formkit-input"
+                    aria-label="ETH Address"
+                    name="fields[first_name]"
+                    placeholder="Enter your ETH Address"
+                    type="text"
+                  />
                 </div>
                 <div className="text-end">
-                  <button data-element="submit" className={styles['formkit-submit']}>
+                  <button
+                    data-element="submit"
+                    className={styles["formkit-submit"]}
+                  >
                     {/* <div className="formkit-spinner">
                       <div></div>
                       <div></div>
