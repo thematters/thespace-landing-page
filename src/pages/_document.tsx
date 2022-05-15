@@ -7,16 +7,36 @@ class TheSpaceDocument extends Document {
       "The Space is a pixel map where players can tokenize, own, trade and color pixels. Pixels are tokenized as ERC721 tokens and traded under Harberger Tax, while owners of pixels receive Universal Basic Income(UBI). In the Future, The administration of The Space will be transfered to SpaceDAO, a decentralized autonomous organization formed by all $SPACE token holders.";
     const canonicalUrl = "https://thespace.game";
     const imageUrl = "https://thespace.game/img/thumb.jpg?v=1";
+    const keywords = [
+      "space",
+      "spacedao",
+      "pixels",
+      "harberger",
+      "decentralized",
+      "ubi",
+      "thespace",
+      "matterslab",
+      "matters.news",
+      "創作有價",
+    ];
 
     return (
       <Html>
         <Head>
           <meta charSet="UTF-8" />
           <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-          <title>{title}</title>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover"
+          />
+          <title key="title">{title}</title>
           <meta name="description" content={description} />
-          <meta property="fb:app_id" content="" />
-          <meta property="og:title" content={title} />
+          <meta key="keywords" name="keywords" content={keywords.join(",")} />
+          <meta
+            property="fb:app_id"
+            content={process.env.NEXT_PUBLIC_FB_APP_ID}
+          />
+          <meta property="og:title" content={title} key="og:title" />
           <meta property="og:type" content="website" />
           <meta property="og:image" content={imageUrl} />
           <meta property="og:url" content={canonicalUrl} />

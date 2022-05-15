@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write \"{,!(.next|build|node_modules|coverage|out)/**/!(__generated__)/}*.{js,jsx,ts,tsx,json}\""
   },
   "dependencies": {
     "next": "12.1.4",

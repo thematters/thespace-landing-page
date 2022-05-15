@@ -4,8 +4,8 @@ const nextConfig = {
   trailingSlash: true,
   poweredByHeader: false,
   sassOptions: {
-    prependData: `@import "~/styles/helpers.sass"`
-  }
-}
+    prependData: `@import "~/styles/helpers.sass"`,
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
