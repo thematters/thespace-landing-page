@@ -1,6 +1,7 @@
 section.entrance
   position: relative
-  padding: 12rem 0 0 0
+  padding: 192px 0 0 0
+  margin: 0 0 192px 0
   .container
     max-width: 492px!important
   .illu
@@ -13,11 +14,11 @@ section.entrance
     +min($lg)
       transform: scale(1)
   .title
-    margin: 0 0 1rem 0
+    margin: 0 0 16px 0
     h2
       @extend %section-title
   .text
-    margin: 0 0 2.5rem 0
+    margin: 0 0 40px 0
     & > *
       display: block
       color: $grey-dark
@@ -35,7 +36,7 @@ section.entrance
       width: 100%
       height: 70px
       border-radius: 20px
-      margin: 0 0 1.5rem 0
+      margin: 0 0 24px 0
       position: relative
       border: 1px solid $white
       &:hover
@@ -46,13 +47,13 @@ section.entrance
       &::before
         width: 40px
         height: 40px
-        margin: 0 1rem
+        margin: 0 16px
       &::after
         +bg('/img/icon-arrowright.svg')
         width: 16px
         height: 16px
         position: absolute
-        right: 1rem
+        right: 16px
       &.metamask::before
         +bg('/img/icon-metamask.svg')
       &.walletconnect::before

@@ -36,7 +36,15 @@ const Footer = () => {
                     <a>Claim $STK</a>
                   </Link>
                 </li>
-                {/* <li><a href="" target="_blank" rel="noreferrer">The Space playground</a></li> */}
+                <li>
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    The Space playground
+                  </a>
+                </li>
                 <li>
                   <a
                     href="https://matters.news/"
@@ -64,10 +72,19 @@ const Footer = () => {
                     Matters-lab.io
                   </a>
                 </li>
+                <li>
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Press Kit
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
-          <div className="col-12 col-md-6">
+          <div className="col-12 position-relative">
             <div className={styles.social}>
               <a
                 className={styles.twitter}
@@ -128,6 +145,14 @@ const Footer = () => {
               <a
                 className={styles.facebook}
                 href="https://www.facebook.com/MattersLab2018/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className={styles.icon}></i>
+              </a>
+              <a
+                className={styles.github}
+                href="https://github.com/thematters/developer-resource"
                 target="_blank"
                 rel="noreferrer"
               >

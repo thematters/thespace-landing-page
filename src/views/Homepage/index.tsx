@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Link from "next/link";
 import Image from "next/image";
 
 import FollowUs from "~/components/FollowUs";
@@ -11,9 +12,11 @@ import sampleIlluSvg from "../../../public/img/sample-illu.svg";
 import roadmapIlluSvg from "../../../public/img/roadmap-illu.svg";
 import developerIlluSvg from "../../../public/img/developer-illu.svg";
 
-import features1Svg from "../../../public/img/features-1.svg";
-import features2Svg from "../../../public/img/features-2.svg";
-import features3Svg from "../../../public/img/features-3.svg";
+import featuresIllu1Svg from "../../../public/img/features-illu-1.svg";
+import featuresIllu2Svg from "../../../public/img/features-illu-2.svg";
+import featuresIllu3Svg from "../../../public/img/features-illu-3.svg";
+import aboutIllu1Svg from "../../../public/img/about-illu-1.svg";
+import aboutIllu2Svg from "../../../public/img/about-illu-2.svg";
 
 const Homepage: NextPage = () => (
   <main className={styles.index} id="main">
@@ -31,7 +34,7 @@ const Homepage: NextPage = () => (
               </figure>
             </div>
           </div>
-          <div className="col-md-5 col-xl-4">
+          <div className="col-md-5">
             <div className={styles.divider}>
               <figure>
                 <Image
@@ -49,30 +52,36 @@ const Homepage: NextPage = () => (
             </div>
             <div className={styles.text}>
               <p>
-                The Space is a pixel map where players can tokenize, own, trade
-                and color pixels. Pixels are tokenized as ERC721 tokens and
-                traded under Harberger Tax, while owners of pixels receive
-                Universal Basic Income(UBI). In the Future, The administration
-                of The Space will be transfered to SpaceDAO, a decentralized
-                autonomous organization formed by all $SPACE token holders.
+                The Space is a pixel map where players can tokenize, own,
+                trade and color pixels. Pixels are tokenized as ERC721
+                tokens and traded under Harberger Tax, while owners of
+                pixels receive Universal Basic Income(UBI). In the Future,
+                The administration of The Space will be transfered to
+                SpaceDAO, a decentralized autonomous organization formed by
+                all $STK token holders.
               </p>
             </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-8">
             <div className={`${styles.buttons} buttons`}>
               <a
-                className="btn"
+                className="btn frame"
                 href="https://discord.gg/thespace"
                 target="_blank"
                 rel="noreferrer"
               >
                 Join Discord
               </a>
+              <Link href="/claim">
+                <a className="btn fill">Claim $SPACE</a>
+              </Link>
             </div>
           </div>
-          <div className="col-md-7 col-xl-8">
-            <div className="d-flex justify-content-end align-items-end h-100">
-              <div className={styles.tips}>
-                <span className={styles.icon}></span>
-              </div>
+          <div className="col-md-4 position-relative">
+            <div className={styles.tips}>
+              <span className={styles.icon}></span>
             </div>
           </div>
         </div>
@@ -167,7 +176,7 @@ const Homepage: NextPage = () => (
               <figure className="text-center">
                 <Image
                   className="img-fluid"
-                  src={features1Svg}
+                  src={featuresIllu1Svg}
                   alt="Create with others"
                 />
               </figure>
@@ -185,7 +194,7 @@ const Homepage: NextPage = () => (
               <figure className="text-center">
                 <Image
                   className="img-fluid"
-                  src={features2Svg}
+                  src={featuresIllu2Svg}
                   alt="Radical Market"
                 />
               </figure>
@@ -203,7 +212,7 @@ const Homepage: NextPage = () => (
           <div className={styles.feature}>
             <div className={styles.illu}>
               <figure className="text-center">
-                <Image className="img-fluid" src={features3Svg} alt="DAO" />
+                <Image className="img-fluid" src={featuresIllu3Svg} alt="DAO" />
               </figure>
             </div>
             <div className={styles.text}>
@@ -215,6 +224,39 @@ const Homepage: NextPage = () => (
               </p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+    <section className={`${styles.about} text-center`}>
+      <div className={`${styles.container} container`}>
+        <div className={`${styles.illu_1} d-none d-md-block`}>
+          <figure>
+            <Image
+              className="img-fluid"
+              src={aboutIllu1Svg}
+              alt="About Illustration"
+            />
+          </figure>
+        </div>
+        <div className={`${styles.illu_2}`}>
+          <figure>
+            <Image
+              className="img-fluid"
+              src={aboutIllu2Svg}
+              alt="About Illustration"
+            />
+          </figure>
+        </div>
+        <div className={styles.title}>
+          <h2>About $STK</h2>
+        </div>
+        <div className={styles.text}>
+          <p>
+            $SPACE is an ERC-20 token issued by The Space. $SPACE is the currency supporting pixel trading, tax paying, income collecting in The Space game. In addition, $SPACE holders can participate in governing activities of SpaceDAO by staking $SPACE.
+          </p>
+        </div>
+        <div className={`${styles.buttons} buttons`}>
+          <a className="btn fill">$SPACE Whitepaper</a>
         </div>
       </div>
     </section>
@@ -266,7 +308,7 @@ const Homepage: NextPage = () => (
           <h2 className={styles.bar}>Social Media</h2>
           <div className="buttons">
             <a
-              className="btn"
+              className="btn fill"
               href="https://twitter.com/thespace2022"
               target="_blank"
               rel="noreferrer"
