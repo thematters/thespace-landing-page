@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://thespace.game/</loc>
-  </url>
-  <sitemap>
-    <loc>https://wiki.thespace.game/sitemap.xml</loc>
-  </sitemap>
-</sitemapindex>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+  <loc>https://thespace.game/</loc>
+  <lastmod>2022-05-23T20:58:01+00:00</lastmod>
+</url>
+</urlset>
