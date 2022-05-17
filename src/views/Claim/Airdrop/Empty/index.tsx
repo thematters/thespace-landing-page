@@ -6,12 +6,12 @@ const Empty = () => {
       <div className={`${styles.text} text-center`}>
         <p>Oops! You don&apos;t have any token.</p>
       </div>
-      <div className="illu text-center">
+      <div className={`${styles.illu} text-center`}>
         <figure>
           <img className="img-fluid" src="/img/airdrop-illu.svg" />
         </figure>
       </div>
-      <div className="buttons text-end">
+      <div className={`${styles.buttons} buttons text-end`}>
         <a
           className="btn fill"
           href="https://discord.gg/thespace"
