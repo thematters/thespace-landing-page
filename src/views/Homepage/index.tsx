@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 import Intro from "./Intro";
 import Subscribe from "./Subscribe";
@@ -15,13 +16,18 @@ import FollowUs from "~/components/FollowUs";
 
 import styles from "./styles.module.sass";
 
-import { title, description } from "@/package.json";
+import * as pkgInfo from "@/package.json";
 
 const Homepage: NextPage = () => {
+  const router = useRouter();
+  const canonicalUrl = `https://${
+    process.env.NEXT_PUBLIC_SITE_DOMAIN || "thespace.game"
+  }${router.asPath}`;
   return (
     <>
       <Head>
-        <title key="title">{title}</title>
+        <title key="title">{pkgInfo.title}</title>
+        <link key="canonicalUrl" rel="canonical" href={canonicalUrl} />
       </Head>
       <main className={styles.index} id="main">
         <Intro />

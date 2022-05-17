@@ -7,7 +7,7 @@ import introDividerSvg from "@/public/img/intro-divider.svg";
 import styles from "./styles.module.sass";
 
 // keep a central place to manage all meta information
-import { title, description } from "@/package.json";
+import * as pkgInfo from "@/package.json";
 
 const Intro = () => {
   return (
@@ -37,13 +37,13 @@ const Intro = () => {
             </div>
             <div className={styles.title}>
               <h1 className={styles.bar}>
-                {/* re-use {title} as much as possible */}
+                {/* re-use {pkgInfo.title} as much as possible */}
                 The Space: <br />
                 World’s First NFT Pixel Art Game Governed by Radical Markets
               </h1>
             </div>
             <div className={styles.text}>
-              <p>{description}</p>
+              <p>{pkgInfo.description}</p>
             </div>
           </div>
         </div>
