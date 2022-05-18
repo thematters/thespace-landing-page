@@ -29,7 +29,6 @@ class TheSpaceDocument extends Document {
             name="viewport"
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover"
           />
-          <title key="title">{title}</title>
           <meta name="description" content={description} />
           <meta key="keywords" name="keywords" content={keywords.join(",")} />
           <meta

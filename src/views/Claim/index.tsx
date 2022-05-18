@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import { Provider, createClient } from "wagmi";
+import Head from "next/head";
 
 import Entrance from "./Entrance";
 import Airdrop from "./Airdrop";
@@ -26,13 +27,18 @@ const Claim: NextPage = () => {
   const [isEntrance, setIsEntrance] = useState(true);
 
   return (
-    <Provider client={client}>
-      <main className={styles.claim} id="main">
-        {isEntrance && <Entrance next={() => setIsEntrance(false)} />}
-        {!isEntrance && <Airdrop back={() => setIsEntrance(true)} />}
-        <FollowUs />
-      </main>
-    </Provider>
+    <>
+      <Head>
+        <title>The Space: an everlasting, Draw-to-Earn public space</title>
+      </Head>
+      <Provider client={client}>
+        <main className={styles.claim} id="main">
+          {isEntrance && <Entrance next={() => setIsEntrance(false)} />}
+          {!isEntrance && <Airdrop back={() => setIsEntrance(true)} />}
+          <FollowUs />
+        </main>
+      </Provider>
+    </>
   );
 };
 

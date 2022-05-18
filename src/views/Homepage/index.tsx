@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Head from "next/head";
 
 import Intro from "./Intro";
 import Subscribe from "./Subscribe";
@@ -14,20 +15,27 @@ import FollowUs from "~/components/FollowUs";
 
 import styles from "./styles.module.sass";
 
-const Homepage: NextPage = () => (
-  <main className={styles.index} id="main">
-    <Intro />
-    <Subscribe />
-    <Sample />
-    <Features />
-    <About />
-    <Roadmap />
-    <SocialMedia />
-    <DeveloperCommunity />
-    <Faq />
-    <AboutTheTeam />
-    <FollowUs />
-  </main>
-);
+const Homepage: NextPage = () => {
+  return (
+    <>
+      <Head>
+        <title>The Space: an everlasting, Draw-to-Earn public space</title>
+      </Head>
+      <main className={styles.index} id="main">
+        <Intro />
+        <Subscribe />
+        <Sample />
+        <Features />
+        <About />
+        <Roadmap />
+        <SocialMedia />
+        <DeveloperCommunity />
+        <Faq />
+        <AboutTheTeam />
+        <FollowUs />
+      </main>
+    </>
+  );
+};
 
 export default Homepage;
