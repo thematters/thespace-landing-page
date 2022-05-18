@@ -29,7 +29,9 @@ const Claim: NextPage = () => {
   return (
     <>
       <Head>
-        <title>The Space: an everlasting, Draw-to-Earn public space</title>
+        <title key="title">
+          The Space: an everlasting, Draw-to-Earn public space
+        </title>
       </Head>
       <Provider client={client}>
         <main className={styles.claim} id="main">

@@ -19,7 +19,9 @@ const Homepage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>The Space: an everlasting, Draw-to-Earn public space</title>
+        <title key="title">
+          The Space: an everlasting, Draw-to-Earn public space
+        </title>
       </Head>
       <main className={styles.index} id="main">
         <Intro />
