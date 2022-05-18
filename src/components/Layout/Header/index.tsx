@@ -10,6 +10,7 @@ import styles from "./styles.module.sass";
 const Header = () => {
   const [isActive, setActive] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
+  const [isCountdown, setCountdown] = useState(false);
 
   const activeClasses = classNames({
     [styles.active]: isActive,
@@ -26,6 +27,10 @@ const Header = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.asPath]);
+
+  if(new Date() < new Date(process.env.NEXT_PUBLIC_CLAIM_START_AT || "")){
+    setCountdown(true)
+  }
 
   // const startDate = new Date("2022-05-31T12:00:00Z").toString()
   const { days, hours, minutes, seconds } = useCountdown({
@@ -61,7 +66,7 @@ const Header = () => {
       <div className={`${styles.burger} ${activeClasses} d-lg-none`}>
         <button onClick={toggleActive}></button>
       </div>
-      {!isStarted && (
+      {isCountdown && !isStarted && (
         <div
           className={`${styles.countdown} d-flex justify-content-between align-items-center`}
         >
