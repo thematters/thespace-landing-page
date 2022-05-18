@@ -1,0 +1,79 @@
+section.intro
+  position: relative
+  margin: 0 0 60px 0
+  +min($md)
+    margin: 0 0 136px 0
+  .divider
+    margin: 0 0 32px 0
+    +min($xl)
+      margin: 217px 0 96px 0
+    figure img
+      height: 29px
+      +min($md)
+        height: auto
+  .illu
+    margin: 0 -8px
+    +min($md)
+      margin: 0 -10px
+    +min($xl)
+      position: absolute
+      z-index: 0
+      top: 0
+      right: 0
+      margin: 0
+  .title
+    margin: 0 0 24px 0
+    h1
+      @extend %section-title
+      @extend %highlight
+      &::before
+        width: 120px
+        height: 30px
+        +min($md)
+          width: 270px
+          height: 70px
+  .text
+    margin: 0 0 24px 0
+    p
+      @extend %article-body
+  .buttons
+    text-align: center
+    +min($md)
+      text-align: left
+    a
+      width: 100%
+      margin: 0 0 16px 0
+      +min($md)
+        width: initial
+        margin: 0 24px 0 0
+      &::last-child
+        margin: 0
+  .tips
+    width: 18px
+    height: 64px
+    margin: 48px auto 0 auto
+    position: static
+    overflow: hidden
+    +min($md)
+      width: 31px
+      height: 113px
+      position: absolute
+      bottom: 0
+      right: 10px
+      margin: 0
+    span.icon
+      +perf(transform)
+      +bg('/img/intro-tips.svg')
+      display: block
+      width: 100%
+      height: 100%
+      animation: tips 2s $ease infinite
+      @keyframes tips
+        0%
+          transform: translateY(-100%)
+        33%
+          transform: translateY(0%)
+        66%
+          transform: translateY(0%)
+        100%
+          transform: translateY(100%)

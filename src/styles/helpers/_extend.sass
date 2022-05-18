@@ -42,3 +42,18 @@
   +min($md)
     font-size: 18px // 18
     line-height: 24px
+
+%highlight
+  position: relative
+  &::before
+    content: ''
+    display: block
+    background-color: $lime
+    position: absolute
+    top: 0px
+    left: 0px
+    z-index: -1
+    transform: skew(-30deg)
+    +min($md)
+      top: -5px
+      left: -50px
