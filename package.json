@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write \"src/**/*.{ts,js,jsx,tsx,json,md}\""
+    "format": "prettier --write \"{,!(.next|build|node_modules|coverage|out)/**/!(__generated__)/}*.{js,jsx,ts,tsx,json}\""
   },
   "dependencies": {
     "ethers": "^5.6.5",
