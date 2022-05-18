@@ -1,0 +1,53 @@
+section.faq
+  margin: 0 0 192px 0
+  .title
+    margin: 0 0 24px 0
+    h2
+      @extend %section-title
+      @extend %highlight
+      &::before
+        width: 20px
+        height: 30px
+        +min($md)
+          width: 120px
+          height: 50px
+  .content
+    details
+      padding: 16px 0
+      border-bottom: 1px solid $grey
+      +min($md)
+        padding: 24px 0
+      &:last-child
+        border-bottom: none
+      &[open]
+        summary::before
+          background-image: url('/img/icon-close.svg')
+      summary
+        @extend %article-title
+        list-style: none
+        position: relative
+        padding: 0 32px 0 0
+        &::-webkit-details-marker
+          display: none
+        &::before
+          +bg('/img/icon-open.svg')
+          content: ''
+          display: block
+          position: absolute
+          top: 0
+          right: 0
+          width: 24px
+          height: 24px
+          +min($md)
+            width: 32px
+            height: 32px
+      .text
+        @extend %article-body
+        color: $grey-dark
+        margin: 16px 0 0 0
+  .buttons
+    margin: 24px 0 0 0
+    a
+      width: 100%
+      +min($md)
+        width: initial

@@ -1,0 +1,39 @@
+section.about
+  margin: 0 0 192px 0
+  +min($md)
+    margin: 0 0 320px 0
+  .container
+    position: relative
+  .illu_1
+    position: absolute
+    left: 0%
+    top: 95%
+    width: 151px
+    height: 180px
+  .illu_2
+    position: absolute
+    right: 0
+    left: 0
+    margin: 0 auto
+    top: -65px
+    width: 31px
+    height: 41px
+    +min($md)
+      margin: 0
+      left: initial
+      width: 48px
+      height: 64px
+      top: -32px
+  .title
+    margin: 0 0 20px 0
+    h2
+      @extend %section-title
+  .text
+    margin: 0 0 40px 0
+    p
+      @extend %article-body
+  .buttons
+    a
+      width: 100%
+      +min($md)
+        width: auto

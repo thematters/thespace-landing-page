@@ -37,11 +37,7 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
+                  <a href="#" target="_blank" rel="noreferrer">
                     The Space playground
                   </a>
                 </li>
@@ -73,11 +69,7 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
+                  <a href="#" target="_blank" rel="noreferrer">
                     Press Kit
                   </a>
                 </li>
