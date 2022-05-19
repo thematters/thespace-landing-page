@@ -86,7 +86,7 @@ const Header = () => {
           <div className={`${styles.buttons}`}>
             <a
               className="d-flex justify-content-between align-items-center"
-              href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20220526T160000Z%2F20220526T160000Z&text=The%20Space%20Official%20Launch"
+              href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20220531T120000Z%2F20220531T120000Z&text=The%20Space%20Official%20Launch"
               title="Save Event in my Calendar"
               target="_blank"
               rel="noreferrer"
