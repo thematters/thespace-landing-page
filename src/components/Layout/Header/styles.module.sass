@@ -19,8 +19,80 @@ header#header
       +bg('/img/logo.svg')
       width: 100%
       height: 100%
-  .buttons
-    .btn
-      margin: 0 0 0 1.5rem
-      &:first-child
+  .menu
+    +max($lg)
+      +anm(transform)
+      position: fixed
+      width: 100%
+      height: calc(100% - 89px)
+      top: 89px
+      left: 100%
+      z-index: 1
+      text-align: center
+      background-color: $grey-light
+      transform: translateX(0%)
+    &.active
+      transform: translateX(0%)
+      +max($lg)
+        transform: translateX(-100%)
+    a
+      @extend %article-body
+      +anm(all)
+      display: block
+      margin: 48px 0 0 0
+      padding: 0
+      +min($lg)
+        display: inline-block
         margin: 0
+        padding: 9px 21px
+      &:hover
+        color: $grey-dark
+      &.strong
+        +min($lg)
+          margin: 0 0 0 21px
+          box-shadow: 0px 4px 12px rgba(51, 51, 51, 0.16)
+          border-radius: 28px
+          border: 3px solid $black
+          color: $white
+          background-color: $black
+        &:hover
+          +min($lg)
+            color: $black
+            background-color: transparent
+            box-shadow: none
+  .burger
+    width: 32px
+    height: 32px
+    button
+      +bg('/img/icon-burger.svg')
+      width: 100%
+      height: 100%
+    &.active
+      button
+        background-image: url('/img/icon-cross.svg')
+  .countdown
+    @extend %article-body
+    position: absolute
+    top: calc(100% + 1px)
+    left: 0
+    width: 100%
+    background-color: $lime
+    padding: 8px 16px
+    +min($lg)
+      padding: 8px 60px
+    span
+      font-weight: 400
+    .time
+      .icon
+        +bg('/img/icon-watch.svg')
+        display: block
+        width: 24px
+        height: 24px
+        margin: 0 8px 0 0
+    .buttons
+      .icon
+        +bg('/img/icon-ics.svg')
+        display: block
+        width: 40px
+        height: 40px
+        margin: 0 0 0 16px
