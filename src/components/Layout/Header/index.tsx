@@ -28,11 +28,12 @@ const Header = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.asPath]);
 
-  if(new Date() < new Date(process.env.NEXT_PUBLIC_CLAIM_START_AT || "")){
-    setCountdown(true)
-  }
+  useEffect(() => {
+    if (new Date() < new Date(process.env.NEXT_PUBLIC_CLAIM_START_AT || "")) {
+      setCountdown(true);
+    }
+  }, []);
 
-  // const startDate = new Date("2022-05-31T12:00:00Z").toString()
   const { days, hours, minutes, seconds } = useCountdown({
     end: process.env.NEXT_PUBLIC_CLAIM_START_AT || "",
     onEnd: () => setIsStarted(true),
