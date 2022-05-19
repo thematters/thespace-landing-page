@@ -5,48 +5,83 @@ class TheSpaceDocument extends Document {
     const title = "The Space: an everlasting, Draw-to-Earn public space";
     const description =
       "The Space is a pixel map where players can tokenize, own, trade and color pixels. Pixels are tokenized as ERC721 tokens and traded under Harberger Tax, while owners of pixels receive Universal Basic Income(UBI). In the Future, The administration of The Space will be transfered to SpaceDAO, a decentralized autonomous organization formed by all $SPACE token holders.";
-    const canonicalUrl = "https://thespace.game";
-    const imageUrl = "https://thespace.game/img/thumb.jpg?v=1";
+    const canonicalSiteDomain =
+      process.env.NEXT_PUBLIC_SITE_DOMAIN || "thespace.game";
+    const canonicalUrl = `https://${canonicalSiteDomain}`;
+    const imageUrl = `https://${canonicalSiteDomain}/img/thumb.jpg?v=1`;
     const keywords = [
-      "space",
-      "spacedao",
+      "TheSpace",
+      "Space",
+      "SpaceDAO",
       "pixels",
-      "harberger",
-      "decentralized",
-      "ubi",
+      "Harberger Tax",
+      "Decentralized",
+      "UBI",
       "thespace",
-      "matterslab",
-      "matters.news",
+      "MattersLab",
+      "Matters.News",
       "創作有價",
     ];
+    const isProd = process.env.NEXT_PUBLIC_RUNTIME_ENV === "production"; // process.env.NEXT_PUBLIC_VERCEL_URL === canonicalSiteDomain;
 
     return (
-      <Html>
+      <Html lang="en">
         <Head>
-          <meta charSet="UTF-8" />
           <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover"
-          />
-          <meta name="description" content={description} />
+
+          <meta key="description" name="description" content={description} />
           <meta key="keywords" name="keywords" content={keywords.join(",")} />
+          {process.env.NEXT_PUBLIC_FB_APP_ID && (
+            <meta
+              key="fb:app_id"
+              property="fb:app_id"
+              content={process.env.NEXT_PUBLIC_FB_APP_ID}
+            />
+          )}
+          <meta key="og:title" property="og:title" content={title} />
+          <meta key="og:type" property="og:type" content="website" />
+          <meta key="og:image" property="og:image" content={imageUrl} />
+          <meta key="og:url" property="og:url" content={canonicalUrl} />
           <meta
-            property="fb:app_id"
-            content={process.env.NEXT_PUBLIC_FB_APP_ID}
+            key="og:description"
+            property="og:description"
+            content={description}
           />
-          <meta property="og:title" content={title} key="og:title" />
-          <meta property="og:type" content="website" />
-          <meta property="og:image" content={imageUrl} />
-          <meta property="og:url" content={canonicalUrl} />
-          <meta property="og:description" content={description} />
-          <meta property="og:site_name" content="TheSpace" />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:image" content={imageUrl} />
-          <meta name="twitter:image:alt" content={description} />
-          <meta name="twitter:site" content="@thespace2022" />
-          <meta name="twitter:creator" content="@Mattersw3b" />
-          <link rel="canonical" href={canonicalUrl} />
+          <meta key="og:site_name" property="og:site_name" content="TheSpace" />
+          <meta
+            key="twitter:card"
+            name="twitter:card"
+            content="summary_large_image"
+          />
+          <meta key="twitter:image" name="twitter:image" content={imageUrl} />
+          <meta
+            key="twitter:image:alt"
+            name="twitter:image:alt"
+            content={description}
+          />
+          <meta
+            key="twitter:site"
+            name="twitter:site"
+            content="@TheSpace2022"
+          />
+          <meta
+            key="twitter:creator"
+            name="twitter:creator"
+            content="@Mattersw3b"
+          />
+          {/* <link key="canonicalUrl" rel="canonical" href={canonicalUrl} /> */}
+
+          {!isProd && (
+            <meta name="robots" content="noindex, nofollow" key="robots" />
+          )}
+          {!isProd && (
+            <meta
+              name="googlebot"
+              content="noindex, nofollow"
+              key="googlebot"
+            />
+          )}
+
           <link rel="shortcut icon" href="/favicon.ico" />
           <link
             href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
