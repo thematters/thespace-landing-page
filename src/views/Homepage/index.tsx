@@ -15,13 +15,13 @@ import FollowUs from "~/components/FollowUs";
 
 import styles from "./styles.module.sass";
 
+import { title, description } from "@/package.json";
+
 const Homepage: NextPage = () => {
   return (
     <>
       <Head>
-        <title key="title">
-          The Space: an everlasting, Draw-to-Earn public space
-        </title>
+        <title key="title">{title}</title>
       </Head>
       <main className={styles.index} id="main">
         <Intro />

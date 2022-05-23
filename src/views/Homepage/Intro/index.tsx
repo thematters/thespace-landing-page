@@ -1,10 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import introIlluSvg from "../../../../public/img/intro-illu.svg";
-import introDividerSvg from "../../../../public/img/intro-divider.svg";
+import introIlluSvg from "@/public/img/intro-illu.svg";
+import introDividerSvg from "@/public/img/intro-divider.svg";
 
 import styles from "./styles.module.sass";
+
+// keep a central place to manage all meta information
+import { title, description } from "@/package.json";
 
 const Intro = () => {
   return (
@@ -34,18 +37,13 @@ const Intro = () => {
             </div>
             <div className={styles.title}>
               <h1 className={styles.bar}>
+                {/* re-use {title} as much as possible */}
                 The Space: <br />
                 World’s First NFT Pixel Art Game Governed by Radical Markets
               </h1>
             </div>
             <div className={styles.text}>
-              <p>
-                Inspired by r/place, The Space is the world’s NFT pixel art
-                graffiti wall where players can own, color, and trade pixels
-                under Harberger Tax and Universal Basic Income (UBI). Pixels are
-                minted as ERC-721 tokens, and are fractional NFTs under common
-                ownership.
-              </p>
+              <p>{description}</p>
             </div>
           </div>
         </div>

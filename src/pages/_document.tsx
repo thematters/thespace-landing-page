@@ -1,27 +1,13 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
+import { title, description, keywords } from "@/package.json";
+
 class TheSpaceDocument extends Document {
   render() {
-    const title = "The Space: an everlasting, Draw-to-Earn public space";
-    const description =
-      "The Space is a pixel map where players can tokenize, own, trade and color pixels. Pixels are tokenized as ERC721 tokens and traded under Harberger Tax, while owners of pixels receive Universal Basic Income(UBI). In the Future, The administration of The Space will be transfered to SpaceDAO, a decentralized autonomous organization formed by all $SPACE token holders.";
     const canonicalSiteDomain =
       process.env.NEXT_PUBLIC_SITE_DOMAIN || "thespace.game";
     const canonicalUrl = `https://${canonicalSiteDomain}`;
     const imageUrl = `https://${canonicalSiteDomain}/img/thumb.jpg?v=1`;
-    const keywords = [
-      "TheSpace",
-      "Space",
-      "SpaceDAO",
-      "pixels",
-      "Harberger Tax",
-      "Decentralized",
-      "UBI",
-      "thespace",
-      "MattersLab",
-      "Matters.News",
-      "創作有價",
-    ];
     const isProd = process.env.NEXT_PUBLIC_RUNTIME_ENV === "production"; // process.env.NEXT_PUBLIC_VERCEL_URL === canonicalSiteDomain;
 
     return (

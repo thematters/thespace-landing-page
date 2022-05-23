@@ -6,6 +6,8 @@ import Entrance from "./Entrance";
 import Airdrop from "./Airdrop";
 import FollowUs from "~/components/FollowUs";
 
+import { title, description } from "@/package.json";
+
 import {
   provider,
   webSocketProvider,
@@ -29,9 +31,7 @@ const Claim: NextPage = () => {
   return (
     <>
       <Head>
-        <title key="title">
-          The Space: an everlasting, Draw-to-Earn public space
-        </title>
+        <title key="title">{title} - Claim</title>
       </Head>
       <Provider client={client}>
         <main className={styles.claim} id="main">
