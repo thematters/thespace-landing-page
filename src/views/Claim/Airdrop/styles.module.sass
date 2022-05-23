@@ -1,0 +1,65 @@
+section.airdrop
+  padding: 64px 0 0 0
+  margin: 0 0 192px 0
+  .title
+    margin: 0 0 40px 0
+    h2
+      @extend %section-title
+      position: relative
+      &::before
+        content: ''
+        display: block
+        background-color: $lime
+        position: absolute
+        top: 0px
+        left: 0px
+        z-index: -1
+        transform: skew(-30deg)
+        width: 90px
+        height: 30px
+        +min($md)
+          width: 120px
+          height: 50px
+          top: -5px
+          left: -50px
+  .address
+    @extend %article-body
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    font-weight: 400
+    margin: 0 0 16px 0
+    a
+      font-weight: 500
+      &::after
+        +bg('/img/icon-link.svg')
+        content: ''
+        display: inline-block
+        width: 16px
+        height: 16px
+        margin: 0 0 0 8px
+        transform: translateY(1px)
+    .disconnect
+      font-size: 12px
+      font-weight: 500
+      line-height: 1
+      padding: 6px 8px
+      border-radius: 20px
+      border: 2px solid #333
+  .content
+    .claim_time
+      @extend %article-title
+      margin: 0 0 40px 0
+      .claim_time_date
+        margin: 0 0 8px 0
+      .claim_time_countdown
+        background-color: $lime
+        padding: 0 4px
+        &::before
+          +bg('/img/icon-clock.svg')
+          content: ''
+          display: inline-block
+          width: 24px
+          height: 24px
+          margin: 0 8px 0 0
+          transform: translateY(3px)

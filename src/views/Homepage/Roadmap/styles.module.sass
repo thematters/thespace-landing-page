@@ -1,0 +1,102 @@
+section.roadmap
+  +flex(row, wrap, center, center)
+  position: relative
+  margin: 0 0 240px 0
+  &::before
+    content: ''
+    display: block
+    width: 100%
+    height: 100%
+    background-color: $lime
+    position: absolute
+    left: 0
+    z-index: -1
+    transform: skewY(-15deg) translateY(14%)
+    +min($md)
+      height: 162%
+      transform: skewY(-7.5deg) translateY(4%)
+  .title
+    position: relative
+    margin: 0 0 40px 0
+    +min($md)
+      margin: 0 0 80px 0
+    h2
+      @extend %section-title
+    .illu
+      margin: 0 0 40px 0
+      +min($md)
+        position: absolute
+        right: 0
+        bottom: 0
+        margin: 0
+      figure
+        img
+          height: 167px
+          +min($md)
+            height: auto
+  .content
+    position: relative
+    +flex(column, wrap, center, center)
+    +min($md)
+      +flex(row, nowrap, space-between, center)
+    .road
+      position: absolute
+      background-color: $black
+      z-index: 0
+      width: 4px
+      height: 100%
+      +min($md)
+        width: 100%
+        height: 4px
+        margin: 8px 0 0 0
+      &::after
+        +bg('/img/roadmap-arrow.svg')
+        content: ''
+        display: block
+        width: 22px
+        height: 18px
+        position: absolute
+        transform-origin: left center
+        transform: rotate(90deg)
+        bottom: 0
+        left: 2px
+        +min($md)
+          bottom: initial
+          left: initial
+          right: -22px
+          top: -7px
+          transform: rotate(0deg)
+    .plan
+      +flex(row, nowrap, space-between, center)
+      position: relative
+      z-index: 1
+      width: 100%
+      margin: 36px 0 0 0
+      +min($md)
+        display: block
+        margin: 0
+      span
+        display: block
+        &.date
+          @extend %article-title
+          width: calc(50% - 10px)
+          text-align: right
+          +min($md)
+            width: 100%
+            text-align: center
+        &.dot
+          width: 20px
+          height: 20px
+          border: 4px solid $black
+          background-color: $grey-light
+          border-radius: 50%
+          margin: 0 16px
+          +min($md)
+            margin: 20px auto 18px auto
+        &.text
+          @extend %article-body
+          width: calc(50% - 10px)
+          text-align: left
+          +min($md)
+            width: 100%
+            text-align: center

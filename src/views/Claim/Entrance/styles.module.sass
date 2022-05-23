@@ -1,0 +1,83 @@
+section.entrance
+  position: relative
+  padding: 192px 0 0 0
+  margin: 0 0 192px 0
+  .container
+    max-width: 492px!important
+  .illu
+    position: absolute
+    top: -10px
+    right: 0
+    z-index: -1
+    transform-origin: right top
+    transform: scale(.5)
+    +min($lg)
+      transform: scale(1)
+  .title
+    margin: 0 0 16px 0
+    h2
+      @extend %section-title
+  .text
+    margin: 0 0 40px 0
+    & > *
+      display: block
+      color: $grey-dark
+    strong
+      @extend %article-title
+    span
+      @extend %article-body
+      font-weight: 400
+  .wallet
+    button
+      +flex(row, wrap, initial, center)
+      +anm(border)
+      @extend %article-body
+      background-color: $white
+      width: 100%
+      height: 70px
+      border-radius: 20px
+      margin: 0 0 24px 0
+      position: relative
+      border: 1px solid $white
+      &:hover
+        border-color: $black
+      &::before, &::after
+        content: ''
+        display: block
+      &::before
+        width: 40px
+        height: 40px
+        margin: 0 16px
+      &::after
+        +bg('/img/icon-arrowright.svg')
+        width: 16px
+        height: 16px
+        position: absolute
+        right: 16px
+      &.metamask::before
+        +bg('/img/icon-metamask.svg')
+      &.walletconnect::before
+        +bg('/img/icon-walletconnect.svg')
+      &.connecting::after
+        +bg('/img/icon-spinner-black.svg')
+        animation: spinning 1s infinite linear
+        width: 24px
+        height: 24px
+      &.active::after
+        +bg('/img/icon-green-dot.svg')
+      &.disabled
+        pointer-events: none
+        opacity: .5
+    .error, .info
+      text-align: left
+      [role="button"]
+        color: #333
+        text-decoration: underline
+    .error
+      color: #C85C41
+
+@keyframes spinning
+  from
+    transform: rotate(0deg)
+  to
+    transform: rotate(360deg)
