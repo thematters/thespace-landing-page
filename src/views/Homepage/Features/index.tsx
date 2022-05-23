@@ -28,7 +28,9 @@ const Features = () => {
             <div className={styles.text}>
               <h3>Create together on a pixel canvas like Reddit r/place</h3>
               <p>
-                We love r/place and want to build a Web3 version of it. Creators can collaborate on their ideas, pixel by pixel, in a truly decentralized and inclusive public space. 
+                We love r/place and want to build a Web3 version of it. Creators
+                can collaborate on their ideas, pixel by pixel, in a truly
+                decentralized and inclusive public space.
               </p>
             </div>
           </div>
@@ -45,7 +47,10 @@ const Features = () => {
             <div className={styles.text}>
               <h3>Every pixel NFT is always on sale under Harberger Tax</h3>
               <p>
-                The Space is governed by Harberger Tax and Universal Basic Income (UBI) to decide the flow of pixels and the distribution of capitals, so that the public resource can be efficiently utilized.
+                The Space is governed by Harberger Tax and Universal Basic
+                Income (UBI) to decide the flow of pixels and the distribution
+                of capitals, so that the public resource can be efficiently
+                utilized.
               </p>
             </div>
           </div>
@@ -58,7 +63,10 @@ const Features = () => {
             <div className={styles.text}>
               <h3>Enjoy Universal Basic Income (UBI)</h3>
               <p>
-                The majority of the tax collected is returned to the participants of The Space. The intention of a Universal Basic Income (UBI) is to distribute income evenly so more creators can continue participating in the game.
+                The majority of the tax collected is returned to the
+                participants of The Space. The intention of a Universal Basic
+                Income (UBI) is to distribute income evenly so more creators can
+                continue participating in the game.
               </p>
             </div>
           </div>
@@ -71,7 +79,10 @@ const Features = () => {
             <div className={styles.text}>
               <h3>A truly decentralized, self-governing community</h3>
               <p>
-                SpaceDAO, formed by all stakeholders of The Space, is the owner of The Space. SpaceDAO governs decides the tax rate, the proportion of UBI, the scale of the pixel canvas, the community fund, and so on.
+                SpaceDAO, formed by all stakeholders of The Space, is the owner
+                of The Space. SpaceDAO governs decides the tax rate, the
+                proportion of UBI, the scale of the pixel canvas, the community
+                fund, and so on.
               </p>
             </div>
           </div>

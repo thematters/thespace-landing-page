@@ -15,7 +15,10 @@ const DeveloperCommunity = () => {
             </div>
             <div className={styles.text}>
               <p>
-                Our developer community is based on open-sourced principles with rewards for their contribution and creativity. A Creator Fund will reward developers who develop various third-party tools for The Space. 
+                Our developer community is based on open-sourced principles with
+                rewards for their contribution and creativity. A Creator Fund
+                will reward developers who develop various third-party tools for
+                The Space.
               </p>
             </div>
             <div className={`${styles.buttons} buttons`}>

@@ -32,11 +32,19 @@ const About = () => {
         </div>
         <div className={styles.text}>
           <p>
-            $SPACE is an ERC-20 token issued by The Space, serving as the medium of exchange. Read more: Introducing $SPACE
+            $SPACE is an ERC-20 token issued by The Space, serving as the medium
+            of exchange. Read more: Introducing $SPACE
           </p>
         </div>
         <div className={`${styles.buttons} buttons`}>
-          <a className="btn fill" href="https://wiki.thespace.game/introducing-space-token" target="_blank" rel="noreferrer">Introducing $SPACE</a>
+          <a
+            className="btn fill"
+            href="https://wiki.thespace.game/introducing-space-token"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Introducing $SPACE
+          </a>
         </div>
       </div>
     </section>
