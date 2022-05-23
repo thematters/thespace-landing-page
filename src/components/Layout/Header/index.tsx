@@ -50,11 +50,31 @@ const Header = () => {
         </Link>
       </div>
       <div className={`${styles.menu} ${activeClasses}`}>
+        <a href="https://wiki.thespace.game/" target="_blank" rel="noreferrer">
+          Wiki
+        </a>
         <a
+          href="https://wiki.thespace.game/introduction-to-the-space"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Introduction
+        </a>
+        <a
+          href="https://wiki.thespace.game/introducing-space-token"
+          target="_blank"
+          rel="noreferrer"
+        >
+          $SPACE
+        </a>
+        {/* <Link href="/claim">
+          <a className={`${styles.strong}`}>Claim $SPACE</a>
+        </Link> */}
+        <a
+          className={`${styles.strong}`}
           href="https://discord.gg/thespace"
           target="_blank"
           rel="noreferrer"
-          className={`${styles.strong}`}
         >
           Join Discord
         </a>
