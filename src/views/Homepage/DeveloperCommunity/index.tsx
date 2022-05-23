@@ -15,11 +15,7 @@ const DeveloperCommunity = () => {
             </div>
             <div className={styles.text}>
               <p>
-                Matters is a writing community based on decentralized
-                technologies, with open-sourced codebases and self-governed
-                creators. The Space developer community is based on the same
-                principle, with bounty programs that reward developers'
-                contribution and creativity.
+                Our developer community is based on open-sourced principles with rewards for their contribution and creativity. A Creator Fund will reward developers who develop various third-party tools for The Space. 
               </p>
             </div>
             <div className={`${styles.buttons} buttons`}>

@@ -28,18 +28,15 @@ const About = () => {
           </figure>
         </div>
         <div className={styles.title}>
-          <h2>About $STK</h2>
+          <h2>About $SPACE</h2>
         </div>
         <div className={styles.text}>
           <p>
-            $SPACE is an ERC-20 token issued by The Space. $SPACE is the
-            currency supporting pixel trading, tax paying, income collecting in
-            The Space game. In addition, $SPACE holders can participate in
-            governing activities of SpaceDAO by staking $SPACE.
+            $SPACE is an ERC-20 token issued by The Space, serving as the medium of exchange. Read more: Introducing $SPACE
           </p>
         </div>
         <div className={`${styles.buttons} buttons`}>
-          <a className="btn fill">$SPACE Whitepaper</a>
+          <a className="btn fill" href="https://wiki.thespace.game/introducing-space-token" target="_blank" rel="noreferrer">Introducing $SPACE</a>
         </div>
       </div>
     </section>
