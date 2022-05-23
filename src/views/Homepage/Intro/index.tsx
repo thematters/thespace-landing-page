@@ -43,8 +43,8 @@ const Intro = () => {
                 Inspired by r/place, The Space is the world’s NFT pixel art
                 graffiti wall where players can own, color, and trade pixels
                 under Harberger Tax and Universal Basic Income (UBI). Pixels are
-                minted as ERC-721 tokens, and are fractional NFTs under
-                common ownership.
+                minted as ERC-721 tokens, and are fractional NFTs under common
+                ownership.
               </p>
             </div>
           </div>
