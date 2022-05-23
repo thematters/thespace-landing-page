@@ -31,7 +31,7 @@ const Footer = () => {
                     <a>Home</a>
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link href="/claim">
                     <a>Claim $STK</a>
                   </Link>
@@ -40,7 +40,7 @@ const Footer = () => {
                   <a href="#" target="_blank" rel="noreferrer">
                     The Space playground
                   </a>
-                </li>
+                </li> */}
                 <li>
                   <a
                     href="https://matters.news/"
@@ -68,11 +68,11 @@ const Footer = () => {
                     Matters-lab.io
                   </a>
                 </li>
-                <li>
+                {/* <li>
                   <a href="#" target="_blank" rel="noreferrer">
                     Press Kit
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
@@ -94,17 +94,17 @@ const Footer = () => {
               >
                 <i className={styles.icon}></i>
               </a>
-              <a
+              {/* <a
                 className={styles.telegram}
                 href="https://t.me/joinchat/BXzlWUhXaWNZ-TXJZJCzDQ"
                 target="_blank"
                 rel="noreferrer"
               >
                 <i className={styles.icon}></i>
-              </a>
+              </a> */}
               <a
                 className={styles.youtube}
-                href="https://www.youtube.com/c/Matterslab"
+                href="https://www.youtube.com/channel/UCC_rZ2vHqSy735e7K9I_TIg"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -126,7 +126,7 @@ const Footer = () => {
               >
                 <i className={styles.icon}></i>
               </a>
-              <a
+              {/* <a
                 className={styles.instagram}
                 href="https://www.instagram.com/matterslab2018/"
                 target="_blank"
@@ -141,7 +141,7 @@ const Footer = () => {
                 rel="noreferrer"
               >
                 <i className={styles.icon}></i>
-              </a>
+              </a> */}
               <a
                 className={styles.github}
                 href="https://github.com/thematters/developer-resource"

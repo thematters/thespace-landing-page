@@ -35,17 +35,16 @@ const Intro = () => {
             <div className={styles.title}>
               <h1 className={styles.bar}>
                 The Space: <br />
-                an everlasting, Draw-to-Earn public space
+                World’s First NFT Pixel Art Game Governed by Radical Markets
               </h1>
             </div>
             <div className={styles.text}>
               <p>
-                The Space is a pixel map where players can tokenize, own, trade
-                and color pixels. Pixels are tokenized as ERC721 tokens and
-                traded under Harberger Tax, while owners of pixels receive
-                Universal Basic Income(UBI). In the Future, The administration
-                of The Space will be transfered to SpaceDAO, a decentralized
-                autonomous organization formed by all $STK token holders.
+                Inspired by r/place, The Space is the world’s NFT pixel art
+                graffiti wall where players can own, color, and trade pixels
+                under Harberger Tax and Universal Basic Income (UBI). Pixels are
+                minted as ERC-721 tokens, $SPACE, and are fractional NFTs under
+                common ownership.
               </p>
             </div>
           </div>
@@ -54,16 +53,16 @@ const Intro = () => {
           <div className="col-md-8">
             <div className={`${styles.buttons} buttons`}>
               <a
-                className="btn frame"
+                className="btn fill"
                 href="https://discord.gg/thespace"
                 target="_blank"
                 rel="noreferrer"
               >
                 Join Discord
               </a>
-              <Link href="/claim">
+              {/* <Link href="/claim">
                 <a className="btn fill">Claim $SPACE</a>
-              </Link>
+              </Link> */}
             </div>
           </div>
           <div className="col-md-4 position-relative">

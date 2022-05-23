@@ -50,19 +50,34 @@ const Header = () => {
         </Link>
       </div>
       <div className={`${styles.menu} ${activeClasses}`}>
+        <a href="https://wiki.thespace.game/" target="_blank" rel="noreferrer">
+          Wiki
+        </a>
         <a
-          href="https://www.notion.so/matterslab/The-Space-Wiki-6f669a7af5894830aadd70685482b114"
+          href="https://wiki.thespace.game/introduction-to-the-space"
           target="_blank"
           rel="noreferrer"
         >
-          The Space Wiki
+          Introduction
         </a>
-        <a href="#" target="_blank" rel="noreferrer">
-          $SPACE Whitepaper
+        <a
+          href="https://wiki.thespace.game/introducing-space-token"
+          target="_blank"
+          rel="noreferrer"
+        >
+          $SPACE
         </a>
-        <Link href="/claim">
+        {/* <Link href="/claim">
           <a className={`${styles.strong}`}>Claim $SPACE</a>
-        </Link>
+        </Link> */}
+        <a
+          className={`${styles.strong}`}
+          href="https://discord.gg/thespace"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Join Discord
+        </a>
       </div>
       <div className={`${styles.burger} ${activeClasses} d-lg-none`}>
         <button onClick={toggleActive}></button>
