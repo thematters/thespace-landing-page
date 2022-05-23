@@ -43,8 +43,22 @@ section.faq
             height: 32px
       .text
         @extend %article-body
+        font-weight: 400
         color: $grey-dark
         margin: 16px 0 0 0
+        ul li
+          padding: 0 0 0 18px
+          position: relative
+          &::before
+            content: ''
+            display: block
+            background-color: $grey-dark
+            width: 4px
+            height: 4px
+            border-radius: 50%
+            position: absolute
+            top: 10px
+            left: 4px
   .buttons
     margin: 24px 0 0 0
     a
