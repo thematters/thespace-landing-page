@@ -51,7 +51,7 @@ const Header = () => {
       </div>
       <div className={`${styles.menu} ${activeClasses}`}>
         <a href="https://wiki.thespace.game/" target="_blank" rel="noreferrer">
-          The Space Wiki
+          Wiki
         </a>
         <a
           href="https://wiki.thespace.game/introduction-to-the-space"
