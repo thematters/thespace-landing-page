@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -10,6 +11,15 @@ import styles from "./styles.module.sass";
 import * as pkgInfo from "@/package.json";
 
 const Intro = () => {
+  const [isClaim, setClaim] = useState(false);
+  useEffect(() => {
+    if (
+      new Date() > new Date(process.env.NEXT_PUBLIC_CLAIM_START_AT || "") &&
+      new Date() < new Date(process.env.NEXT_PUBLIC_CLAIM_END_AT || "")
+    ) {
+      setClaim(true);
+    }
+  }, []);
   return (
     <section className={styles.intro}>
       <div className="container">
@@ -51,16 +61,18 @@ const Intro = () => {
           <div className="col-md-8">
             <div className={`${styles.buttons} buttons`}>
               <a
-                className="btn fill"
+                className={`btn ${isClaim ? "frame" : "fill"}`}
                 href="https://discord.gg/thespace"
                 target="_blank"
                 rel="noreferrer"
               >
                 Join Discord
               </a>
-              {/* <Link href="/claim">
-                <a className="btn fill">Claim $SPACE</a>
-              </Link> */}
+              {isClaim && (
+                <Link href="/claim">
+                  <a className="btn fill">Claim $SPACE</a>
+                </Link>
+              )}
             </div>
           </div>
           <div className="col-md-4 position-relative">
