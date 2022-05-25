@@ -106,19 +106,24 @@ const Faq = () => {
               <p>A total of 1 billion $SPACE tokens will be distributed via:</p>
               <ul>
                 <li>
-                  <b>Initial Airdrop (2%):</b> to those who actively participated in test launches of The Space and contributed to the Matters Lab community
+                  <b>Initial Airdrop (2%):</b> to those who actively
+                  participated in test launches of The Space and contributed to
+                  the Matters Lab community
                 </li>
                 <li>
                   <b>Future Airdrops (3%):</b> to potential users of The Space
                 </li>
                 <li>
-                  <b>Early Stakeholders (8.74%):</b> to stakeholders who contribute to The Space's growth and development in the first year
+                  <b>Early Stakeholders (8.74%):</b> to stakeholders who
+                  contribute to The Space's growth and development in the first
+                  year
                 </li>
                 <li>
                   <b>Community Fund (66.26%):</b> to the SpaceDAO
                 </li>
                 <li>
-                  <b>Liquidity Pool (5%):</b> available to the public for purchase on UniSwap
+                  <b>Liquidity Pool (5%):</b> available to the public for
+                  purchase on UniSwap
                 </li>
                 <li>
                   <b>Matters Lab Team (15%)</b>

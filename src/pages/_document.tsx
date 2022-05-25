@@ -1,27 +1,14 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
+import * as pkgInfo from "@/package.json";
+
 class TheSpaceDocument extends Document {
   render() {
-    const title = "The Space: an everlasting, Draw-to-Earn public space";
-    const description =
-      "The Space is a pixel map where players can tokenize, own, trade and color pixels. Pixels are tokenized as ERC721 tokens and traded under Harberger Tax, while owners of pixels receive Universal Basic Income(UBI). In the Future, The administration of The Space will be transfered to SpaceDAO, a decentralized autonomous organization formed by all $SPACE token holders.";
+    // const router = useRouter();
     const canonicalSiteDomain =
       process.env.NEXT_PUBLIC_SITE_DOMAIN || "thespace.game";
-    const canonicalUrl = `https://${canonicalSiteDomain}`;
+    const canonicalUrl = `https://${canonicalSiteDomain}/`; /* ${router.asPath} */
     const imageUrl = `https://${canonicalSiteDomain}/img/thumb.jpg?v=1`;
-    const keywords = [
-      "TheSpace",
-      "Space",
-      "SpaceDAO",
-      "pixels",
-      "Harberger Tax",
-      "Decentralized",
-      "UBI",
-      "thespace",
-      "MattersLab",
-      "Matters.News",
-      "創作有價",
-    ];
     const isProd = process.env.NEXT_PUBLIC_RUNTIME_ENV === "production"; // process.env.NEXT_PUBLIC_VERCEL_URL === canonicalSiteDomain;
 
     return (
@@ -29,8 +16,16 @@ class TheSpaceDocument extends Document {
         <Head>
           <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
 
-          <meta key="description" name="description" content={description} />
-          <meta key="keywords" name="keywords" content={keywords.join(",")} />
+          <meta
+            key="description"
+            name="description"
+            content={pkgInfo.description}
+          />
+          <meta
+            key="keywords"
+            name="keywords"
+            content={pkgInfo.keywords.join(",")}
+          />
           {process.env.NEXT_PUBLIC_FB_APP_ID && (
             <meta
               key="fb:app_id"
@@ -38,14 +33,14 @@ class TheSpaceDocument extends Document {
               content={process.env.NEXT_PUBLIC_FB_APP_ID}
             />
           )}
-          <meta key="og:title" property="og:title" content={title} />
+          <meta key="og:title" property="og:title" content={pkgInfo.title} />
           <meta key="og:type" property="og:type" content="website" />
           <meta key="og:image" property="og:image" content={imageUrl} />
           <meta key="og:url" property="og:url" content={canonicalUrl} />
           <meta
             key="og:description"
             property="og:description"
-            content={description}
+            content={pkgInfo.description}
           />
           <meta key="og:site_name" property="og:site_name" content="TheSpace" />
           <meta
@@ -57,7 +52,7 @@ class TheSpaceDocument extends Document {
           <meta
             key="twitter:image:alt"
             name="twitter:image:alt"
-            content={description}
+            content={pkgInfo.description}
           />
           <meta
             key="twitter:site"

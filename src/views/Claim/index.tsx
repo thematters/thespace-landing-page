@@ -1,10 +1,13 @@
 import type { NextPage } from "next";
 import { Provider, createClient } from "wagmi";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 import Entrance from "./Entrance";
 import Airdrop from "./Airdrop";
 import FollowUs from "~/components/FollowUs";
+
+import * as pkgInfo from "@/package.json";
 
 import {
   provider,
@@ -24,14 +27,17 @@ const client = createClient({
 });
 
 const Claim: NextPage = () => {
+  const router = useRouter();
+  const canonicalUrl = `https://${
+    process.env.NEXT_PUBLIC_SITE_DOMAIN || "thespace.game"
+  }${router.asPath}`;
   const [isEntrance, setIsEntrance] = useState(true);
 
   return (
     <>
       <Head>
-        <title key="title">
-          The Space: an everlasting, Draw-to-Earn public space
-        </title>
+        <title key="title">{pkgInfo.title} - Claim</title>
+        <link key="canonicalUrl" rel="canonical" href={canonicalUrl} />
       </Head>
       <Provider client={client}>
         <main className={styles.claim} id="main">

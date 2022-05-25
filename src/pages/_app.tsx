@@ -12,7 +12,7 @@ function TheSpaceApp({ Component, pageProps }: AppLayoutProps) {
       <Head>
         <meta
           name="viewport"
-          content="initial-scale=1.0, width=device-width, viewport-fit=cover"
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover"
         />
       </Head>
       <Layout>

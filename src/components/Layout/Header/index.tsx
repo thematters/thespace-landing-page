@@ -9,8 +9,8 @@ import styles from "./styles.module.sass";
 
 const Header = () => {
   const [isActive, setActive] = useState(false);
-  const [isStarted, setIsStarted] = useState(false);
-  const [isCountdown, setCountdown] = useState(false);
+  const [isLaunch, setLaunch] = useState(false);
+  const [isClaim, setClaim] = useState(false);
 
   const activeClasses = classNames({
     [styles.active]: isActive,
@@ -29,14 +29,21 @@ const Header = () => {
   }, [router.asPath]);
 
   useEffect(() => {
-    if (new Date() < new Date(process.env.NEXT_PUBLIC_CLAIM_START_AT || "")) {
-      setCountdown(true);
+    if (new Date() > new Date(process.env.NEXT_PUBLIC_LAUNCH_START_AT || "")) {
+      setLaunch(true);
     }
+    if (
+      new Date() > new Date(process.env.NEXT_PUBLIC_CLAIM_START_AT || "") &&
+      new Date() < new Date(process.env.NEXT_PUBLIC_CLAIM_END_AT || "")
+    ) {
+      setClaim(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { days, hours, minutes, seconds } = useCountdown({
-    end: process.env.NEXT_PUBLIC_CLAIM_START_AT || "",
-    onEnd: () => setIsStarted(true),
+    end: process.env.NEXT_PUBLIC_LAUNCH_START_AT || "",
+    onEnd: () => setLaunch(true),
   });
 
   return (
@@ -67,22 +74,25 @@ const Header = () => {
         >
           $SPACE
         </a>
-        {/* <Link href="/claim">
-          <a className={`${styles.strong}`}>Claim $SPACE</a>
-        </Link> */}
-        <a
-          className={`${styles.strong}`}
-          href="https://discord.gg/thespace"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Join Discord
-        </a>
+        {isClaim ? (
+          <Link href="/claim">
+            <a className={`${styles.strong}`}>Claim $SPACE</a>
+          </Link>
+        ) : (
+          <a
+            className={`${styles.strong}`}
+            href="https://discord.gg/thespace"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Join Discord
+          </a>
+        )}
       </div>
       <div className={`${styles.burger} ${activeClasses} d-lg-none`}>
         <button onClick={toggleActive}></button>
       </div>
-      {isCountdown && !isStarted && (
+      {!isLaunch && (
         <div
           className={`${styles.countdown} d-flex justify-content-between align-items-center`}
         >

@@ -32,7 +32,8 @@ const About = () => {
         </div>
         <div className={styles.text}>
           <p>
-            $SPACE is an ERC-20 token issued by The Space, serving as the medium of exchange.
+            $SPACE is an ERC-20 token issued by The Space, serving as the medium
+            of exchange.
           </p>
         </div>
         <div className={`${styles.buttons} buttons`}>
