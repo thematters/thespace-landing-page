@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import * as pkgInfo from "@/package.json";
+
 import styles from "./styles.module.sass";
 
 const Footer = () => {
@@ -67,7 +69,7 @@ const Footer = () => {
               <ul>
                 <li>
                   <a
-                    href="https://github.com/thematters/developer-resource"
+                    href={pkgInfo.githubResource}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -160,7 +162,7 @@ const Footer = () => {
               </a> */}
               <a
                 className={styles.github}
-                href="https://github.com/thematters/developer-resource"
+                href={pkgInfo.githubResource}
                 target="_blank"
                 rel="noreferrer"
               >
