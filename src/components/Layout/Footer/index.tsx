@@ -7,7 +7,7 @@ const Footer = () => {
     <footer id={styles.footer}>
       <div className="container">
         <div className="row">
-          <div className="col-6">
+          <div className="col-12 col-md-6">
             <div className={styles.logo}>
               <Link href="/">
                 <a className="d-block"></a>
@@ -23,7 +23,7 @@ const Footer = () => {
               </p>
             </div>
           </div>
-          <div className="col-5 offset-1 col-md-3 offset-md-3">
+          <div className="col-6 col-md-2 offset-md-1">
             <div className={styles.list}>
               <ul>
                 <li>
@@ -33,7 +33,7 @@ const Footer = () => {
                 </li>
                 {/* <li>
                   <Link href="/claim">
-                    <a>Claim $STK</a>
+                    <a>Claim $SPACE</a>
                   </Link>
                 </li>
                 <li>
@@ -52,15 +52,6 @@ const Footer = () => {
                 </li>
                 <li>
                   <a
-                    href="https://github.com/thematters/developer-resource"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    GitHub
-                  </a>
-                </li>
-                <li>
-                  <a
                     href="https://matters-lab.io/"
                     target="_blank"
                     rel="noreferrer"
@@ -68,15 +59,40 @@ const Footer = () => {
                     Matters-lab.io
                   </a>
                 </li>
+              </ul>
+            </div>
+          </div>
+          <div className="col-6 col-md-2">
+            <div className={styles.list}>
+              <ul>
+                <li>
+                  <a
+                    href="https://github.com/thematters/developer-resource"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    GitHub
+                  </a>
+                </li>
                 {/* <li>
                   <a href="#" target="_blank" rel="noreferrer">
                     Press Kit
                   </a>
                 </li> */}
+                <li>
+                  <a href="#" target="_blank" rel="noreferrer">
+                    User Agreement
+                  </a>
+                </li>
+                <li>
+                  <a href="#" target="_blank" rel="noreferrer">
+                    Privacy Policy
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
-          <div className="col-12 position-relative">
+          <div className="col-12">
             <div className={styles.social}>
               <a
                 className={styles.twitter}
