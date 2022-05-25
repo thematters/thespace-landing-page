@@ -123,7 +123,7 @@ const Faq = () => {
                 </li>
                 <li>
                   <b>Liquidity Pool (5%):</b> available to the public for
-                  purchase on UniSwap
+                  purchase on Uniswap
                 </li>
                 <li>
                   <b>Matters Lab Team (15%)</b>

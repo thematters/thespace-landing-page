@@ -21,6 +21,8 @@ const Header = () => {
   };
 
   const router = useRouter();
+  const isClaimPage = router.pathname === "/claim";
+
   useEffect(() => {
     if (isActive) {
       setActive(false);
@@ -92,7 +94,7 @@ const Header = () => {
       <div className={`${styles.burger} ${activeClasses} d-lg-none`}>
         <button onClick={toggleActive}></button>
       </div>
-      {!isLaunch && (
+      {!isLaunch && !isClaimPage && (
         <div
           className={`${styles.countdown} d-flex justify-content-between align-items-center`}
         >

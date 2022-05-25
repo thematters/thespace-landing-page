@@ -1,5 +1,11 @@
 import classNames from "classnames";
 import styles from "./styles.module.sass";
+import dayjs from "dayjs";
+import dayjsUtc from "dayjs/plugin/utc";
+import dayjsLocalizedFormat from "dayjs/plugin/localizedFormat";
+
+dayjs.extend(dayjsUtc);
+dayjs.extend(dayjsLocalizedFormat);
 
 type ClaimTimeProps = {
   isStarted: boolean;
@@ -8,6 +14,8 @@ type ClaimTimeProps = {
   minutes: number;
   seconds: number;
 };
+
+const formatDate = (date: Date) => dayjs(date).utc().local().format("lll");
 
 const ClaimTime: React.FC<ClaimTimeProps> = ({
   isStarted,
@@ -22,17 +30,13 @@ const ClaimTime: React.FC<ClaimTimeProps> = ({
       true,
   });
 
-  const start = new Date(
-    process.env.NEXT_PUBLIC_CLAIM_START_AT || 0
-  ).toLocaleString();
-  const end = new Date(
-    process.env.NEXT_PUBLIC_CLAIM_END_AT || 0
-  ).toLocaleString();
+  const start = new Date(process.env.NEXT_PUBLIC_CLAIM_START_AT || 0);
+  const end = new Date(process.env.NEXT_PUBLIC_CLAIM_END_AT || 0);
 
   return (
     <div className={classes}>
       <span className={styles.claim_time_date}>
-        Claim Time: {start} - {end}
+        Claim Time: {formatDate(start)} - {formatDate(end)}
       </span>
 
       {!isStarted && (days || hours || minutes || seconds) ? (

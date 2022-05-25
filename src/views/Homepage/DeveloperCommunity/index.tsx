@@ -11,7 +11,7 @@ const DeveloperCommunity = () => {
         <div className="row align-items-center">
           <div className="col-md-6">
             <div className={styles.title}>
-              <h2 className={styles.bar}>Developer community</h2>
+              <h2 className={styles.bar}>Developer Community</h2>
             </div>
             <div className={styles.text}>
               <p>

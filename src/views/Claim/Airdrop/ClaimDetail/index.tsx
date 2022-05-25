@@ -46,7 +46,7 @@ const ClaimDetail: React.FC<ClaimDetailProps> = ({ categories, total }) => {
         <div className={`${styles.row} row`}>
           <div className="col-9">Total Token</div>
           <div className="col-3 text-end">
-            $STK {total.toLocaleString("en-US")}
+            $SPACE {total.toLocaleString("en-US")}
           </div>
         </div>
       </div>

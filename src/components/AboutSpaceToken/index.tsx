@@ -1,11 +1,15 @@
 import Image from "next/image";
 
-import aboutIllu1Svg from "../../../../public/img/about-illu-1.svg";
-import aboutIllu2Svg from "../../../../public/img/about-illu-2.svg";
+import aboutIllu1Svg from "../../../public/img/about-illu-1.svg";
+import aboutIllu2Svg from "../../../public/img/about-illu-2.svg";
 
 import styles from "./styles.module.sass";
 
-const About = () => {
+type AboutSpaceTokenProps = {
+  extraBtn?: React.ReactNode;
+};
+
+const AboutSpaceToken: React.FC<AboutSpaceTokenProps> = ({ extraBtn }) => {
   return (
     <section className={styles.about}>
       <div className={`${styles.container} container text-center`}>
@@ -45,10 +49,11 @@ const About = () => {
           >
             Introducing $SPACE
           </a>
+          {extraBtn}
         </div>
       </div>
     </section>
   );
 };
 
-export default About;
+export default AboutSpaceToken;
