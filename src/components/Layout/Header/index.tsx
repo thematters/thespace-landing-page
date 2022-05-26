@@ -76,20 +76,38 @@ const Header = () => {
         >
           $SPACE
         </a>
-        {/* {isClaim ? (
-          <Link href="/claim">
-            <a className={`${styles.strong}`}>Claim $SPACE</a>
-          </Link>
-        ) : ( */}
-        <a
-          className={`${styles.strong}`}
-          href="https://discord.gg/thespace"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Join Discord
-        </a>
-        {/* )} */}
+        {/* =========== for production test =========== */}
+        {isClaim ? (
+          // <Link href="/claim">
+          //   <a className={`${styles.strong}`}>Claim $SPACE</a>
+          // </Link>
+          <a
+            className={`${styles.strong}`}
+            href="https://discord.gg/thespace"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Join Discord
+          </a>
+        ) : isLaunch ? (
+          <a
+            className={`${styles.strong}`}
+            href="https://app.thespace.game/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Playground
+          </a>
+        ) : (
+          <a
+            className={`${styles.strong}`}
+            href="https://discord.gg/thespace"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Join Discord
+          </a>
+        )}
       </div>
       <div className={`${styles.burger} ${activeClasses} d-lg-none`}>
         <button onClick={toggleActive}></button>
