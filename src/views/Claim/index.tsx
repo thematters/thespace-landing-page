@@ -40,7 +40,7 @@ const Claim: NextPage = () => {
   return (
     <>
       <Head>
-        <title key="title">{pkgInfo.title} - Claim</title>
+        <title key="title">Claim Your $SPACE | {pkgInfo.title}</title>
         <link key="canonicalUrl" rel="canonical" href={canonicalUrl} />
       </Head>
       <Provider client={client}>
