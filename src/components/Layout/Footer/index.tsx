@@ -31,11 +31,11 @@ const Footer = () => {
                     <a>Home</a>
                   </Link>
                 </li>
-                {/* <li>
+                <li>
                   <Link href="/claim">
                     <a>Claim $SPACE</a>
                   </Link>
-                </li> */}
+                </li>
                 {/* <li>
                   <a href="#" target="_blank" rel="noreferrer">
                     The Space playground
@@ -79,7 +79,7 @@ const Footer = () => {
                     Press Kit
                   </a>
                 </li> */}
-                <li>
+                {/* <li>
                   <a href="#" target="_blank" rel="noreferrer">
                     User Agreement
                   </a>
@@ -88,7 +88,7 @@ const Footer = () => {
                   <a href="#" target="_blank" rel="noreferrer">
                     Privacy Policy
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>

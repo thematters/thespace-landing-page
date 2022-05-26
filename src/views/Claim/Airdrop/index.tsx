@@ -67,6 +67,23 @@ const Airdrop: React.FC<AirdropProps> = ({ back }) => {
   );
   const polygonScanAccount = toPolygonAddressUrl(account || "");
 
+  const canAddToMetaMask = "ethereum" in window && window?.ethereum?.request;
+  const addTokenToMetaMask = async () => {
+    await window?.ethereum?.request({
+      // @ts-ignore
+      method: "wallet_watchAsset",
+      params: {
+        type: "ERC20",
+        options: {
+          address: process.env.NEXT_PUBLIC_CONTRACT_TOKEN,
+          symbol: "SPACE",
+          decimals: 18,
+          image: "https://thespace.game/img/avatar.svg",
+        },
+      },
+    });
+  };
+
   return (
     <>
       <section className={styles.airdrop}>
@@ -79,6 +96,16 @@ const Airdrop: React.FC<AirdropProps> = ({ back }) => {
             <a href={polygonScanToken.url} target="_blank" rel="noreferrer">
               {polygonScanToken.maskedAddress}
             </a>
+            &nbsp;&nbsp;
+            {canAddToMetaMask && (
+              <button
+                className={styles.extraBtn}
+                type="button"
+                onClick={() => addTokenToMetaMask()}
+              >
+                Add $SPACE to MetaMask
+              </button>
+            )}
           </div>
           <div className={styles.address}>
             Wallet Address:&nbsp;
@@ -87,7 +114,7 @@ const Airdrop: React.FC<AirdropProps> = ({ back }) => {
             </a>
             &nbsp;&nbsp;
             <button
-              className={styles.disconnect}
+              className={styles.extraBtn}
               type="button"
               onClick={() => disconnect()}
             >

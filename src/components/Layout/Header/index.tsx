@@ -76,20 +76,20 @@ const Header = () => {
         >
           $SPACE
         </a>
-        {/* {isClaim ? (
+        {isClaim ? (
           <Link href="/claim">
             <a className={`${styles.strong}`}>Claim $SPACE</a>
           </Link>
-        ) : ( */}
-        <a
-          className={`${styles.strong}`}
-          href="https://discord.gg/thespace"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Join Discord
-        </a>
-        {/* )} */}
+        ) : (
+          <a
+            className={`${styles.strong}`}
+            href="https://discord.gg/thespace"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Join Discord
+          </a>
+        )}
       </div>
       <div className={`${styles.burger} ${activeClasses} d-lg-none`}>
         <button onClick={toggleActive}></button>
