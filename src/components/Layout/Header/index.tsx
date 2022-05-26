@@ -21,6 +21,8 @@ const Header = () => {
   };
 
   const router = useRouter();
+  const isClaimPage = router.pathname === "/claim";
+
   useEffect(() => {
     if (isActive) {
       setActive(false);
@@ -74,25 +76,25 @@ const Header = () => {
         >
           $SPACE
         </a>
-        {isClaim ? (
+        {/* {isClaim ? (
           <Link href="/claim">
             <a className={`${styles.strong}`}>Claim $SPACE</a>
           </Link>
-        ) : (
-          <a
-            className={`${styles.strong}`}
-            href="https://discord.gg/thespace"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Join Discord
-          </a>
-        )}
+        ) : ( */}
+        <a
+          className={`${styles.strong}`}
+          href="https://discord.gg/thespace"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Join Discord
+        </a>
+        {/* )} */}
       </div>
       <div className={`${styles.burger} ${activeClasses} d-lg-none`}>
         <button onClick={toggleActive}></button>
       </div>
-      {!isLaunch && (
+      {!isLaunch && !isClaimPage && (
         <div
           className={`${styles.countdown} d-flex justify-content-between align-items-center`}
         >

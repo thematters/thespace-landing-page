@@ -72,7 +72,7 @@ const Airdrop: React.FC<AirdropProps> = ({ back }) => {
       <section className={styles.airdrop}>
         <div className="container">
           <div className={styles.title}>
-            <h2>Claim Your $STK</h2>
+            <h2>Claim Your $SPACE</h2>
           </div>
           <div className={styles.address}>
             Token Address:&nbsp;{" "}
