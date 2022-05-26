@@ -6,13 +6,13 @@ import Intro from "./Intro";
 import Subscribe from "./Subscribe";
 import Sample from "./Sample";
 import Features from "./Features";
-import About from "./About";
 import Roadmap from "./Roadmap";
 import SocialMedia from "./SocialMedia";
 import DeveloperCommunity from "./DeveloperCommunity";
 import Faq from "./Faq";
 import AboutTheTeam from "./AboutTheTeam";
 import FollowUs from "~/components/FollowUs";
+import AboutSpaceToken from "~/components/AboutSpaceToken";
 
 import styles from "./styles.module.sass";
 
@@ -34,7 +34,7 @@ const Homepage: NextPage = () => {
         <Subscribe />
         <Sample />
         <Features />
-        <About />
+        <AboutSpaceToken />
         <Roadmap />
         <SocialMedia />
         <DeveloperCommunity />

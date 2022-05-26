@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -6,10 +7,16 @@ import introDividerSvg from "@/public/img/intro-divider.svg";
 
 import styles from "./styles.module.sass";
 
-// keep a central place to manage all meta information
-import * as pkgInfo from "@/package.json";
-
 const Intro = () => {
+  const [isClaim, setClaim] = useState(false);
+  useEffect(() => {
+    if (
+      new Date() > new Date(process.env.NEXT_PUBLIC_CLAIM_START_AT || "") &&
+      new Date() < new Date(process.env.NEXT_PUBLIC_CLAIM_END_AT || "")
+    ) {
+      setClaim(true);
+    }
+  }, []);
   return (
     <section className={styles.intro}>
       <div className="container">
@@ -37,13 +44,18 @@ const Intro = () => {
             </div>
             <div className={styles.title}>
               <h1 className={styles.bar}>
-                {/* re-use {pkgInfo.title} as much as possible */}
                 The Space: <br />
                 World’s First NFT Pixel Art Game Governed by Radical Markets
               </h1>
             </div>
             <div className={styles.text}>
-              <p>{pkgInfo.description}</p>
+              <p>
+                Inspired by r/place, The Space is the world’s NFT pixel art
+                graffiti wall where players can own, color, and trade pixels
+                under Harberger Tax and Universal Basic Income (UBI). Pixels are
+                minted as ERC-721 tokens, and are fractional NFTs under common
+                ownership.
+              </p>
             </div>
           </div>
         </div>
@@ -51,16 +63,18 @@ const Intro = () => {
           <div className="col-md-8">
             <div className={`${styles.buttons} buttons`}>
               <a
-                className="btn fill"
+                className={`btn ${isClaim ? "frame" : "fill"}`}
                 href="https://discord.gg/thespace"
                 target="_blank"
                 rel="noreferrer"
               >
                 Join Discord
               </a>
-              {/* <Link href="/claim">
-                <a className="btn fill">Claim $SPACE</a>
-              </Link> */}
+              {isClaim && (
+                <Link href="/claim">
+                  <a className="btn fill">Claim $SPACE</a>
+                </Link>
+              )}
             </div>
           </div>
           <div className="col-md-4 position-relative">
