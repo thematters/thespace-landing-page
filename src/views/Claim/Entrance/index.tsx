@@ -90,12 +90,12 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
               MetaMask
             </button>
 
-            <button
+            {/* <button
               className={walletConnectClasses}
               onClick={() => connect(walletConnectConnector)}
             >
               WalletConnect
-            </button>
+            </button> */}
 
             {isUnsupportedNetwork && (
               <p className={styles.error}>

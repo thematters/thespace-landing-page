@@ -22,7 +22,10 @@ import { useState } from "react";
 
 const client = createClient({
   autoConnect: true,
-  connectors: [injectedConnector, walletConnectConnector],
+  connectors: [
+    injectedConnector,
+    // walletConnectConnector
+  ],
   provider,
   webSocketProvider,
 });
