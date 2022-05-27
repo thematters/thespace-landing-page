@@ -76,6 +76,15 @@ const Footer = () => {
                     GitHub
                   </a>
                 </li>
+                <li>
+                  <a
+                    href="https://www.certik.com/projects/the-space"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Audited by CertiK
+                  </a>
+                </li>
                 {/* <li>
                   <a href="#" target="_blank" rel="noreferrer">
                     Press Kit

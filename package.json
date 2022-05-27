@@ -35,7 +35,7 @@
     "Matters.News",
     "創作有價"
   ],
-  "githubResource": "https://github.com/thematters/contracts/tree/develop/docs/TheSpace#readme",
+  "githubResource": "https://github.com/thematters/contracts/tree/develop/docs/TheSpace",
   "homepage": "https://thespace.game/",
   "scripts": {
     "dev": "next dev",
