@@ -87,10 +87,9 @@ const Intro = () => {
                     >
                       Playground
                     </a>
-                    {/* =========== for production test =========== */}
-                    {/* <Link href="/claim">
+                    <Link href="/claim">
                       <a className="btn fill">Claim $SPACE</a>
-                    </Link> */}
+                    </Link>
                   </>
                 ) : (
                   <>
@@ -102,10 +101,9 @@ const Intro = () => {
                     >
                       Join Discord
                     </a>
-                    {/* =========== for production test =========== */}
-                    {/* <Link href="/claim">
+                    <Link href="/claim">
                       <a className="btn fill">Claim $SPACE</a>
-                    </Link> */}
+                    </Link>
                   </>
                 )
               ) : isLaunch ? (

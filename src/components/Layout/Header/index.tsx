@@ -76,19 +76,10 @@ const Header = () => {
         >
           $SPACE
         </a>
-        {/* =========== for production test =========== */}
         {isClaim ? (
-          // <Link href="/claim">
-          //   <a className={`${styles.strong}`}>Claim $SPACE</a>
-          // </Link>
-          <a
-            className={`${styles.strong}`}
-            href="https://discord.gg/thespace"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Join Discord
-          </a>
+          <Link href="/claim">
+            <a className={`${styles.strong}`}>Claim $SPACE</a>
+          </Link>
         ) : isLaunch ? (
           <a
             className={`${styles.strong}`}
