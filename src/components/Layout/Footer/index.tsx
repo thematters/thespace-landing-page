@@ -1,10 +1,34 @@
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
+import { useCountdown } from "~/hooks";
 import * as pkgInfo from "@/package.json";
+
 
 import styles from "./styles.module.sass";
 
 const Footer = () => {
+  const [isLaunch, setLaunch] = useState(false);
+  const [isClaim, setClaim] = useState(false);
+
+  useEffect(() => {
+    if (new Date() > new Date(process.env.NEXT_PUBLIC_LAUNCH_START_AT || "")) {
+      setLaunch(true);
+    }
+    if (
+      new Date() > new Date(process.env.NEXT_PUBLIC_CLAIM_START_AT || "") &&
+      new Date() < new Date(process.env.NEXT_PUBLIC_CLAIM_END_AT || "")
+    ) {
+      setClaim(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useCountdown({
+    end: process.env.NEXT_PUBLIC_LAUNCH_START_AT || "",
+    onEnd: () => setLaunch(true),
+  });
+
   return (
     <footer id={styles.footer}>
       <div className="container">
@@ -33,16 +57,26 @@ const Footer = () => {
                     <a>Home</a>
                   </Link>
                 </li>
-                <li>
-                  <Link href="/claim">
-                    <a>Claim $SPACE</a>
-                  </Link>
-                </li>
-                {/* <li>
-                  <a href="#" target="_blank" rel="noreferrer">
-                    The Space playground
-                  </a>
-                </li> */}
+                {/* =========== for production test =========== */}
+                {/* {isClaim &&
+                  <li>
+                    <Link href="/claim">
+                      <a>Claim $SPACE</a>
+                    </Link>
+                  </li>
+                } */}
+                {isLaunch && (
+                  <li>
+                    <a
+                      href="https://app.thespace.game/"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      The Space playground
+                    </a>
+                  </li>
+                )}
+
                 <li>
                   <a
                     href="https://matters.news/"
@@ -121,14 +155,6 @@ const Footer = () => {
               >
                 <i className={styles.icon}></i>
               </a>
-              {/* <a
-                className={styles.telegram}
-                href="https://t.me/joinchat/BXzlWUhXaWNZ-TXJZJCzDQ"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <i className={styles.icon}></i>
-              </a> */}
               <a
                 className={styles.youtube}
                 href="https://www.youtube.com/channel/UCC_rZ2vHqSy735e7K9I_TIg"
@@ -153,22 +179,6 @@ const Footer = () => {
               >
                 <i className={styles.icon}></i>
               </a>
-              {/* <a
-                className={styles.instagram}
-                href="https://www.instagram.com/matterslab2018/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <i className={styles.icon}></i>
-              </a>
-              <a
-                className={styles.facebook}
-                href="https://www.facebook.com/MattersLab2018/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <i className={styles.icon}></i>
-              </a> */}
               <a
                 className={styles.github}
                 href={pkgInfo.githubResource}

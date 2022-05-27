@@ -5,18 +5,32 @@ import Image from "next/image";
 import introIlluSvg from "@/public/img/intro-illu.svg";
 import introDividerSvg from "@/public/img/intro-divider.svg";
 
+import { useCountdown } from "~/hooks";
+
 import styles from "./styles.module.sass";
 
 const Intro = () => {
+  const [isLaunch, setLaunch] = useState(false);
   const [isClaim, setClaim] = useState(false);
+
   useEffect(() => {
+    if (new Date() > new Date(process.env.NEXT_PUBLIC_LAUNCH_START_AT || "")) {
+      setLaunch(true);
+    }
     if (
       new Date() > new Date(process.env.NEXT_PUBLIC_CLAIM_START_AT || "") &&
       new Date() < new Date(process.env.NEXT_PUBLIC_CLAIM_END_AT || "")
     ) {
       setClaim(true);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useCountdown({
+    end: process.env.NEXT_PUBLIC_LAUNCH_START_AT || "",
+    onEnd: () => setLaunch(true),
+  });
+
   return (
     <section className={styles.intro}>
       <div className="container">
@@ -62,18 +76,66 @@ const Intro = () => {
         <div className="row">
           <div className="col-md-8">
             <div className={`${styles.buttons} buttons`}>
-              <a
-                className={`btn ${isClaim ? "frame" : "fill"}`}
-                href="https://discord.gg/thespace"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Join Discord
-              </a>
-              {isClaim && (
-                <Link href="/claim">
-                  <a className="btn fill">Claim $SPACE</a>
-                </Link>
+              {isClaim ? (
+                isLaunch ? (
+                  <>
+                    <a
+                      className="btn frame"
+                      href="https://app.thespace.game/"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Playground
+                    </a>
+                    {/* =========== for production test =========== */}
+                    {/* <Link href="/claim">
+                      <a className="btn fill">Claim $SPACE</a>
+                    </Link> */}
+                  </>
+                ) : (
+                  <>
+                    <a
+                      className="btn frame"
+                      href="https://discord.gg/thespace"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Join Discord
+                    </a>
+                    {/* =========== for production test =========== */}
+                    {/* <Link href="/claim">
+                      <a className="btn fill">Claim $SPACE</a>
+                    </Link> */}
+                  </>
+                )
+              ) : isLaunch ? (
+                <>
+                  <a
+                    className="btn frame"
+                    href="https://discord.gg/thespace"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Join Discord
+                  </a>
+                  <a
+                    className="btn fill"
+                    href="https://app.thespace.game/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Playground
+                  </a>
+                </>
+              ) : (
+                <a
+                  className="btn frame"
+                  href="https://discord.gg/thespace"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Join Discord
+                </a>
               )}
             </div>
           </div>
