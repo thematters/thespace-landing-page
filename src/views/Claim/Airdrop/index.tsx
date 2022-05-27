@@ -78,7 +78,7 @@ const Airdrop: React.FC<AirdropProps> = ({ back }) => {
           address: process.env.NEXT_PUBLIC_CONTRACT_TOKEN,
           symbol: "SPACE",
           decimals: 18,
-          image: "https://thespace.game/img/avatar.svg",
+          image: "https://thespace.game/img/avatar.png",
         },
       },
     });
