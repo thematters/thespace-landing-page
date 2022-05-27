@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import * as pkgInfo from "@/package.json";
+
 import developerIlluSvg from "../../../../public/img/developer-illu.svg";
 
 import styles from "./styles.module.sass";
@@ -24,7 +26,7 @@ const DeveloperCommunity = () => {
             <div className={`${styles.buttons} buttons`}>
               <a
                 className="btn fill"
-                href="https://github.com/thematters/developer-resource"
+                href={pkgInfo.githubResource}
                 target="_blank"
                 rel="noreferrer"
               >

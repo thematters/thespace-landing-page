@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useAccount, useDisconnect, useNetwork } from "wagmi";
 import { useCountdown } from "~/hooks";
-import { fetchWrapper, toPolygonAddressUrl } from "~/utils";
+import {
+  addTokenToMetaMask,
+  canAddToMetaMask,
+  fetchWrapper,
+  toPolygonAddressUrl,
+} from "~/utils";
 
 import Empty from "./Empty";
 import ClaimDetail from "./ClaimDetail";
@@ -79,6 +84,16 @@ const Airdrop: React.FC<AirdropProps> = ({ back }) => {
             <a href={polygonScanToken.url} target="_blank" rel="noreferrer">
               {polygonScanToken.maskedAddress}
             </a>
+            &nbsp;&nbsp;
+            {canAddToMetaMask() && (
+              <button
+                className={styles.extraBtn}
+                type="button"
+                onClick={() => addTokenToMetaMask()}
+              >
+                Add $SPACE to MetaMask
+              </button>
+            )}
           </div>
           <div className={styles.address}>
             Wallet Address:&nbsp;
@@ -87,7 +102,7 @@ const Airdrop: React.FC<AirdropProps> = ({ back }) => {
             </a>
             &nbsp;&nbsp;
             <button
-              className={styles.disconnect}
+              className={styles.extraBtn}
               type="button"
               onClick={() => disconnect()}
             >

@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 import { useCountdown } from "~/hooks";
+import * as pkgInfo from "@/package.json";
+
 
 import styles from "./styles.module.sass";
 
@@ -74,6 +76,7 @@ const Footer = () => {
                     </a>
                   </li>
                 )}
+
                 <li>
                   <a
                     href="https://matters.news/"
@@ -100,11 +103,20 @@ const Footer = () => {
               <ul>
                 <li>
                   <a
-                    href="https://github.com/thematters/developer-resource"
+                    href={pkgInfo.githubResource}
                     target="_blank"
                     rel="noreferrer"
                   >
                     GitHub
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.certik.com/projects/the-space"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Audited by CertiK
                   </a>
                 </li>
                 {/* <li>
@@ -169,7 +181,7 @@ const Footer = () => {
               </a>
               <a
                 className={styles.github}
-                href="https://github.com/thematters/developer-resource"
+                href={pkgInfo.githubResource}
                 target="_blank"
                 rel="noreferrer"
               >
