@@ -4,6 +4,10 @@
     min-width: 100%
     +min($md)
       min-width: 220px
+  button+button
+    margin-top: 1rem
+    +min($md)
+      margin-left: 1.5rem
 .loading
   &::before
     +bg('/img/icon-spinner.svg')

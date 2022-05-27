@@ -8,7 +8,7 @@ import {
   useContractWrite,
 } from "wagmi";
 import Toast from "~/components/Toast";
-import { claimAirdropABI } from "~/utils";
+import { addTokenToMetaMask, canAddToMetaMask, claimAirdropABI } from "~/utils";
 
 import styles from "./styles.module.sass";
 
@@ -124,6 +124,11 @@ const ClaimButton: React.FC<ClaimButtonProps> = ({
       <div className={classes}>
         {success && <Toast status="success" />}
         {errorMessage && <Toast status="failed" reason={errorMessage} />}
+        {canAddToMetaMask() && (
+          <button className="btn fill" onClick={() => addTokenToMetaMask()}>
+            Add $SPACE to MetaMask
+          </button>
+        )}
         <button className="btn fill disabled">Claimed</button>
       </div>
     );

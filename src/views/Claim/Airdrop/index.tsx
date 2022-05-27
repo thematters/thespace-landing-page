@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useAccount, useDisconnect, useNetwork } from "wagmi";
 import { useCountdown } from "~/hooks";
-import { fetchWrapper, toPolygonAddressUrl } from "~/utils";
+import {
+  addTokenToMetaMask,
+  canAddToMetaMask,
+  fetchWrapper,
+  toPolygonAddressUrl,
+} from "~/utils";
 
 import Empty from "./Empty";
 import ClaimDetail from "./ClaimDetail";
@@ -67,23 +72,6 @@ const Airdrop: React.FC<AirdropProps> = ({ back }) => {
   );
   const polygonScanAccount = toPolygonAddressUrl(account || "");
 
-  const canAddToMetaMask = "ethereum" in window && window?.ethereum?.request;
-  const addTokenToMetaMask = async () => {
-    await window?.ethereum?.request({
-      // @ts-ignore
-      method: "wallet_watchAsset",
-      params: {
-        type: "ERC20",
-        options: {
-          address: process.env.NEXT_PUBLIC_CONTRACT_TOKEN,
-          symbol: "SPACE",
-          decimals: 18,
-          image: "https://thespace.game/img/avatar.png",
-        },
-      },
-    });
-  };
-
   return (
     <>
       <section className={styles.airdrop}>
@@ -97,7 +85,7 @@ const Airdrop: React.FC<AirdropProps> = ({ back }) => {
               {polygonScanToken.maskedAddress}
             </a>
             &nbsp;&nbsp;
-            {canAddToMetaMask && (
+            {canAddToMetaMask() && (
               <button
                 className={styles.extraBtn}
                 type="button"
