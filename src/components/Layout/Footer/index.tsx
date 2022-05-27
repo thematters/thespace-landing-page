@@ -57,14 +57,13 @@ const Footer = () => {
                     <a>Home</a>
                   </Link>
                 </li>
-                {/* =========== for production test =========== */}
-                {/* {isClaim &&
+                {isClaim &&
                   <li>
                     <Link href="/claim">
                       <a>Claim $SPACE</a>
                     </Link>
                   </li>
-                } */}
+                }
                 {isLaunch && (
                   <li>
                     <a
