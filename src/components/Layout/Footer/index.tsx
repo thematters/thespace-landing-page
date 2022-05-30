@@ -144,7 +144,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <i className={styles.icon}></i>
+                <span className={styles.icon}></span>
               </a>
               <a
                 className={styles.discord}
@@ -152,7 +152,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <i className={styles.icon}></i>
+                <span className={styles.icon}></span>
               </a>
               <a
                 className={styles.youtube}
@@ -160,7 +160,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <i className={styles.icon}></i>
+                <span className={styles.icon}></span>
               </a>
               <a
                 className={styles.opensea}
@@ -168,7 +168,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <i className={styles.icon}></i>
+                <span className={styles.icon}></span>
               </a>
               <a
                 className={styles.medium}
@@ -176,7 +176,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <i className={styles.icon}></i>
+                <span className={styles.icon}></span>
               </a>
               <a
                 className={styles.github}
@@ -184,7 +184,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <i className={styles.icon}></i>
+                <span className={styles.icon}></span>
               </a>
             </div>
           </div>

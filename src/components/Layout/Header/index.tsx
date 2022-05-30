@@ -59,6 +59,9 @@ const Header = () => {
         </Link>
       </div>
       <div className={`${styles.menu} ${activeClasses}`}>
+        <a href="https://wiki.thespace.game/press-release" target="_blank" rel="noreferrer">
+          News
+        </a>
         <a href="https://wiki.thespace.game/" target="_blank" rel="noreferrer">
           Wiki
         </a>
@@ -77,27 +80,45 @@ const Header = () => {
           $SPACE
         </a>
         {isClaim ? (
-          <Link href="/claim">
-            <a className={`${styles.strong}`}>Claim $SPACE</a>
-          </Link>
-        ) : isLaunch ? (
-          <a
-            className={`${styles.strong}`}
-            href="https://app.thespace.game/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Playground
-          </a>
+          isLaunch ? (
+            <>
+              <Link href="/claim">
+                <a className={`${styles.btn} ${styles.frame}`}>Claim $SPACE</a>
+              </Link>
+              <a
+                className={`${styles.btn} ${styles.fill}`}
+                href="https://app.thespace.game/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Playground
+              </a>
+            </>
+          ) : (
+            <Link href="/claim">
+              <a className={`${styles.btn} ${styles.fill}`}>Claim $SPACE</a>
+            </Link>
+          )
         ) : (
-          <a
-            className={`${styles.strong}`}
-            href="https://discord.gg/thespace"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Join Discord
-          </a>
+          isLaunch ? (
+            <a
+              className={`${styles.btn} ${styles.fill}`}
+              href="https://app.thespace.game/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Playground
+            </a>
+          ) : (
+            <a
+              className={`${styles.btn} ${styles.fill}`}
+              href="https://discord.gg/thespace"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Join Discord
+            </a>
+          )
         )}
       </div>
       <div className={`${styles.burger} ${activeClasses} d-lg-none`}>
@@ -109,7 +130,7 @@ const Header = () => {
         >
           <div className={`${styles.time}`}>
             <div className="d-flex justify-content-between align-items-center">
-              <i className={styles.icon}></i>
+              <span className={styles.icon}></span>   
               <span>
                 <b className="d-none d-lg-inline-block">
                   The Space Official Launch in
@@ -130,7 +151,7 @@ const Header = () => {
               <span className="d-none d-lg-inline-block">
                 <b>Add to Calendar</b>
               </span>
-              <i className={styles.icon}></i>
+              <span className={styles.icon}></span>
             </a>
           </div>
         </div>
