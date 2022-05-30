@@ -2,10 +2,10 @@ import styles from "./styles.module.sass";
 
 const Faq = () => {
   return (
-    <section className={styles.faq}>
+    <section className={styles.faq} id="faq">
       <div className="container">
         <div className={styles.title}>
-          <h2 className={styles.bar} id="faq">
+          <h2 className={styles.bar}>
             FAQ
           </h2>
         </div>

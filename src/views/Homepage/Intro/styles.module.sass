@@ -37,6 +37,7 @@ section.intro
     p
       @extend %article-body
   .buttons
+    +flex(row, wrap, initial, center)
     text-align: center
     +min($md)
       text-align: left
@@ -46,8 +47,34 @@ section.intro
       +min($md)
         width: initial
         margin: 0 24px 0 0
-      &::last-child
+      &:last-child
         margin: 0
+      &.discord
+        +flex(row, wrap, center, center)
+        +anm(border)
+        width: 48px
+        height: 48px
+        border-radius: 50%
+        border: 3px solid $black
+        margin: 0 auto
+        +min($md)
+          width: 56px
+          height: 56px
+          margin: initial
+        &:hover
+          border-color: $grey-dark
+          span.icon
+            background-color: $grey-dark
+        span.icon
+          +mask('/img/icon-discord.svg', $white)
+          +anm(background)
+          display: block
+          background-color: $black
+          width: 24px
+          height: 24px
+          +min($md)
+            width: 32px
+            height: 32px
   .tips
     width: 18px
     height: 64px
