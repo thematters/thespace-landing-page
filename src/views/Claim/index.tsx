@@ -51,7 +51,7 @@ const Claim: NextPage = () => {
             extraBtn={
               <a
                 className="btn fill"
-                href="https://wiki.thespace.game/initial-airdrop"
+                href="https://wiki.thespace.game/space-initial-airdrop"
                 target="_blank"
                 rel="noreferrer"
               >
