@@ -71,7 +71,7 @@ const Footer = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      The Space playground
+                      Launch App
                     </a>
                   </li>
                 )}
