@@ -91,7 +91,7 @@ const Header = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                Playground
+                Launch App
               </a>
             </>
           ) : (
@@ -107,7 +107,7 @@ const Header = () => {
               target="_blank"
               rel="noreferrer"
             >
-              Playground
+              Launch App
             </a>
           ) : (
             <a

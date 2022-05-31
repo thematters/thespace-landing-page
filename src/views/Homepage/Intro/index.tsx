@@ -88,7 +88,7 @@ const Intro = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      Playground
+                      Launch App
                     </a>
                     <a
                       className={styles.discord}
@@ -131,7 +131,7 @@ const Intro = () => {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      Playground
+                      Launch App
                     </a>
                   </>
                 ) : (
