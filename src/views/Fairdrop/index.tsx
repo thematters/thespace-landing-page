@@ -5,12 +5,11 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 
 import Entrance from "./Entrance";
-import Airdrop from "./Airdrop";
+import Results from "./Results";
 import FollowUs from "~/components/FollowUs";
 import AboutSpaceToken from "~/components/AboutSpaceToken";
 
-import aboutIllu1Svg from "../../../public/img/about-illu-1.svg";
-import aboutIllu2Svg from "../../../public/img/about-illu-2.svg";
+import aboutIllu3Svg from "../../../public/img/about-illu-3.svg";
 
 import * as pkgInfo from "@/package.json";
 
@@ -34,7 +33,7 @@ const client = createClient({
   webSocketProvider,
 });
 
-const Claim: NextPage = () => {
+const Fairdrop: NextPage = () => {
   const router = useRouter();
   const canonicalUrl = `https://${
     process.env.NEXT_PUBLIC_SITE_DOMAIN || "thespace.game"
@@ -50,39 +49,28 @@ const Claim: NextPage = () => {
       <Provider client={client}>
         <main className={styles.claim} id="main">
           {isEntrance && <Entrance next={() => setIsEntrance(false)} />}
-          {!isEntrance && <Airdrop back={() => setIsEntrance(true)} />}
+          <Results status="success"/>
           <AboutSpaceToken
             extraBtn={
               <a
                 className="btn fill"
-                href="https://wiki.thespace.game/space-initial-airdrop"
+                href="#"
                 target="_blank"
                 rel="noreferrer"
               >
-                Initial Airdrop
+                How to claim
               </a>
             }
             illu={
-              <>
-                <div className={`${styles.illu_1} d-none d-md-block`}>
-                  <figure>
-                    <Image
-                      className="img-fluid"
-                      src={aboutIllu1Svg}
-                      alt="About Illustration"
-                    />
-                  </figure>
-                </div>
-                <div className={`${styles.illu_2}`}>
-                  <figure>
-                    <Image
-                      className="img-fluid"
-                      src={aboutIllu2Svg}
-                      alt="About Illustration"
-                    />
-                  </figure>
-                </div>
-              </>
+              <div className={`${styles.illu_3}`}>
+                <figure>
+                  <Image
+                    className="img-fluid"
+                    src={aboutIllu3Svg}
+                    alt="About Illustration"
+                  />
+                </figure>
+              </div>
             }
           />
           <FollowUs />
@@ -92,4 +80,4 @@ const Claim: NextPage = () => {
   );
 };
 
-export default Claim;
+export default Fairdrop;

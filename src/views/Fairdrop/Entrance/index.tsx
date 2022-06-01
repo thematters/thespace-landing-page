@@ -68,7 +68,7 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
       <section className={`${styles.entrance} text-center`}>
         <div className={styles.illu}>
           <figure>
-            <img className="img-fluid" src="/img/entrance-illu-1.svg" />
+            <img className="img-fluid" src="/img/entrance-illu-2.svg" />
           </figure>
         </div>
         <div className={`${styles.container} container`}>
@@ -76,10 +76,9 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
             <h2>Claim Your $SPACE</h2>
           </div>
           <div className={styles.text}>
-            {/* <strong>May 11, 2022 - May 15, 2022</strong> */}
-            <span>
-              Before claiming $SPACE, let&apos;s connect your wallet first.
-            </span>
+            <strong>
+              Start in June 9th 2022
+            </strong>
           </div>
 
           <div className={styles.wallet}>
