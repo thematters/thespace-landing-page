@@ -5,7 +5,10 @@ type AboutSpaceTokenProps = {
   illu?: React.ReactNode;
 };
 
-const AboutSpaceToken: React.FC<AboutSpaceTokenProps> = ({ extraBtn, illu }) => {
+const AboutSpaceToken: React.FC<AboutSpaceTokenProps> = ({
+  extraBtn,
+  illu,
+}) => {
   return (
     <section className={styles.about}>
       <div className={`${styles.container} container text-center`}>

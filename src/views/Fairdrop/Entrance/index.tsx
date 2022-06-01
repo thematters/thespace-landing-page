@@ -76,9 +76,7 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
             <h2>Claim Your $SPACE</h2>
           </div>
           <div className={styles.text}>
-            <strong>
-              Start in June 9th 2022
-            </strong>
+            <strong>Start in June 9th 2022</strong>
           </div>
 
           <div className={styles.wallet}>

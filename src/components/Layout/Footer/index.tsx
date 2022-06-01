@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useCountdown } from "~/hooks";
 import * as pkgInfo from "@/package.json";
 
-
 import styles from "./styles.module.sass";
 
 const Footer = () => {
@@ -57,13 +56,13 @@ const Footer = () => {
                     <a>Home</a>
                   </Link>
                 </li>
-                {isClaim &&
+                {isClaim && (
                   <li>
                     <Link href="/claim">
                       <a>Claim $SPACE</a>
                     </Link>
                   </li>
-                }
+                )}
                 {isLaunch && (
                   <li>
                     <a

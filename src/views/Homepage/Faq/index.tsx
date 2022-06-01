@@ -5,9 +5,7 @@ const Faq = () => {
     <section className={styles.faq} id="faq">
       <div className="container">
         <div className={styles.title}>
-          <h2 className={styles.bar}>
-            FAQ
-          </h2>
+          <h2 className={styles.bar}>FAQ</h2>
         </div>
         <div className={styles.content}>
           <details>
