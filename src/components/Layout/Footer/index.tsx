@@ -117,21 +117,11 @@ const Footer = () => {
                     Audited by CertiK
                   </a>
                 </li>
-                {/* <li>
-                  <a href="#" target="_blank" rel="noreferrer">
-                    Press Kit
-                  </a>
-                </li> */}
-                {/* <li>
-                  <a href="#" target="_blank" rel="noreferrer">
-                    User Agreement
+                <li>
+                  <a href="https://wiki.thespace.game/the-space-terms-of-use-community-code-of-conduct " target="_blank" rel="noreferrer">
+                    Term Of Use
                   </a>
                 </li>
-                <li>
-                  <a href="#" target="_blank" rel="noreferrer">
-                    Privacy Policy
-                  </a>
-                </li> */}
               </ul>
             </div>
           </div>
@@ -163,7 +153,7 @@ const Footer = () => {
               </a>
               <a
                 className={styles.opensea}
-                href="https://opensea.io/collection/space-game-test"
+                href="https://opensea.io/collection/the-space-game"
                 target="_blank"
                 rel="noreferrer"
               >
