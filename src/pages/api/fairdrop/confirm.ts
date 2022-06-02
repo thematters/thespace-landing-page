@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { customAlphabet } from "nanoid";
 import { ethers } from "ethers";
+import { Client } from "twitter-api-sdk";
 
 import { throwInternalServerError } from "../utils/error";
 import { ErrorCode } from "../enums/error";
@@ -8,6 +8,7 @@ import { getFairdropSignMessage } from "~/utils";
 
 const wallet = new ethers.Wallet(process.env.FAIRDROP_PRIVATE_KEY || "");
 const fairdropContract = process.env.FAIRDROP_CONTRACT || "";
+const client = new Client(process.env.TWITTER_BEARER_TOKEN || "");
 
 type FairdropConfirmBody = {
   account: string;
@@ -80,12 +81,35 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     /**
-     * Retrieve Tweet Content
+     * Retrieve Tweet
      */
+    // check tweet url
+    const tweetId = body.tweetURL?.split("/").pop();
+    if (!tweetId) {
+      return res.status(400).send({
+        code: ErrorCode.INVALID_TWEET_URL,
+        message: "`tweetURL` is invalid.",
+      });
+    }
 
-    /**
-     * Check whether Twitter User ID is eligible to claim the fairdrop
-     */
+    // check tweet content
+    const tweet = await client.tweets.findTweetById(tweetId, {
+      expansions: ["author_id"],
+    });
+    const tweetContent = tweet.data?.text;
+    const authorId = tweet.data?.author_id;
+    if (!tweetContent || !authorId || !tweetContent.includes(body.nonce)) {
+      return res.status(400).send({
+        code: ErrorCode.INVALID_TWEET_URL,
+        message: "`tweetURL` is invalid.",
+      });
+    }
+
+    // Check whether hash of Twitter User ID is eligible to claim the fairdrop
+    const userId = ethers.utils.keccak256(
+      ethers.utils.toUtf8Bytes(`twitter:${authorId}`)
+    );
+    console.log({ userId });
 
     /**
      * Response
