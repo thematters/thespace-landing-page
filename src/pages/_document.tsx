@@ -16,8 +16,16 @@ class TheSpaceDocument extends Document {
         <Head>
           <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
 
-          <meta key="description" name="description" content={description} />
-          <meta key="keywords" name="keywords" content={keywords.join(",")} />
+          <meta
+            key="description"
+            name="description"
+            content={pkgInfo.description}
+          />
+          <meta
+            key="keywords"
+            name="keywords"
+            content={pkgInfo.keywords.join(",")}
+          />
           {process.env.NEXT_PUBLIC_FB_APP_ID && (
             <meta
               key="fb:app_id"
@@ -25,14 +33,14 @@ class TheSpaceDocument extends Document {
               content={process.env.NEXT_PUBLIC_FB_APP_ID}
             />
           )}
-          <meta key="og:title" property="og:title" content={title} />
+          <meta key="og:title" property="og:title" content={pkgInfo.title} />
           <meta key="og:type" property="og:type" content="website" />
           <meta key="og:image" property="og:image" content={imageUrl} />
           <meta key="og:url" property="og:url" content={canonicalUrl} />
           <meta
             key="og:description"
             property="og:description"
-            content={description}
+            content={pkgInfo.description}
           />
           <meta key="og:site_name" property="og:site_name" content="TheSpace" />
           <meta
@@ -44,7 +52,7 @@ class TheSpaceDocument extends Document {
           <meta
             key="twitter:image:alt"
             name="twitter:image:alt"
-            content={description}
+            content={pkgInfo.description}
           />
           <meta
             key="twitter:site"

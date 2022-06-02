@@ -35,7 +35,7 @@ export const logToSlack = async ({
   }
 
   try {
-    const webhook = new IncomingWebhook();
+    const webhook = new IncomingWebhook(webhookURL);
     await webhook.send({
       username: `[${process.env.NEXT_PUBLIC_RUNTIME_ENV}] thespace-landing-page`,
       attachments: [
