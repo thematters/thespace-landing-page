@@ -39,7 +39,7 @@ const Fairdrop: NextPage = () => {
   const canonicalUrl = `https://${
     process.env.NEXT_PUBLIC_SITE_DOMAIN || "thespace.game"
   }${router.asPath}`;
-  const [isEnter, setEnter] = useState(true);
+  const [isEnter, setEnter] = useState(false);
   const [isStatus, setStatus] = useState();
   const [isResults, setResults] = useState(false);
 
@@ -51,44 +51,45 @@ const Fairdrop: NextPage = () => {
       </Head>
       <Provider client={client}>
         <main className={styles.claim} id="main">
-          {!isEnter && !isResults && (
-            <>
-              <Entrance next={() => setEnter(false)} />
-              <AboutSpaceToken
-                extraBtn={
-                  <a
-                    className="btn fill"
-                    href="#"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    How to claim
-                  </a>
-                }
-                illu={
-                  <div className={`${styles.illu_3}`}>
-                    <figure>
-                      <Image
-                        className="img-fluid"
-                        src={aboutIllu3Svg}
-                        alt="About Illustration"
-                      />
-                    </figure>
-                  </div>
-                }
+          {isResults ? (
+            <Results status={isStatus} />
+          ) : (
+            isEnter ? (
+              <Steps
+                next={(val: any) => {
+                  setStatus(val);
+                  setResults(true);
+                }}
               />
-            </>
+            ) : (
+              <>
+                <Entrance next={() => setEnter(false)} />
+                <AboutSpaceToken
+                  extraBtn={
+                    <a
+                      className="btn fill"
+                      href="#"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      How to claim
+                    </a>
+                  }
+                  illu={
+                    <div className={`${styles.illu_3}`}>
+                      <figure>
+                        <Image
+                          className="img-fluid"
+                          src={aboutIllu3Svg}
+                          alt="About Illustration"
+                        />
+                      </figure>
+                    </div>
+                  }
+                />
+              </>
+            )
           )}
-          {isEnter && !isResults && (
-            <Steps
-              next={(val: any) => {
-                setStatus(val);
-                setResults(true);
-              }}
-            />
-          )}
-          {isEnter && isResults && <Results status={isStatus} />}
-
           <FollowUs />
         </main>
       </Provider>
