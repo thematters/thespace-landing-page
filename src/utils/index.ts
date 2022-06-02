@@ -1,6 +1,7 @@
 export * from "./fetch";
 export * from "./wallet";
-export * from "./contract";
+export * from "./airdrop";
+export * from "./fairdrop";
 
 export const canAddToMetaMask = () =>
   "ethereum" in window && window?.ethereum?.request;

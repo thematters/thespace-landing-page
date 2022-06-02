@@ -8,7 +8,7 @@ import Airdrop from "./Airdrop";
 import FollowUs from "~/components/FollowUs";
 import AboutSpaceToken from "~/components/AboutSpaceToken";
 
-import * as pkgInfo from "@/package.json";
+import pkgInfo from "@/package.json";
 
 import {
   provider,

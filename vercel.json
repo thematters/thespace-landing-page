@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "pages/**/*": {
+      "maxDuration": 30,
+      "memory": 3008
+    }
+  },
+  "regions": [
+    "sin1",
+    "hkg1",
+    "sfo1"
+  ]
+}
