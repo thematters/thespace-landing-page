@@ -47,7 +47,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
      * Response
      */
     const nonce = nanoid();
-    const expiredAt = new Date(Date.now() + exipiryDuration).toISOString();
+    const expiredAt = Math.round(Date.now() / 1000) + exipiryDuration;
     const message = getFairdropSignMessage({ account, nonce, expiredAt });
     const signerSig = await wallet.signMessage(message);
 

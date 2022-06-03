@@ -5,7 +5,7 @@ export const getFairdropSignMessage = ({
 }: {
   account: string;
   nonce: string;
-  expiredAt: string;
+  expiredAt: number;
 }) => `I am signing this message to prove the ownership of this address.
 
 Account: ${account}

@@ -13,7 +13,7 @@ const client = new Client(process.env.TWITTER_BEARER_TOKEN || "");
 type FairdropConfirmBody = {
   account: string;
   nonce: string;
-  expiredAt: string;
+  expiredAt: number;
   signerSig: string;
   claimerSig: string;
   tweetURL: string;
@@ -51,7 +51,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     // check exipredAt
-    const expiredAt = new Date(body.expiredAt);
+    const expiredAt = new Date(body.expiredAt * 1000);
     if (expiredAt < new Date()) {
       return res.status(400).send({
         code: ErrorCode.CLAIM_EXPIRED,
@@ -104,22 +104,24 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         message: "`tweetURL` is invalid.",
       });
     }
-
-    // Check whether hash of Twitter User ID is eligible to claim the fairdrop
     const userId = ethers.utils.keccak256(
       ethers.utils.toUtf8Bytes(`twitter:${authorId}`)
     );
-    console.log({ userId });
 
     /**
      * Response
      */
-    const claimMsg = `${account}${body.nonce}${body.expiredAt}${fairdropContract}`;
-    const sig = await wallet.signMessage(claimMsg);
+    const msg = ethers.utils.solidityPack(
+      ["address", "bytes32", "string", "uint256", "address"],
+      [account, userId, body.nonce, body.expiredAt, fairdropContract]
+    );
+    const hash = ethers.utils.solidityKeccak256(["bytes"], [msg]);
+    const sig = await wallet.signMessage(ethers.utils.arrayify(hash));
     const splitedSig = ethers.utils.splitSignature(sig);
 
     return res.status(200).json({
       account,
+      userId,
       nonce: body.nonce,
       exipredAt: body.expiredAt,
       sigV: splitedSig.v,
