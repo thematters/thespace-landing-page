@@ -95,15 +95,22 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     // check tweet content
     const tweet = await client.tweets.findTweetById(tweetId, {
       expansions: ["author_id"],
+      "tweet.fields": ["entities"],
     });
     const tweetContent = tweet.data?.text;
     const authorId = tweet.data?.author_id;
-    if (!tweetContent || !authorId || !tweetContent.includes(body.nonce)) {
+    const isContentIncludesNonce = !!tweetContent?.includes(body.nonce);
+    const isURLIncludesNonce = !!tweet.data?.entities?.urls?.some((urlObj) =>
+      urlObj.expanded_url?.includes(body.nonce)
+    );
+
+    if (!authorId || (!isContentIncludesNonce && !isURLIncludesNonce)) {
       return res.status(400).send({
         code: ErrorCode.INVALID_TWEET_URL,
         message: "`tweetURL` is invalid.",
       });
     }
+
     const userId = ethers.utils.keccak256(
       ethers.utils.toUtf8Bytes(`twitter:${authorId}`)
     );
