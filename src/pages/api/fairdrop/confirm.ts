@@ -1,14 +1,17 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { ethers } from "ethers";
 import { Client } from "twitter-api-sdk";
+import Redis from "ioredis";
 
 import { throwInternalServerError } from "../utils/error";
 import { ErrorCode } from "../enums/error";
 import { getFairdropSignMessage } from "~/utils";
+import { logToSlack, SlackMsgType } from "../utils/slack";
 
 const wallet = new ethers.Wallet(process.env.FAIRDROP_PRIVATE_KEY || "");
 const fairdropContract = process.env.FAIRDROP_CONTRACT || "";
-const client = new Client(process.env.TWITTER_BEARER_TOKEN || "");
+const twitterClient = new Client(process.env.TWITTER_BEARER_TOKEN || "");
+const redisClient = new Redis(process.env.REDIS_CONNECTION_URL || "");
 
 type FairdropConfirmBody = {
   account: string;
@@ -93,7 +96,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     // check tweet content
-    const tweet = await client.tweets.findTweetById(tweetId, {
+    const tweet = await twitterClient.tweets.findTweetById(tweetId, {
       expansions: ["author_id"],
       "tweet.fields": ["entities"],
     });
@@ -114,6 +117,26 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const userId = ethers.utils.keccak256(
       ethers.utils.toUtf8Bytes(`twitter:${authorId}`)
     );
+
+    // record to redis
+    try {
+      await redisClient.set(
+        userId,
+        JSON.stringify({
+          account,
+          authorId,
+          tweetId,
+          nonce: body.nonce,
+          expiredAt: body.expiredAt,
+        })
+      );
+    } catch (error) {
+      await logToSlack({
+        message: `[redis] unable to set ${userId}`,
+        data: error,
+        type: SlackMsgType.failed,
+      });
+    }
 
     /**
      * Response
