@@ -1,5 +1,10 @@
 import { useState } from "react";
 import classNames from "classnames";
+import { useAccount } from "wagmi";
+
+import {
+  fetchWrapper,
+} from "~/utils";
 
 import styles from "./styles.module.sass";
 
@@ -7,12 +12,36 @@ type StepsProps = {
   next: (val: any) => void;
 };
 
+type ClaimData = {
+  account: String,
+  nonce: String,
+  exipredAt: String,
+  signerSig: String
+}
+
 const Steps: React.FC<StepsProps> = ({ next }) => {
   const [step, setStep] = useState(0);
   const [checked, setChecked] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const { data: accountData } = useAccount();
+  const [claimData, setClaimData] = useState<ClaimData>();
 
-  const verifyETHAddress = () => {
-    setStep(2);
+  const account = accountData?.address;
+
+  const verifyETHAddress = async () => {
+    setLoading(true);
+    try {
+      const data = await fetchWrapper.get(
+        `/api/fairdrop/nonce?account=`+account
+      );
+      setClaimData(data);
+      console.log(data);
+      setStep(2);
+    } catch (e) {
+      console.error(e);
+      next("not_eligible");
+    }
+    setLoading(false);
   };
   const verifyTwitterAccount = () => {
     setStep(3);
@@ -21,11 +50,14 @@ const Steps: React.FC<StepsProps> = ({ next }) => {
     next("success");
   };
 
+  const amountPerAddress =
+    process.env.NEXT_PUBLIC_FAIRDROP_AMOUNT_PER_ADDRESS || "your";
+
   return (
     <section className={styles.steps}>
       <div className="container">
         <div className={styles.title}>
-          <h2>Claim your $SPACE</h2>
+          <h2>Claim {amountPerAddress} $SPACE</h2>
           <p>
             Congrats! You’re eligible to claim tokens. Here are instruction to
             proceed:
@@ -109,8 +141,11 @@ const Steps: React.FC<StepsProps> = ({ next }) => {
                   onChange={() => setChecked(!checked)}
                 />
                 <label className="form-check-label" htmlFor="flexCheckChecked">
-                  Use of this website constitutes acceptance of The Space User
-                  Agreement and Privacy Policy.
+                  Use of this website constitutes acceptance of The Space <a
+                    href="https://wiki.thespace.game/the-space-terms-of-use-community-code-of-conduct "
+                    target="_blank"
+                    rel="noreferrer"
+                  >Term of Use</a>.
                 </label>
               </div>
               <div className={`${styles.buttons} buttons text-end`}>

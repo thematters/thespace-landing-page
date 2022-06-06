@@ -13,11 +13,15 @@ export interface ResultsProps {
 }
 
 const Results = ({ status }: ResultsProps) => {
+
+  const amountPerAddress =
+    process.env.FAIRDROP_AMOUNT_PER_ADDRESS || "your";
+
   return (
     <section className={styles.results}>
       <div className="container">
         <div className={styles.title}>
-          <h2>Claim your $SPACE</h2>
+          <h2>Claim {amountPerAddress} $SPACE</h2>
         </div>
         <div className={`${styles.text} text-center`}>
           {status === "success" && (

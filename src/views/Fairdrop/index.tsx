@@ -12,7 +12,7 @@ import AboutSpaceToken from "~/components/AboutSpaceToken";
 
 import aboutIllu3Svg from "../../../public/img/about-illu-3.svg";
 
-import * as pkgInfo from "@/package.json";
+import pkgInfo from "@/package.json";
 
 import {
   provider,
@@ -42,7 +42,7 @@ const Fairdrop: NextPage = () => {
   const [isEnter, setEnter] = useState(false);
   const [isStatus, setStatus] = useState();
   const [isResults, setResults] = useState(false);
-
+  
   return (
     <>
       <Head>
@@ -63,7 +63,7 @@ const Fairdrop: NextPage = () => {
               />
             ) : (
               <>
-                <Entrance next={() => setEnter(false)} />
+                <Entrance next={() => setEnter(true)} />
                 <AboutSpaceToken
                   extraBtn={
                     <a

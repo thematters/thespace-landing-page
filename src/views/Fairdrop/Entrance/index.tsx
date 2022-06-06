@@ -63,6 +63,9 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
     [styles.active]: activeConnector?.id === walletConnectConnector.id,
   });
 
+  const amountPerAddress =
+    process.env.FAIRDROP_AMOUNT_PER_ADDRESS || "your";
+
   return (
     <>
       <section className={`${styles.entrance} text-center`}>
@@ -73,7 +76,7 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
         </div>
         <div className={`${styles.container} container`}>
           <div className={styles.title}>
-            <h2>Claim Your $SPACE</h2>
+            <h2>Claim {amountPerAddress} $SPACE</h2>
           </div>
           <div className={styles.text}>
             <strong>Start in June 9th 2022</strong>
