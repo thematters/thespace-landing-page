@@ -39,10 +39,9 @@ const Fairdrop: NextPage = () => {
   const canonicalUrl = `https://${
     process.env.NEXT_PUBLIC_SITE_DOMAIN || "thespace.game"
   }${router.asPath}`;
-  const [isEnter, setEnter] = useState(true);
-  const [isStatus, setStatus] = useState();
-  const [isResults, setResults] = useState(false);
-  
+  const [isEnter, setEnter] = useState(false);
+  const [resultStatus, setResultStatus] = useState(String);
+
   return (
     <>
       <Head>
@@ -51,44 +50,41 @@ const Fairdrop: NextPage = () => {
       </Head>
       <Provider client={client}>
         <main className={styles.claim} id="main">
-          {isResults ? (
-            <Results status={isStatus} />
+          {resultStatus !== "" ? (
+            <Results status={resultStatus} />
+          ) : isEnter ? (
+            <Steps
+              next={(val: any) => {
+                setResultStatus(val);
+              }}
+            />
           ) : (
-            isEnter ? (
-              <Steps
-                next={(val: any) => {
-                  setStatus(val);
-                  setResults(true);
-                }}
+            <>
+              <Entrance next={() => setEnter(true)} />
+              <AboutSpaceToken
+                extraBtn={
+                  <a
+                    className="btn fill"
+                    href="#"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    How to claim
+                  </a>
+                }
+                illu={
+                  <div className={`${styles.illu_3}`}>
+                    <figure>
+                      <Image
+                        className="img-fluid"
+                        src={aboutIllu3Svg}
+                        alt="About Illustration"
+                      />
+                    </figure>
+                  </div>
+                }
               />
-            ) : (
-              <>
-                <Entrance next={() => setEnter(true)} />
-                <AboutSpaceToken
-                  extraBtn={
-                    <a
-                      className="btn fill"
-                      href="#"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      How to claim
-                    </a>
-                  }
-                  illu={
-                    <div className={`${styles.illu_3}`}>
-                      <figure>
-                        <Image
-                          className="img-fluid"
-                          src={aboutIllu3Svg}
-                          alt="About Illustration"
-                        />
-                      </figure>
-                    </div>
-                  }
-                />
-              </>
-            )
+            </>
           )}
           <FollowUs />
         </main>

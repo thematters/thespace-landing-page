@@ -9,13 +9,11 @@ export interface ResultsProps {
     | "under_review"
     | "already_posted"
     | "success"
-    | "";
+    | String;
 }
 
 const Results = ({ status }: ResultsProps) => {
-
-  const amountPerAddress =
-    process.env.FAIRDROP_AMOUNT_PER_ADDRESS || "your";
+  const amountPerAddress = process.env.FAIRDROP_AMOUNT_PER_ADDRESS || "your";
 
   return (
     <section className={styles.results}>
