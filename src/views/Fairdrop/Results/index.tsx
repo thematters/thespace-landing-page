@@ -7,7 +7,7 @@ export interface ResultsProps {
     | "not_eligible"
     | "have_send"
     | "under_review"
-    | "had_post"
+    | "already_posted"
     | "success"
     | "";
 }
@@ -33,7 +33,7 @@ const Results = ({ status }: ResultsProps) => {
               </p>
             </>
           )}
-          {status === "had_post" && <h3>Your had post a tweet before.</h3>}
+          {status === "already_posted" && <h3>You already posted a tweet.</h3>}
           {status === "under_review" && (
             <>
               <h3>Your submission is under review.</h3>
@@ -75,7 +75,7 @@ const Results = ({ status }: ResultsProps) => {
               </a>
             </>
           )}
-          {status === "had_post" && (
+          {status === "already_posted" && (
             <Link href="/">
               <a className="btn fill">Back to Home</a>
             </Link>

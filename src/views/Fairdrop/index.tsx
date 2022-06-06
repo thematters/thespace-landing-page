@@ -39,7 +39,7 @@ const Fairdrop: NextPage = () => {
   const canonicalUrl = `https://${
     process.env.NEXT_PUBLIC_SITE_DOMAIN || "thespace.game"
   }${router.asPath}`;
-  const [isEnter, setEnter] = useState(false);
+  const [isEnter, setEnter] = useState(true);
   const [isStatus, setStatus] = useState();
   const [isResults, setResults] = useState(false);
   
