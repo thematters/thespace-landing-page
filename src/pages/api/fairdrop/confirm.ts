@@ -123,6 +123,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       await redisClient.set(
         userId,
         JSON.stringify({
+          env: process.env.NEXT_PUBLIC_RUNTIME_ENV || "",
           account,
           authorId,
           tweetId,
