@@ -120,10 +120,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     // record to redis
     try {
+      const key = `${
+        process.env.NEXT_PUBLIC_RUNTIME_ENV || "development"
+      }:${userId}`;
       await redisClient.set(
-        userId,
+        key,
         JSON.stringify({
-          env: process.env.NEXT_PUBLIC_RUNTIME_ENV || "",
           account,
           authorId,
           tweetId,
