@@ -8,7 +8,7 @@ import Airdrop from "./Airdrop";
 import FollowUs from "~/components/FollowUs";
 import AboutSpaceToken from "~/components/AboutSpaceToken";
 
-import * as pkgInfo from "@/package.json";
+import pkgInfo from "@/package.json";
 
 import {
   provider,
@@ -36,11 +36,15 @@ const Claim: NextPage = () => {
     process.env.NEXT_PUBLIC_SITE_DOMAIN || "thespace.game"
   }${router.asPath}`;
   const [isEntrance, setIsEntrance] = useState(true);
+  const amountPerAddress =
+    process.env.NEXT_PUBLIC_FAIRDROP_AMOUNT_PER_ADDRESS || "your";
 
   return (
     <>
       <Head>
-        <title key="title">Claim Your $SPACE | {pkgInfo.title}</title>
+        <title key="title">
+          Claim {amountPerAddress} $SPACE | {pkgInfo.title}
+        </title>
         <link key="canonicalUrl" rel="canonical" href={canonicalUrl} />
       </Head>
       <Provider client={client}>

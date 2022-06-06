@@ -16,7 +16,7 @@ import AboutSpaceToken from "~/components/AboutSpaceToken";
 
 import styles from "./styles.module.sass";
 
-import * as pkgInfo from "@/package.json";
+import pkgInfo from "@/package.json";
 
 const Homepage: NextPage = () => {
   const router = useRouter();

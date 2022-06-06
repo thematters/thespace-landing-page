@@ -1,6 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
-import * as pkgInfo from "@/package.json";
+import pkgInfo from "@/package.json";
 
 class TheSpaceDocument extends Document {
   render() {
