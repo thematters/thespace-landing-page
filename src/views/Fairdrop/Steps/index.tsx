@@ -21,7 +21,7 @@ const Steps: React.FC<StepsProps> = ({ next }) => {
     exipredAt: String,
     signerSig: String,
   });
-  const [twitterUrl, setTwitterUrl] = useState(String);
+  const [twitterUrl, setTwitterUrl] = useState('');
 
   const account = accountData?.address;
 
@@ -34,7 +34,12 @@ const Steps: React.FC<StepsProps> = ({ next }) => {
       setClaimData(data);
       setStep(2);
     } catch (e) {
+      // 已申請過
       // next("not_eligible");
+      // next("under_review");
+      
+      // 無法申請
+      // next("have_send");
     }
     setLoading(false);
   };
@@ -69,6 +74,7 @@ const Steps: React.FC<StepsProps> = ({ next }) => {
       });
       next("success");
     } catch (e) {
+      // 已發過 tweet
       // next("already_posted");
     }
     setLoading(false);

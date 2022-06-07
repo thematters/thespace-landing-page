@@ -39,8 +39,8 @@ const Fairdrop: NextPage = () => {
   const canonicalUrl = `https://${
     process.env.NEXT_PUBLIC_SITE_DOMAIN || "thespace.game"
   }${router.asPath}`;
-  const [isEnter, setEnter] = useState(false);
-  const [resultStatus, setResultStatus] = useState(String);
+  const [entered, setEntered] = useState(true);
+  const [resultStatus, setResultStatus] = useState('');
 
   return (
     <>
@@ -52,7 +52,7 @@ const Fairdrop: NextPage = () => {
         <main className={styles.claim} id="main">
           {resultStatus !== "" ? (
             <Results status={resultStatus} />
-          ) : isEnter ? (
+          ) : entered ? (
             <Steps
               next={(val: any) => {
                 setResultStatus(val);
@@ -60,7 +60,7 @@ const Fairdrop: NextPage = () => {
             />
           ) : (
             <>
-              <Entrance next={() => setEnter(true)} />
+              <Entrance next={() => setEntered(true)} />
               <AboutSpaceToken
                 extraBtn={
                   <a
