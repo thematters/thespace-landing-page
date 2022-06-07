@@ -3,15 +3,15 @@ import classNames from "classnames";
 import { useAccount } from "wagmi";
 
 import Toast from "~/components/Toast";
-import { fetchWrapper } from "~/utils";
+import { fetchWrapper, getFairdropSignMessage } from "~/utils";
 
 import styles from "./styles.module.sass";
 
 type StepsProps = {
-  next: (val: any) => void;
+  back: (val: any) => void;
 };
 
-const Steps: React.FC<StepsProps> = ({ next }) => {
+const Steps: React.FC<StepsProps> = ({ back }) => {
   const [step, setStep] = useState(0);
   const [checked, setChecked] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -37,11 +37,11 @@ const Steps: React.FC<StepsProps> = ({ next }) => {
       setStep(2);
     } catch (e) {
       // 已申請過
-      // next("not_eligible");
-      // next("under_review");
+      // back("not_eligible");
+      // back("under_review");
       
       // 無法申請
-      // next("have_send");
+      // back("have_send");
     }
     setLoading(false);
   };
@@ -64,20 +64,21 @@ const Steps: React.FC<StepsProps> = ({ next }) => {
   const claimSpace = async () => {
     setLoading(true);
     try {
-      const message =
-        "I am signing this message to prove the ownership of this address.\n\nNonce: " +
-        claimData.nonce +
-        "\nExpiredAt: " +
-        claimData.exipredAt;
-      await fetchWrapper.post(`/api/fairdrop/confirm`, {
-        ...claimData,
-        claimerSig: message,
-        tweetURL: twitterUrl,
+      const message = getFairdropSignMessage({
+        account: claimData.account,
+        nonce: claimData.nonce,
+        expiredAt: claimData.exipredAt,
       });
-      next("success");
+      console.log(message)
+      // await fetchWrapper.post(`/api/fairdrop/confirm`, {
+      //   ...claimData,
+      //   claimerSig: message,
+      //   tweetURL: twitterUrl,
+      // });
+      // back("success");
     } catch (e) {
       // 已發過 tweet
-      // next("already_posted");
+      // back("already_posted");
     }
     setLoading(false);
   };
@@ -87,6 +88,7 @@ const Steps: React.FC<StepsProps> = ({ next }) => {
 
   return (
     <section className={styles.steps}>
+      {step === 2 && <Toast status="success" reason="Signed successfully"/>}
       <div className="container">
         <div className={styles.title}>
           <h2>Claim {amountPerAddress} $SPACE</h2>
@@ -130,14 +132,11 @@ const Steps: React.FC<StepsProps> = ({ next }) => {
               <div className="d-flex justify-content-between align-items-center">
                 <span>Verify your Twitter account</span>
                 {step === 2 && (
-                  <>
-                    <Toast status="success" />
-                    <div className="buttons">
-                      <button className="btn fill" onClick={verifyTwitterAccount}>
-                        Verify
-                      </button>
-                    </div>
-                  </>
+                  <div className="buttons">
+                    <button className="btn fill" onClick={verifyTwitterAccount}>
+                      Verify
+                    </button>
+                  </div>
                 )}
               </div>
             </li>
