@@ -2,6 +2,7 @@ import { useState } from "react";
 import classNames from "classnames";
 import { useAccount } from "wagmi";
 
+import Toast from "~/components/Toast";
 import { fetchWrapper } from "~/utils";
 
 import styles from "./styles.module.sass";
@@ -31,6 +32,7 @@ const Steps: React.FC<StepsProps> = ({ next }) => {
       const data = await fetchWrapper.get(
         "/api/fairdrop/nonce?account=" + account
       );
+      console.log(data)
       setClaimData(data);
       setStep(2);
     } catch (e) {
@@ -128,11 +130,14 @@ const Steps: React.FC<StepsProps> = ({ next }) => {
               <div className="d-flex justify-content-between align-items-center">
                 <span>Verify your Twitter account</span>
                 {step === 2 && (
-                  <div className="buttons">
-                    <button className="btn fill" onClick={verifyTwitterAccount}>
-                      Verify
-                    </button>
-                  </div>
+                  <>
+                    <Toast status="success" />
+                    <div className="buttons">
+                      <button className="btn fill" onClick={verifyTwitterAccount}>
+                        Verify
+                      </button>
+                    </div>
+                  </>
                 )}
               </div>
             </li>
