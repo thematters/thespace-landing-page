@@ -135,7 +135,6 @@ const Airdrop: React.FC<AirdropProps> = ({ back }) => {
           )}
 
           {!loading && total <= 0 && <Empty />}
-          
         </div>
       </section>
     </>

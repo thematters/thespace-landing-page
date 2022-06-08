@@ -7,8 +7,8 @@ export interface FairdropProps {
   back: () => void;
 }
 
-const Fairdrop: React.FC<FairdropProps> = ({ back }) => {  
-  const [resultStatus, setResultStatus] = useState('');
+const Fairdrop: React.FC<FairdropProps> = ({ back }) => {
+  const [resultStatus, setResultStatus] = useState("");
   return (
     <>
       {resultStatus !== "" ? (

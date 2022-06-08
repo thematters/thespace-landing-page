@@ -13,7 +13,8 @@ export interface ResultsProps {
 }
 
 const Results = ({ status }: ResultsProps) => {
-  const amountPerAddress = process.env.NEXT_PUBLIC_FAIRDROP_AMOUNT_PER_ADDRESS || "your";
+  const amountPerAddress =
+    process.env.NEXT_PUBLIC_FAIRDROP_AMOUNT_PER_ADDRESS || "your";
 
   return (
     <section className={styles.results}>

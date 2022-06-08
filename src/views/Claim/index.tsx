@@ -58,7 +58,7 @@ const Claim: NextPage = () => {
           {isEntrance && <Entrance next={() => setIsEntrance(false)} />}
 
           {/********** Airdrop **********/}
-          {/* {!isEntrance && <Airdrop back={() => setIsEntrance(true)} />} */}          
+          {/* {!isEntrance && <Airdrop back={() => setIsEntrance(true)} />} */}
           {/* <AboutSpaceToken
             extraBtn={
               <a
@@ -96,30 +96,31 @@ const Claim: NextPage = () => {
 
           {/********** Fairdrop **********/}
           {!isEntrance && <Fairdrop back={() => setIsEntrance(true)} />}
-          {isEntrance && <AboutSpaceToken
-            extraBtn={
-              <a
-                className="btn fill"
-                href="#"
-                target="_blank"
-                rel="noreferrer"
-              >
-                How to claim
-              </a>
-            }
-            illu={
-              <div className={`${styles.illu_3}`}>
-                <figure>
-                  <Image
-                    className="img-fluid"
-                    src={aboutIllu3Svg}
-                    alt="About Illustration"
-                  />
-                </figure>
-              </div>
-            }
-          />
-          }
+          {isEntrance && (
+            <AboutSpaceToken
+              extraBtn={
+                <a
+                  className="btn fill"
+                  href="#"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  How to claim
+                </a>
+              }
+              illu={
+                <div className={`${styles.illu_3}`}>
+                  <figure>
+                    <Image
+                      className="img-fluid"
+                      src={aboutIllu3Svg}
+                      alt="About Illustration"
+                    />
+                  </figure>
+                </div>
+              }
+            />
+          )}
           <FollowUs />
         </main>
       </Provider>

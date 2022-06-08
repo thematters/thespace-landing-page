@@ -5,7 +5,7 @@ import {
   useContractRead,
   useSignMessage,
   useContractWrite,
-  useSendTransaction
+  useSendTransaction,
 } from "wagmi";
 
 import Toast from "~/components/Toast";
@@ -34,44 +34,42 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
   const account = accountData?.address;
 
   // Verify Ethereum address
-  const { 
+  const {
     data: sigData,
-    isSuccess: sigSuccess, 
-    signMessage
+    isSuccess: sigSuccess,
+    signMessage,
   } = useSignMessage();
 
   useEffect(() => {
     if (!sigSuccess) {
       return;
     } else {
-      setStep(2)
+      setStep(2);
     }
   }, [sigSuccess]);
 
   // 連結錢包後檢查是否 claimed
-  const { 
-    data: claimedData,
-  } = useContractRead(
+  const { data: claimedData } = useContractRead(
     {
       addressOrName: process.env.FAIRDROP_CONTRACT || "",
       contractInterface: fairdropABI,
     },
-    'addressClaimed',
+    "addressClaimed",
     { args: account }
-  )
+  );
 
   useEffect(() => {
     if (!account) {
       return;
     }
-    if(claimedData){
+    if (claimedData) {
       back("under_review");
     }
   }, [account]);
 
-  // const { 
-  //   data: userIdData, 
-  //   isError: userIdError, 
+  // const {
+  //   data: userIdData,
+  //   isError: userIdError,
   //   isLoading: userIdLoading,
   // } = useContractRead(
   //   {
@@ -79,12 +77,12 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
   //     contractInterface: fairdropABI,
   //   },
   //   'userIdClaimed',
-  //   { args: userId } 
+  //   { args: userId }
   // )
 
   const {
     data: claimTx,
-    isSuccess: claimSuccess, 
+    isSuccess: claimSuccess,
     write,
   } = useContractWrite(
     {
@@ -93,18 +91,18 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
     },
     "claim"
   );
-  
+
   const verifyETHAddress = async () => {
     try {
       const data = await fetchWrapper.get(
         "/api/fairdrop/nonce?account=" + account
-      )
+      );
       setClaimData(data);
       signMessage({
         message: getFairdropSignMessage({
           account: data.account || "",
           nonce: data.nonce || "",
-          expiredAt: data.expiredAt || null
+          expiredAt: data.expiredAt || null,
         }),
       });
     } catch (e) {
@@ -136,7 +134,7 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
     );
     setStep(4);
   };
-  
+
   const claimSpace = async () => {
     try {
       const data = await fetchWrapper.post("/api/fairdrop/confirm", {
@@ -144,8 +142,8 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
         claimerSig: sigData,
         tweetURL: twitterUrl,
       });
-      console.log(data)
-      write() 
+      console.log(data);
+      write();
     } catch (e) {
       // 已發過 tweet
       // back("already_posted");
@@ -156,15 +154,17 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
     if (!claimSuccess) {
       return;
     }
-    back("success")
+    back("success");
   }, [claimSuccess]);
 
   const validateTwitter = (url: String) => {
-    const rules = new RegExp(/http(?:s)?:\/\/(?:www\.)?twitter\.com\/([a-zA-Z0-9_]+)/)
-    const validate = rules.test(url)
-    setTwitterValidate(validate)
-    setTwitterUrl(url)
-  }
+    const rules = new RegExp(
+      /http(?:s)?:\/\/(?:www\.)?twitter\.com\/([a-zA-Z0-9_]+)/
+    );
+    const validate = rules.test(url);
+    setTwitterValidate(validate);
+    setTwitterUrl(url);
+  };
 
   const amountPerAddress =
     process.env.NEXT_PUBLIC_FAIRDROP_AMOUNT_PER_ADDRESS || "your";
