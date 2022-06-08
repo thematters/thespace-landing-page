@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import classNames from "classnames";
-import { useAccount, useContractRead, useSignMessage, useContractWrite } from "wagmi";
+import {
+  useAccount,
+  useContractRead,
+  useSignMessage,
+  useContractWrite,
+} from "wagmi";
 
 import Toast from "~/components/Toast";
 import { fetchWrapper, getFairdropSignMessage, fairdropABI } from "~/utils";
@@ -23,7 +28,7 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
   const [checked, setChecked] = useState(false);
   const { data: accountData } = useAccount();
   const [claimData, setClaimData] = useState<ClaimData>();
-  const [twitterUrl, setTwitterUrl] = useState('');
+  const [twitterUrl, setTwitterUrl] = useState("");
 
   const account = accountData?.address;
 
@@ -38,14 +43,16 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
       // 已申請過
       // back("not_eligible");
       // back("under_review");
-      
       // 無法申請
       // back("have_send");
     }
   };
   const verifyTwitterAccount = () => {
+    const content = `Inspired by #RedditPlace, The Space is the world's #NFT #pixelart graffiti wall where players can own, color, and trade pixels under Harberger Tax and Universal Basic Income (UBI).\n#TheSpaceGame #烏塗邦\n\n💰Claim your $SPACE💰 at https://thespace.game/claim?nonce=${claimData?.nonce}`;
     window.open(
-      "https://twitter.com/intent/tweet?text=%F0%9F%92%B0Claim%20your%20%24SPACE%F0%9F%92%B0%20at%20https%3A%2F%2Fthespace.game%2Fclaim%20Inspired%20by%20%23RedditPlace%2C%20The%20Space%20is%20the%20world%26%2339%3Bs%20%23NFT%20%23pixelart%20graffiti%20wall%20where%20players%20can%20own%2C%20color%2C%20and%20trade%20pixels%20under%20Harberger%20Tax%20and%20Universal%20Basic%20Income%20%28UBI%29.%20%23TheSpaceGame%20%23%E7%83%8F%E5%A1%97%E9%82%A6",
+      `https://twitter.com/intent/tweet?text=${window.encodeURIComponent(
+        content
+      )}`,
       "mywin",
       "left=0,top=0,width=650,height=650"
     );
@@ -62,9 +69,9 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
   const claimSpace = async () => {
     try {
       const message = await getFairdropSignMessage({
-        account: claimData?.account || '',
-        nonce: claimData?.nonce || '',
-        expiredAt: claimData?.exipredAt || 0
+        account: claimData?.account || "",
+        nonce: claimData?.nonce || "",
+        expiredAt: claimData?.exipredAt || 0,
       });
       const data = await fetchWrapper.post(`/api/fairdrop/confirm`, {
         ...claimData,
@@ -92,7 +99,7 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
 
   return (
     <section className={styles.steps}>
-      {step === 2 && <Toast status="success" reason="Signed successfully"/>}
+      {step === 2 && <Toast status="success" reason="Signed successfully" />}
       <div className="container">
         <div className={styles.title}>
           <h2>Claim {amountPerAddress} $SPACE</h2>
