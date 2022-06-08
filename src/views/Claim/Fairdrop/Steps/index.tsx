@@ -5,6 +5,7 @@ import {
   useContractRead,
   useSignMessage,
   useContractWrite,
+  useSendTransaction
 } from "wagmi";
 
 import Toast from "~/components/Toast";
@@ -29,21 +30,38 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
   const { data: accountData } = useAccount();
   const [claimData, setClaimData] = useState<ClaimData>();
   const [twitterUrl, setTwitterUrl] = useState("");
-  const { data, isError, isLoading, isSuccess, signMessage } = useSignMessage();
+  
+  const { 
+    data: sig, 
+    isSuccess: sigSuccess, 
+    signMessage 
+  } = useSignMessage();
+
+  const {
+    data: claimTx,
+    isSuccess: claimSuccess, 
+    write,
+  } = useContractWrite(
+    {
+      addressOrName: process.env.FAIRDROP_CONTRACT || "",
+      contractInterface: fairdropABI,
+    },
+    "claim"
+  );
 
   const account = accountData?.address;
   const verifyETHAddress = async () => {
     try {
-      const res = await fetchWrapper.get(
+      const data = await fetchWrapper.get(
         "/api/fairdrop/nonce?account=" + account
       )
-      setClaimData(res);
+      setClaimData(data);
       signMessage({
         message: getFairdropSignMessage({
-          account: res.account || "",
-          nonce: res.nonce || "",
-          expiredAt: res.exipredAt || null
-        })
+          account: data.account || "",
+          nonce: data.nonce || "",
+          expiredAt: data.exipredAt || null
+        }),
       });
     } catch (e) {
       // 已申請過
@@ -53,12 +71,13 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
       // back("have_send");
     }
   };
+
   useEffect(() => {
-    if (isSuccess) {
+    if (sigSuccess) {
       setStep(2)
-      console.log(data)
     }
-  }, [isSuccess]);
+  }, [sigSuccess]);
+
   const verifyTwitterAccount = () => {
     const content = `Inspired by #RedditPlace, The Space is the world's #NFT #pixelart graffiti wall where players can own, color, and trade pixels under Harberger Tax and Universal Basic Income (UBI).\n#TheSpaceGame #烏塗邦\n\n💰Claim your $SPACE💰 at https://thespace.game/claim?nonce=${claimData?.nonce}`;
     window.open(
@@ -70,6 +89,7 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
     );
     setStep(3);
   };
+  
   const followUs = () => {
     window.open(
       "https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fpublish.twitter.com%2F&ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Efollow%7Ctwgr%5Ethespace2022&screen_name=thespace2022",
@@ -78,29 +98,26 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
     );
     setStep(4);
   };
+  
   const claimSpace = async () => {
     try {
-      const res = await fetchWrapper.post(`/api/fairdrop/confirm`, {
+      const data = await fetchWrapper.post(`/api/fairdrop/confirm`, {
         ...claimData,
-        claimerSig: data,
+        claimerSig: sig,
         tweetURL: twitterUrl,
       });
-      console.log(res)
-
-      // const { data, isError, isLoading, write } = useContractWrite(
-      //   {
-      //     addressOrName: process.env.FAIRDROP_CONTRACT || "",
-      //     contractInterface: fairdropABI,
-      //   },
-      //   'claim',
-      // )
-      // write()
-      // back("success");
+      write()
     } catch (e) {
       // 已發過 tweet
       // back("already_posted");
     }
   };
+
+  useEffect(() => {
+    if (claimSuccess) {
+      back("success")
+    }
+  }, [claimSuccess]);
 
   const validateTwitter = () => {
 
