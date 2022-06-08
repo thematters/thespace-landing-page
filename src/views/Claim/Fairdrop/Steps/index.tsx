@@ -29,7 +29,8 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
   const [checked, setChecked] = useState(false);
   const { data: accountData } = useAccount();
   const [claimData, setClaimData] = useState<ClaimData>();
-  const [twitterUrl, setTwitterUrl] = useState("");
+  const [twitterValidate, setTwitterValidate] = useState(false);
+  const [twitterUrl, setTwitterUrl] = useState();
   const account = accountData?.address;
 
   // Verify Ethereum address
@@ -138,12 +139,13 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
   
   const claimSpace = async () => {
     try {
-      const data = await fetchWrapper.post(`/api/fairdrop/confirm`, {
+      const data = await fetchWrapper.post("/api/fairdrop/confirm", {
         ...claimData,
         claimerSig: sigData,
         tweetURL: twitterUrl,
       });
-      write()
+      console.log(data)
+      write() 
     } catch (e) {
       // 已發過 tweet
       // back("already_posted");
@@ -157,8 +159,11 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
     back("success")
   }, [claimSuccess]);
 
-  const validateTwitter = () => {
-
+  const validateTwitter = (url: String) => {
+    const rules = new RegExp(/http(?:s)?:\/\/(?:www\.)?twitter\.com\/([a-zA-Z0-9_]+)/)
+    const validate = rules.test(url)
+    setTwitterValidate(validate)
+    setTwitterUrl(url)
   }
 
   const amountPerAddress =
@@ -248,14 +253,14 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
                   <input
                     className="form-control"
                     type="text"
-                    onChange={(e) => setTwitterUrl(e.target.value)}
+                    onChange={(e) => validateTwitter(e.target.value)}
                     required
                   />
                   <div className={`${styles.buttons} buttons`}>
                     <button
                       className="btn fill"
                       onClick={claimSpace}
-                      disabled={twitterUrl === ""}
+                      disabled={!twitterValidate}
                     >
                       Claim
                     </button>
