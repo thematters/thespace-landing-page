@@ -96,7 +96,7 @@ const Claim: NextPage = () => {
 
           {/********** Fairdrop **********/}
           {!isEntrance && <Fairdrop back={() => setIsEntrance(true)} />}
-          <AboutSpaceToken
+          {isEntrance && <AboutSpaceToken
             extraBtn={
               <a
                 className="btn fill"
@@ -119,6 +119,7 @@ const Claim: NextPage = () => {
               </div>
             }
           />
+          }
           <FollowUs />
         </main>
       </Provider>

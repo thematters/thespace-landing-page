@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import classNames from "classnames";
-import { useAccount } from "wagmi";
+import { useAccount, useContractRead, useSignMessage } from "wagmi";
 
 import Toast from "~/components/Toast";
-import { fetchWrapper, getFairdropSignMessage } from "~/utils";
+import { fetchWrapper, getFairdropSignMessage, fairdropABI } from "~/utils";
 
 import styles from "./styles.module.sass";
 
@@ -16,31 +16,23 @@ type ClaimData = {
   nonce: string;
   exipredAt: number;
   signerSig: String;
-} & { [key: string]: string };
+};
 
 const Steps: React.FC<StepsProps> = ({ back }) => {
   const [step, setStep] = useState(0);
   const [checked, setChecked] = useState(false);
-  const [loading, setLoading] = useState(false);
   const { data: accountData } = useAccount();
   const [claimData, setClaimData] = useState<ClaimData>();
   const [twitterUrl, setTwitterUrl] = useState('');
 
-  const data = {
-
-  }
-
   const account = accountData?.address;
 
   const verifyETHAddress = async () => {
-    setLoading(true);
     try {
       const data = await fetchWrapper.get(
         "/api/fairdrop/nonce?account=" + account
       );
-      console.log(data)
       setClaimData(data);
-      console.log(claimData)
       setStep(2);
     } catch (e) {
       // 已申請過
@@ -50,7 +42,6 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
       // 無法申請
       // back("have_send");
     }
-    setLoading(false);
   };
   const verifyTwitterAccount = () => {
     window.open(
@@ -69,26 +60,23 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
     setStep(4);
   };
   const claimSpace = async () => {
-    setLoading(true);
     try {
-      const message = getFairdropSignMessage({
-        account: claimData?.account,
-        nonce: claimData?.nonce,
-        expiredAt: claimData?.exipredAt
+      const message = await getFairdropSignMessage({
+        account: claimData?.account || '',
+        nonce: claimData?.nonce || '',
+        expiredAt: claimData?.exipredAt || 0
       });
-      console.log(message)
       const data = await fetchWrapper.post(`/api/fairdrop/confirm`, {
         ...claimData,
         claimerSig: message,
         tweetURL: twitterUrl,
       });
-      console.log(data)
+      // console.log(data)
       // back("success");
     } catch (e) {
       // 已發過 tweet
       // back("already_posted");
     }
-    setLoading(false);
   };
 
   const amountPerAddress =
