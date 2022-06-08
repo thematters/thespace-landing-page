@@ -20,7 +20,7 @@ type StepsProps = {
 type ClaimData = {
   account: string;
   nonce: string;
-  exipredAt: number;
+  expiredAt: number;
   signerSig: String;
 };
 
@@ -30,25 +30,56 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
   const { data: accountData } = useAccount();
   const [claimData, setClaimData] = useState<ClaimData>();
   const [twitterUrl, setTwitterUrl] = useState("");
-  
+  const account = accountData?.address;
+
+  // Verify Ethereum address
   const { 
-    data: sig, 
+    data: sigData,
     isSuccess: sigSuccess, 
-    signMessage 
+    signMessage
   } = useSignMessage();
 
-  const {
-    data: hasClaimed,
-    error,
-    isLoading,
-    refetch,
+  useEffect(() => {
+    if (!sigSuccess) {
+      return;
+    } else {
+      setStep(2)
+    }
+  }, [sigSuccess]);
+
+  // 連結錢包後檢查是否 claimed
+  const { 
+    data: claimedData,
   } = useContractRead(
     {
       addressOrName: process.env.FAIRDROP_CONTRACT || "",
       contractInterface: fairdropABI,
     },
-    "addressClaimed"
-  );
+    'addressClaimed',
+    { args: account }
+  )
+
+  useEffect(() => {
+    if (!account) {
+      return;
+    }
+    if(claimedData){
+      back("under_review");
+    }
+  }, [account]);
+
+  // const { 
+  //   data: userIdData, 
+  //   isError: userIdError, 
+  //   isLoading: userIdLoading,
+  // } = useContractRead(
+  //   {
+  //     addressOrName: process.env.FAIRDROP_CONTRACT || "",
+  //     contractInterface: fairdropABI,
+  //   },
+  //   'userIdClaimed',
+  //   { args: userId } 
+  // )
 
   const {
     data: claimTx,
@@ -61,8 +92,7 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
     },
     "claim"
   );
-
-  const account = accountData?.address;
+  
   const verifyETHAddress = async () => {
     try {
       const data = await fetchWrapper.get(
@@ -73,7 +103,7 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
         message: getFairdropSignMessage({
           account: data.account || "",
           nonce: data.nonce || "",
-          expiredAt: data.exipredAt || null
+          expiredAt: data.expiredAt || null
         }),
       });
     } catch (e) {
@@ -84,27 +114,6 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
       // back("have_send");
     }
   };
-
-  useEffect(() => {
-    if (!account) {
-      return;
-    }
-    refetch();
-  }, [account]);
-
-  useEffect(() => {
-    if (!hasClaimed) {
-      return;
-    }
-    back("have_send");
-  }, [hasClaimed]);
-
-  useEffect(() => {
-    if (!sigSuccess) {
-      return;
-    }
-    setStep(2)
-  }, [sigSuccess]);
 
   const verifyTwitterAccount = () => {
     const content = `Inspired by #RedditPlace, The Space is the world's #NFT #pixelart graffiti wall where players can own, color, and trade pixels under Harberger Tax and Universal Basic Income (UBI).\n#TheSpaceGame #烏塗邦\n\n💰Claim your $SPACE💰 at https://thespace.game/claim?nonce=${claimData?.nonce}`;
@@ -131,7 +140,7 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
     try {
       const data = await fetchWrapper.post(`/api/fairdrop/confirm`, {
         ...claimData,
-        claimerSig: sig,
+        claimerSig: sigData,
         tweetURL: twitterUrl,
       });
       write()
@@ -142,9 +151,10 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
   };
 
   useEffect(() => {
-    if (claimSuccess) {
-      back("success")
+    if (!claimSuccess) {
+      return;
     }
+    back("success")
   }, [claimSuccess]);
 
   const validateTwitter = () => {

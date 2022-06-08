@@ -53,7 +53,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       });
     }
 
-    // check exipredAt
+    // check expiredAt
     const expiredAt = new Date(body.expiredAt * 1000);
     if (expiredAt < new Date()) {
       return res.status(400).send({
@@ -156,7 +156,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       account,
       userId,
       nonce: body.nonce,
-      exipredAt: body.expiredAt,
+      expiredAt: body.expiredAt,
       sigV: splitedSig.v,
       sigR: splitedSig.r,
       sigS: splitedSig.s,
