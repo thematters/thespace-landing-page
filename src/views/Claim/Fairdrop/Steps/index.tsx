@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import classNames from "classnames";
-import { useAccount, useContractRead, useSignMessage } from "wagmi";
+import { useAccount, useContractRead, useSignMessage, useContractWrite } from "wagmi";
 
 import Toast from "~/components/Toast";
 import { fetchWrapper, getFairdropSignMessage, fairdropABI } from "~/utils";
@@ -71,7 +71,15 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
         claimerSig: message,
         tweetURL: twitterUrl,
       });
-      console.log(data)
+
+      // const { data, isError, isLoading, write } = useContractWrite(
+      //   {
+      //     addressOrName: process.env.FAIRDROP_CONTRACT || "",
+      //     contractInterface: fairdropABI,
+      //   },
+      //   'claim',
+      // )
+      // write()
       // back("success");
     } catch (e) {
       // 已發過 tweet
