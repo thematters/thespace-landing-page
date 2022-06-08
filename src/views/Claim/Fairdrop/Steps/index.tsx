@@ -11,18 +11,24 @@ type StepsProps = {
   back: (val: any) => void;
 };
 
+type ClaimData = {
+  account: string;
+  nonce: string;
+  exipredAt: number;
+  signerSig: String;
+} & { [key: string]: string };
+
 const Steps: React.FC<StepsProps> = ({ back }) => {
   const [step, setStep] = useState(0);
   const [checked, setChecked] = useState(false);
   const [loading, setLoading] = useState(false);
   const { data: accountData } = useAccount();
-  const [claimData, setClaimData] = useState({
-    account: String,
-    nonce: String,
-    exipredAt: String,
-    signerSig: String,
-  });
+  const [claimData, setClaimData] = useState<ClaimData>();
   const [twitterUrl, setTwitterUrl] = useState('');
+
+  const data = {
+
+  }
 
   const account = accountData?.address;
 
@@ -34,6 +40,7 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
       );
       console.log(data)
       setClaimData(data);
+      console.log(claimData)
       setStep(2);
     } catch (e) {
       // 已申請過
@@ -65,16 +72,17 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
     setLoading(true);
     try {
       const message = getFairdropSignMessage({
-        account: claimData.account,
-        nonce: claimData.nonce,
-        expiredAt: claimData.exipredAt,
+        account: claimData?.account,
+        nonce: claimData?.nonce,
+        expiredAt: claimData?.exipredAt
       });
       console.log(message)
-      // await fetchWrapper.post(`/api/fairdrop/confirm`, {
-      //   ...claimData,
-      //   claimerSig: message,
-      //   tweetURL: twitterUrl,
-      // });
+      const data = await fetchWrapper.post(`/api/fairdrop/confirm`, {
+        ...claimData,
+        claimerSig: message,
+        tweetURL: twitterUrl,
+      });
+      console.log(data)
       // back("success");
     } catch (e) {
       // 已發過 tweet
