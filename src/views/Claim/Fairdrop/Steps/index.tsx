@@ -38,6 +38,19 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
   } = useSignMessage();
 
   const {
+    data: hasClaimed,
+    error,
+    isLoading,
+    refetch,
+  } = useContractRead(
+    {
+      addressOrName: process.env.FAIRDROP_CONTRACT || "",
+      contractInterface: fairdropABI,
+    },
+    "addressClaimed"
+  );
+
+  const {
     data: claimTx,
     isSuccess: claimSuccess, 
     write,
@@ -73,9 +86,24 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
   };
 
   useEffect(() => {
-    if (sigSuccess) {
-      setStep(2)
+    if (!account) {
+      return;
     }
+    refetch();
+  }, [account]);
+
+  useEffect(() => {
+    if (!hasClaimed) {
+      return;
+    }
+    back("have_send");
+  }, [hasClaimed]);
+
+  useEffect(() => {
+    if (!sigSuccess) {
+      return;
+    }
+    setStep(2)
   }, [sigSuccess]);
 
   const verifyTwitterAccount = () => {
@@ -89,7 +117,7 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
     );
     setStep(3);
   };
-  
+
   const followUs = () => {
     window.open(
       "https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fpublish.twitter.com%2F&ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Efollow%7Ctwgr%5Ethespace2022&screen_name=thespace2022",
