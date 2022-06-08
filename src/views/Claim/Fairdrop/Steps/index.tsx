@@ -71,7 +71,7 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
         claimerSig: message,
         tweetURL: twitterUrl,
       });
-      // console.log(data)
+      console.log(data)
       // back("success");
     } catch (e) {
       // 已發過 tweet
