@@ -29,16 +29,22 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
   const { data: accountData } = useAccount();
   const [claimData, setClaimData] = useState<ClaimData>();
   const [twitterUrl, setTwitterUrl] = useState("");
+  const { data, isError, isLoading, isSuccess, signMessage } = useSignMessage();
 
   const account = accountData?.address;
-
   const verifyETHAddress = async () => {
     try {
-      const data = await fetchWrapper.get(
+      const res = await fetchWrapper.get(
         "/api/fairdrop/nonce?account=" + account
-      );
-      setClaimData(data);
-      setStep(2);
+      )
+      setClaimData(res);
+      signMessage({
+        message: getFairdropSignMessage({
+          account: res.account || "",
+          nonce: res.nonce || "",
+          expiredAt: res.exipredAt || null
+        })
+      });
     } catch (e) {
       // 已申請過
       // back("not_eligible");
@@ -47,6 +53,12 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
       // back("have_send");
     }
   };
+  useEffect(() => {
+    if (isSuccess) {
+      setStep(2)
+      console.log(data)
+    }
+  }, [isSuccess]);
   const verifyTwitterAccount = () => {
     const content = `Inspired by #RedditPlace, The Space is the world's #NFT #pixelart graffiti wall where players can own, color, and trade pixels under Harberger Tax and Universal Basic Income (UBI).\n#TheSpaceGame #烏塗邦\n\n💰Claim your $SPACE💰 at https://thespace.game/claim?nonce=${claimData?.nonce}`;
     window.open(
@@ -68,16 +80,12 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
   };
   const claimSpace = async () => {
     try {
-      const message = await getFairdropSignMessage({
-        account: claimData?.account || "",
-        nonce: claimData?.nonce || "",
-        expiredAt: claimData?.exipredAt || 0,
-      });
-      const data = await fetchWrapper.post(`/api/fairdrop/confirm`, {
+      const res = await fetchWrapper.post(`/api/fairdrop/confirm`, {
         ...claimData,
-        claimerSig: message,
+        claimerSig: data,
         tweetURL: twitterUrl,
       });
+      console.log(res)
 
       // const { data, isError, isLoading, write } = useContractWrite(
       //   {
@@ -93,6 +101,10 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
       // back("already_posted");
     }
   };
+
+  const validateTwitter = () => {
+
+  }
 
   const amountPerAddress =
     process.env.NEXT_PUBLIC_FAIRDROP_AMOUNT_PER_ADDRESS || "your";
