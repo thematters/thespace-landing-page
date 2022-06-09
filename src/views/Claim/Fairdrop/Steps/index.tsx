@@ -5,23 +5,27 @@ import {
   useContractRead,
   useSignMessage,
   useContractWrite,
-  useSendTransaction,
 } from "wagmi";
 
 import Toast from "~/components/Toast";
 import { fetchWrapper, getFairdropSignMessage, fairdropABI } from "~/utils";
 
 import styles from "./styles.module.sass";
+import { ResultStatus } from "../Results";
 
 type StepsProps = {
-  back: (val: any) => void;
+  back: (val: ResultStatus) => void;
 };
 
 type ClaimData = {
   account: string;
   nonce: string;
+  userId?: string;
   expiredAt: number;
   signerSig: String;
+  sigV?: string;
+  sigR?: string;
+  sigS?: string;
 };
 
 const Steps: React.FC<StepsProps> = ({ back }) => {
@@ -30,7 +34,7 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
   const { data: accountData } = useAccount();
   const [claimData, setClaimData] = useState<ClaimData>();
   const [twitterValidate, setTwitterValidate] = useState(false);
-  const [twitterUrl, setTwitterUrl] = useState();
+  const [twitterUrl, setTwitterUrl] = useState("");
   const account = accountData?.address;
 
   // Verify Ethereum address
@@ -48,8 +52,8 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
     }
   }, [sigSuccess]);
 
-  // 連結錢包後檢查是否 claimed
-  const { data: claimedData } = useContractRead(
+  // Check if address is already claimed
+  const { data: isAddressClaimed } = useContractRead(
     {
       addressOrName: process.env.NEXT_PUBLIC_FAIRDROP_CONTRACT || "",
       contractInterface: fairdropABI,
@@ -58,28 +62,17 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
     { args: account }
   );
 
-  useEffect(() => {
-    if (!account) {
-      return;
-    }
-    if (claimedData) {
-      back("under_review");
-    }
-  }, [account]);
+  // Check if userId (Twitter account) is already claimed
+  const { data: isUserIdClaimed } = useContractRead(
+    {
+      addressOrName: process.env.NEXT_PUBLIC_FAIRDROP_CONTRACT || "",
+      contractInterface: fairdropABI,
+    },
+    "userIdClaimed",
+    { args: claimData?.userId }
+  );
 
-  // const {
-  //   data: userIdData,
-  //   isError: userIdError,
-  //   isLoading: userIdLoading,
-  // } = useContractRead(
-  //   {
-  //     addressOrName: process.env.NEXT_PUBLIC_FAIRDROP_CONTRACT || "",
-  //     contractInterface: fairdropABI,
-  //   },
-  //   'userIdClaimed',
-  //   { args: userId }
-  // )
-
+  // Claim fairdrop
   const {
     data: claimTx,
     isSuccess: claimSuccess,
@@ -91,6 +84,12 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
     },
     "claim"
   );
+
+  useEffect(() => {
+    if (isAddressClaimed || isUserIdClaimed) {
+      back("already_claimed");
+    }
+  }, [isAddressClaimed, isUserIdClaimed]);
 
   const verifyETHAddress = async () => {
     try {
@@ -110,12 +109,12 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
       // back("not_eligible");
       // back("under_review");
       // 無法申請
-      // back("have_send");
+      // back("already_claimed");
     }
   };
 
   const verifyTwitterAccount = () => {
-    const content = `Inspired by #RedditPlace, The Space is the world's #NFT #pixelart graffiti wall where players can own, color, and trade pixels under Harberger Tax and Universal Basic Income (UBI).\n#TheSpaceGame #烏塗邦\n\n💰Claim your $SPACE💰 at https://thespace.game/claim?nonce=${claimData?.nonce}`;
+    const content = `Inspired by #RedditPlace, The Space is the world's #NFT #pixelart graffiti wall where players can own, color, and trade pixels under Harberger Tax and Universal Basic Income (UBI).\n#TheSpaceGame #烏塗邦\n\n💰Claim your $SPACE💰 at: https://thespace.game/claim?nonce=${claimData?.nonce}`;
     window.open(
       `https://twitter.com/intent/tweet?text=${window.encodeURIComponent(
         content
@@ -142,7 +141,7 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
         claimerSig: sigData,
         tweetURL: twitterUrl,
       });
-      console.log(data);
+      setClaimData(data);
       write({
         args: [
           data.account,
@@ -167,7 +166,7 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
     back("success");
   }, [claimSuccess]);
 
-  const validateTwitter = (url: String) => {
+  const validateTwitter = (url: string) => {
     const rules = new RegExp(
       /http(?:s)?:\/\/(?:www\.)?twitter\.com\/([a-zA-Z0-9_]+)/
     );
