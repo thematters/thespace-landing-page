@@ -28,11 +28,7 @@ const Fairdrop: React.FC<FairdropProps> = ({ back }) => {
       {resultStatus !== "" ? (
         <Results status={resultStatus} />
       ) : (
-        <Steps
-          back={(val) => {
-            setResultStatus(val);
-          }}
-        />
+        <Steps setResultStatus={setResultStatus} />
       )}
     </>
   );

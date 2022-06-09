@@ -5,6 +5,7 @@ import {
   useContractRead,
   useSignMessage,
   useContractWrite,
+  useWaitForTransaction,
 } from "wagmi";
 
 import Toast from "~/components/Toast";
@@ -14,7 +15,7 @@ import styles from "./styles.module.sass";
 import { ResultStatus } from "../Results";
 
 type StepsProps = {
-  back: (val: ResultStatus) => void;
+  setResultStatus: (val: ResultStatus) => void;
 };
 
 type ClaimData = {
@@ -28,29 +29,31 @@ type ClaimData = {
   sigS?: string;
 };
 
-const Steps: React.FC<StepsProps> = ({ back }) => {
+const amountPerAddress =
+  process.env.NEXT_PUBLIC_FAIRDROP_AMOUNT_PER_ADDRESS || "your";
+
+const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
+  const { data: accountData } = useAccount();
+  const account = accountData?.address;
+
   const [step, setStep] = useState(0);
   const [checked, setChecked] = useState(false);
-  const { data: accountData } = useAccount();
-  const [claimData, setClaimData] = useState<ClaimData>();
+
+  const [apiError, setAPIError] = useState("");
+  const [apiLoading, setAPILoading] = useState(false);
+
   const [twitterValidate, setTwitterValidate] = useState(false);
   const [twitterUrl, setTwitterUrl] = useState("");
-  const account = accountData?.address;
+  const [claimData, setClaimData] = useState<ClaimData>();
 
   // Verify Ethereum address
   const {
     data: sigData,
+    error: sigError,
     isSuccess: sigSuccess,
+    isLoading: sigLoading,
     signMessage,
   } = useSignMessage();
-
-  useEffect(() => {
-    if (!sigSuccess) {
-      return;
-    } else {
-      setStep(2);
-    }
-  }, [sigSuccess]);
 
   // Check if address is already claimed
   const { data: isAddressClaimed } = useContractRead(
@@ -75,7 +78,9 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
   // Claim fairdrop
   const {
     data: claimTx,
-    isSuccess: claimSuccess,
+    error: claimError,
+    // isSuccess: claimSuccess,
+    isLoading: claimLoading,
     write,
   } = useContractWrite(
     {
@@ -85,11 +90,15 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
     "claim"
   );
 
-  useEffect(() => {
-    if (isAddressClaimed || isUserIdClaimed) {
-      back("already_claimed");
-    }
-  }, [isAddressClaimed, isUserIdClaimed]);
+  // wait claimging transaction
+  const { isLoading: isWaitingTx } = useWaitForTransaction({
+    hash: claimTx?.hash,
+    confirmations: 3,
+    onSuccess(data) {
+      setResultStatus("success");
+      console.log("Success", data);
+    },
+  });
 
   const verifyETHAddress = async () => {
     try {
@@ -105,11 +114,8 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
         }),
       });
     } catch (e) {
-      // 已申請過
-      // back("not_eligible");
-      // back("under_review");
-      // 無法申請
-      // back("already_claimed");
+      // API error handling
+      // setAPIError("");
     }
   };
 
@@ -134,6 +140,15 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
     setStep(4);
   };
 
+  const validateTwitter = (url: string) => {
+    const rules = new RegExp(
+      /http(?:s)?:\/\/(?:www\.)?twitter\.com\/([a-zA-Z0-9_]+)/
+    );
+    const validate = rules.test(url);
+    setTwitterValidate(validate);
+    setTwitterUrl(url);
+  };
+
   const claimSpace = async () => {
     try {
       const data = await fetchWrapper.post("/api/fairdrop/confirm", {
@@ -154,30 +169,32 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
         ],
       });
     } catch (e) {
-      // 已發過 tweet
-      // back("already_posted");
+      // API error handling
+      // setAPIError("");
     }
   };
+
+  /**
+   * Status
+   */
+  useEffect(() => {
+    if (sigSuccess) {
+      setStep(2);
+    }
+  }, [sigSuccess]);
 
   useEffect(() => {
-    if (!claimSuccess) {
-      return;
+    if (isAddressClaimed || isUserIdClaimed) {
+      setResultStatus("already_claimed");
     }
-    back("success");
-  }, [claimSuccess]);
+  }, [isAddressClaimed, isUserIdClaimed]);
 
-  const validateTwitter = (url: string) => {
-    const rules = new RegExp(
-      /http(?:s)?:\/\/(?:www\.)?twitter\.com\/([a-zA-Z0-9_]+)/
-    );
-    const validate = rules.test(url);
-    setTwitterValidate(validate);
-    setTwitterUrl(url);
-  };
+  const isLoading = apiLoading || sigLoading || claimLoading || isWaitingTx;
+  const error = apiError || sigError || claimError;
 
-  const amountPerAddress =
-    process.env.NEXT_PUBLIC_FAIRDROP_AMOUNT_PER_ADDRESS || "your";
-
+  /**
+   * Rendering
+   */
   return (
     <section className={styles.steps}>
       {step === 2 && <Toast status="success" reason="Signed successfully" />}
@@ -185,8 +202,8 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
         <div className={styles.title}>
           <h2>Claim {amountPerAddress} $SPACE</h2>
           <p>
-            Congrats! You’re eligible to claim tokens. Here are instruction to
-            proceed:
+            Congrats! You&apos;re eligible to claim tokens. Here are instruction
+            to proceed:
           </p>
         </div>
         <div className={styles.content}>
@@ -207,9 +224,15 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
                 <span>Verify your Ethereum address</span>
                 {step === 1 && (
                   <div className="buttons">
-                    <button className="btn fill" onClick={verifyETHAddress}>
-                      Verify
-                    </button>
+                    {isLoading ? (
+                      <button className={`${styles.loading} btn fill disabled`}>
+                        &nbsp;
+                      </button>
+                    ) : (
+                      <button className="btn fill" onClick={verifyETHAddress}>
+                        Verify
+                      </button>
+                    )}
                   </div>
                 )}
               </div>
