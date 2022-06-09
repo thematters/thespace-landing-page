@@ -181,7 +181,7 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
 
   return (
     <section className={styles.steps}>
-      {step === 2 && <Toast status="success" reason="Signed successfully" />}
+      {sigSuccess && <Toast status="success" reason="Signed successfully" />}
       <div className="container">
         <div className={styles.title}>
           <h2>Claim {amountPerAddress} $SPACE</h2>
