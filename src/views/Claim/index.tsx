@@ -54,16 +54,16 @@ const Claim: NextPage = () => {
           {!isEntrance && <Fairdrop back={() => setIsEntrance(true)} />}
           {isEntrance && (
             <AboutSpaceToken
-              extraBtn={
-                <a
-                  className="btn fill"
-                  href="#"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  How to claim
-                </a>
-              }
+              // extraBtn={
+              //   <a
+              //     className="btn fill"
+              //     href="#"
+              //     target="_blank"
+              //     rel="noreferrer"
+              //   >
+              //     How to claim
+              //   </a>
+              // }
               illu={
                 <div className={`${styles.illu_3}`}>
                   <figure>
