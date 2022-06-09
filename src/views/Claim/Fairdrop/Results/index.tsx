@@ -3,13 +3,7 @@ import Link from "next/link";
 import styles from "./styles.module.sass";
 
 export interface ResultsProps {
-  status?:
-    | "not_eligible"
-    | "have_send"
-    | "under_review"
-    | "already_posted"
-    | "success"
-    | String;
+  status?: "have_send" | "success";
 }
 
 const Results = ({ status }: ResultsProps) => {
@@ -27,24 +21,13 @@ const Results = ({ status }: ResultsProps) => {
             <>
               <h3>Claim Successfully</h3>
               <p>
-                We've sent $SPACE to your wallet. Please remember to add$SPACE
-                to MetaMask. Let's go playground.
+                We&apos;ve sent $SPACE to your wallet. Please remember to add
+                $SPACE to MetaMask. Let&apos;s go playground.
               </p>
             </>
           )}
-          {status === "already_posted" && <h3>You already posted a tweet.</h3>}
-          {status === "under_review" && (
-            <>
-              <h3>Your submission is under review.</h3>
-              <p>Get $SPACE at Unisawp</p>
-            </>
-          )}
-          {status === "have_send" && <h3>We’ve sent $SPACE to your wallet.</h3>}
-          {status === "not_eligible" && (
-            <>
-              <h3>Unfortunately! You’re not eligible :(</h3>
-              <p>Get $SPACE at Unisawp</p>
-            </>
+          {status === "have_send" && (
+            <h3>We&apos;ve sent $SPACE to your wallet.</h3>
           )}
         </div>
         <div className={`${styles.illu} text-center`}>
@@ -74,16 +57,6 @@ const Results = ({ status }: ResultsProps) => {
               </a>
             </>
           )}
-          {status === "already_posted" && (
-            <Link href="/">
-              <a className="btn fill">Back to Home</a>
-            </Link>
-          )}
-          {status === "under_review" && (
-            <Link href="/claim">
-              <a className="btn fill">Get $SPACE</a>
-            </Link>
-          )}
           {status === "have_send" && (
             <a
               className="btn fill"
@@ -93,11 +66,6 @@ const Results = ({ status }: ResultsProps) => {
             >
               Launch App
             </a>
-          )}
-          {status === "not_eligible" && (
-            <Link href="/claim">
-              <a className="btn fill">Get $SPACE</a>
-            </Link>
           )}
         </div>
       </div>
