@@ -145,7 +145,7 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
   };
 
   const verifyTwitterAccount = () => {
-    const content = `Inspired by #RedditPlace, The Space is the world's #NFT #pixelart graffiti wall where players can own, color, and trade pixels under Harberger Tax and Universal Basic Income (UBI).\n#TheSpaceGame #烏塗邦\n\n💰Claim your $SPACE💰 at: https://thespace.game/claim?nonce=${claimData?.nonce}`;
+    const content = `Inspired by #RedditPlace, The Space is the world's first #NFT #pixelart graffiti wall where players can own, color, and trade pixels under Harberger Tax and Universal Basic Income (UBI).\n#TheSpaceGame #烏塗邦\n\n💰Claim your $SPACE💰 at: https://thespace.game/claim?nonce=${claimData?.nonce}`;
     window.open(
       `https://twitter.com/intent/tweet?text=${window.encodeURIComponent(
         content
@@ -166,11 +166,7 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
   };
 
   const validateTwitter = (url: string) => {
-    // const validate = isTweetURL(url);
-    const rules = new RegExp(
-      /http(?:s)?:\/\/(?:www\.)?twitter\.com\/([a-zA-Z0-9_]+)/
-    );
-    const validate = rules.test(url);
+    const validate = isTweetURL(url);
     setTwitterValidate(validate);
     setTwitterUrl(url);
   };
@@ -281,7 +277,7 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
               })}
             >
               <div className="d-flex justify-content-between align-items-center">
-                <span>Verify your Twitter account</span>
+                <span>Verify your Twitter account and tweet</span>
                 {step === 2 && (
                   <div className="buttons">
                     <button className="btn fill" onClick={verifyTwitterAccount}>
