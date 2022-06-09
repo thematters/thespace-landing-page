@@ -8,7 +8,32 @@ section.steps
       margin: 0 0 40px 0
     p
       @entend %article-body
+  .address
+    @extend %article-body
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    font-weight: 400
+    margin: 0 0 16px 0
+    a
+      font-weight: 500
+      &::after
+        +bg('/img/icon-link.svg')
+        content: ''
+        display: inline-block
+        width: 16px
+        height: 16px
+        margin: 0 0 0 8px
+        transform: translateY(1px)
+    .extraBtn
+      font-size: 12px
+      font-weight: 500
+      line-height: 1
+      padding: 6px 8px
+      border-radius: 20px
+      border: 2px solid #333
   .content
+    margin: 40px 0 0 0
     ol
       @extend %article-title
       &.default
