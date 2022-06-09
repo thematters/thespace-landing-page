@@ -9,7 +9,7 @@ import { getFairdropSignMessage } from "~/utils";
 import { logToSlack, SlackMsgType } from "../utils/slack";
 
 const wallet = new ethers.Wallet(process.env.FAIRDROP_PRIVATE_KEY || "");
-const fairdropContract = process.env.FAIRDROP_CONTRACT || "";
+const fairdropContract = process.env.NEXT_PUBLIC_FAIRDROP_CONTRACT || "";
 const twitterClient = new Client(process.env.TWITTER_BEARER_TOKEN || "");
 const redisClient = new Redis(process.env.REDIS_CONNECTION_URL || "");
 

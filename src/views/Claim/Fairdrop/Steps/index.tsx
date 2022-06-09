@@ -51,7 +51,7 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
   // 連結錢包後檢查是否 claimed
   const { data: claimedData } = useContractRead(
     {
-      addressOrName: process.env.FAIRDROP_CONTRACT || "",
+      addressOrName: process.env.NEXT_PUBLIC_FAIRDROP_CONTRACT || "",
       contractInterface: fairdropABI,
     },
     "addressClaimed",
@@ -73,7 +73,7 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
   //   isLoading: userIdLoading,
   // } = useContractRead(
   //   {
-  //     addressOrName: process.env.FAIRDROP_CONTRACT || "",
+  //     addressOrName: process.env.NEXT_PUBLIC_FAIRDROP_CONTRACT || "",
   //     contractInterface: fairdropABI,
   //   },
   //   'userIdClaimed',
@@ -86,7 +86,7 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
     write,
   } = useContractWrite(
     {
-      addressOrName: process.env.FAIRDROP_CONTRACT || "",
+      addressOrName: process.env.NEXT_PUBLIC_FAIRDROP_CONTRACT || "",
       contractInterface: fairdropABI,
     },
     "claim"
@@ -143,7 +143,17 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
         tweetURL: twitterUrl,
       });
       console.log(data);
-      write();
+      write({
+        args: [
+          data.account,
+          data.userId,
+          data.nonce,
+          data.expiredAt,
+          data.sigV,
+          data.sigR,
+          data.sigS,
+        ],
+      });
     } catch (e) {
       // 已發過 tweet
       // back("already_posted");
