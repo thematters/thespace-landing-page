@@ -128,7 +128,7 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
       const data = await fetchWrapper.get(
         "/api/fairdrop/nonce?account=" + account
       );
-      setClaimData(data);
+      setClaimData({ ...claimData, ...data });
       signMessage({
         message: getFairdropSignMessage({
           account: data.account || "",
@@ -177,11 +177,14 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
 
     try {
       const data = await fetchWrapper.post("/api/fairdrop/confirm", {
-        ...claimData,
+        account: claimData?.account,
+        nonce: claimData?.nonce,
+        expiredAt: claimData?.expiredAt,
+        signerSig: claimData?.signerSig,
         claimerSig: sigData,
         tweetURL: twitterUrl,
       });
-      setClaimData(data);
+      setClaimData({ ...claimData, ...data });
       write({
         args: [
           data.account,
