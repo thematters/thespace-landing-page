@@ -8,7 +8,7 @@ const Empty = () => {
       </div>
       <div className={`${styles.illu} text-center`}>
         <figure>
-          <img className="img-fluid" src="/img/airdrop-illu.svg" />
+          <img className="img-fluid" src="/img/results-illu-1.svg" />
         </figure>
       </div>
       <div className={`${styles.buttons} buttons text-end`}>

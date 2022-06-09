@@ -3,6 +3,9 @@ export * from "./wallet";
 export * from "./airdrop";
 export * from "./fairdrop";
 
+/**
+ * MetaMask
+ */
 export const canAddToMetaMask = () =>
   "ethereum" in window && window?.ethereum?.request;
 
@@ -20,4 +23,19 @@ export const addTokenToMetaMask = async () => {
       },
     },
   });
+};
+
+/**
+ * Twitter
+ */
+const REGEXP_TWEET =
+  /^https?:\/\/twitter\.com\/(?:#!\/)?(\w+)\/status(es)?\/(\d+)/;
+
+export const getTweetID = (url: string) => {
+  const matches = url.match(REGEXP_TWEET);
+  return matches && matches[3];
+};
+
+export const isTweetURL = (url: string) => {
+  return REGEXP_TWEET.test(url);
 };

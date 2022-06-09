@@ -59,7 +59,11 @@ const Header = () => {
         </Link>
       </div>
       <div className={`${styles.menu} ${activeClasses}`}>
-        <a href="https://wiki.thespace.game/press-release" target="_blank" rel="noreferrer">
+        <a
+          href="https://wiki.thespace.game/press-release"
+          target="_blank"
+          rel="noreferrer"
+        >
           News
         </a>
         <a href="https://wiki.thespace.game/" target="_blank" rel="noreferrer">
@@ -99,8 +103,11 @@ const Header = () => {
               <a className={`${styles.btn} ${styles.fill}`}>Claim $SPACE</a>
             </Link>
           )
-        ) : (
-          isLaunch ? (
+        ) : isLaunch ? (
+          <>
+            <Link href="/claim">
+              <a className={`${styles.btn} ${styles.frame}`}>Claim $SPACE</a>
+            </Link>
             <a
               className={`${styles.btn} ${styles.fill}`}
               href="https://app.thespace.game/"
@@ -109,16 +116,16 @@ const Header = () => {
             >
               Launch App
             </a>
-          ) : (
-            <a
-              className={`${styles.btn} ${styles.fill}`}
-              href="https://discord.gg/thespace"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Join Discord
-            </a>
-          )
+          </>
+        ) : (
+          <a
+            className={`${styles.btn} ${styles.fill}`}
+            href="https://discord.gg/thespace"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Join Discord
+          </a>
         )}
       </div>
       <div className={`${styles.burger} ${activeClasses} d-lg-none`}>
@@ -130,7 +137,7 @@ const Header = () => {
         >
           <div className={`${styles.time}`}>
             <div className="d-flex justify-content-between align-items-center">
-              <span className={styles.icon}></span>   
+              <span className={styles.icon}></span>
               <span>
                 <b className="d-none d-lg-inline-block">
                   The Space Official Launch in

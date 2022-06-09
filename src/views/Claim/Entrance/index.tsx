@@ -55,6 +55,13 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
       isConnecting && pendingConnector?.id === injectedConnector.id,
     [styles.active]: activeConnector?.id === injectedConnector.id,
   });
+  const walletConnectClasses = classNames({
+    [styles.walletconnect]: true,
+    // [styles.disabled]: !injectedConnector.ready,
+    [styles.connecting]:
+      isConnecting && pendingConnector?.id === walletConnectConnector.id,
+    [styles.active]: activeConnector?.id === walletConnectConnector.id,
+  });
   const amountPerAddress =
     process.env.NEXT_PUBLIC_FAIRDROP_AMOUNT_PER_ADDRESS || "your";
 
@@ -63,7 +70,7 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
       <section className={`${styles.entrance} text-center`}>
         <div className={styles.illu}>
           <figure>
-            <img className="img-fluid" src="/img/entrance-illu.svg" />
+            <img className="img-fluid" src="/img/entrance-illu-1.svg" />
           </figure>
         </div>
         <div className={`${styles.container} container`}>
@@ -84,12 +91,12 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
               MetaMask
             </button>
 
-            {/* <button
+            <button
               className={walletConnectClasses}
               onClick={() => connect(walletConnectConnector)}
             >
               WalletConnect
-            </button> */}
+            </button>
 
             {isUnsupportedNetwork && (
               <p className={styles.error}>

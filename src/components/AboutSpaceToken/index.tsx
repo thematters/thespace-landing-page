@@ -1,36 +1,18 @@
-import Image from "next/image";
-
-import aboutIllu1Svg from "../../../public/img/about-illu-1.svg";
-import aboutIllu2Svg from "../../../public/img/about-illu-2.svg";
-
 import styles from "./styles.module.sass";
 
 type AboutSpaceTokenProps = {
   extraBtn?: React.ReactNode;
+  illu?: React.ReactNode;
 };
 
-const AboutSpaceToken: React.FC<AboutSpaceTokenProps> = ({ extraBtn }) => {
+const AboutSpaceToken: React.FC<AboutSpaceTokenProps> = ({
+  extraBtn,
+  illu,
+}) => {
   return (
     <section className={styles.about}>
       <div className={`${styles.container} container text-center`}>
-        <div className={`${styles.illu_1} d-none d-md-block`}>
-          <figure>
-            <Image
-              className="img-fluid"
-              src={aboutIllu1Svg}
-              alt="About Illustration"
-            />
-          </figure>
-        </div>
-        <div className={`${styles.illu_2}`}>
-          <figure>
-            <Image
-              className="img-fluid"
-              src={aboutIllu2Svg}
-              alt="About Illustration"
-            />
-          </figure>
-        </div>
+        {illu}
         <div className={styles.title}>
           <h2>About $SPACE</h2>
         </div>

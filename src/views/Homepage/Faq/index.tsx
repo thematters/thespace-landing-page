@@ -5,9 +5,7 @@ const Faq = () => {
     <section className={styles.faq} id="faq">
       <div className="container">
         <div className={styles.title}>
-          <h2 className={styles.bar}>
-            FAQ
-          </h2>
+          <h2 className={styles.bar}>FAQ</h2>
         </div>
         <div className={styles.content}>
           <details>
@@ -47,7 +45,8 @@ const Faq = () => {
               <p>
                 Harberger Tax is an economic policy that optimizes the
                 distribution of public resources with the power of the market to
-                increase society’s welfare. It can be summarized in two rules:
+                increase society&apos;s welfare. It can be summarized in two
+                rules:
               </p>
               <ul>
                 <li>
@@ -67,8 +66,8 @@ const Faq = () => {
               <p>
                 Under Harberger Tax, every pixel owner in The Space must set a
                 price for their plot and pay a tax corresponding to this price.
-                If the owner doesn’t want to sell the pixel, they must pay a
-                higher tax to keep it. This deters any pixel owner from
+                If the owner doesn&apos;t want to sell the pixel, they must pay
+                a higher tax to keep it. This deters any pixel owner from
                 monopolizing a plot and keeps the market liquid at all times.
               </p>
             </div>

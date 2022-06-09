@@ -42,7 +42,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write \"{,!(.next|build|node_modules|coverage|out)/**/}*.{ts,js,jsx,tsx,json,md}\""
+    "format": "prettier --write \"{,!(.next|build|public|node_modules|coverage|out)/**/}*.{ts,js,jsx,tsx,json,md}\""
   },
   "dependencies": {
     "@slack/webhook": "^6.1.0",
