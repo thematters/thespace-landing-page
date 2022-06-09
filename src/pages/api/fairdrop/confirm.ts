@@ -5,7 +5,7 @@ import Redis from "ioredis";
 
 import { throwInternalServerError } from "../utils/error";
 import { ErrorCode } from "../enums/error";
-import { getFairdropSignMessage } from "~/utils";
+import { getFairdropSignMessage, getTweetID } from "~/utils";
 import { logToSlack, SlackMsgType } from "../utils/slack";
 
 const wallet = new ethers.Wallet(process.env.FAIRDROP_PRIVATE_KEY || "");
@@ -87,7 +87,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
      * Retrieve Tweet
      */
     // check tweet url
-    const tweetId = body.tweetURL?.split("/").pop();
+    const tweetId = getTweetID(body.tweetURL);
     if (!tweetId) {
       return res.status(400).send({
         code: ErrorCode.INVALID_TWEET_URL,
