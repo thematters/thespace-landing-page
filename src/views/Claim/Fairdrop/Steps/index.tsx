@@ -32,6 +32,21 @@ type ClaimData = {
 const amountPerAddress =
   process.env.NEXT_PUBLIC_FAIRDROP_AMOUNT_PER_ADDRESS || "your";
 
+const getAPIErrorMessage = (code: string) => {
+  const msg = {
+    INTERNAL_ERROR:
+      "A server error occurred while processing the request, please retry.",
+    INVALID_ACCOUNT: "Wallet address is invalid.",
+    INVALID_NONCE: "Nonce is invalid, please retry.",
+    INVALID_SIGNATURE: "Signature is invalid, please retry.",
+    INVALID_TWEET_URL:
+      "Please provide a tweet url that Twitter account has never claimed.",
+    CLAIM_EXPIRED: "Fairdrop claim has expired, please retry.",
+  };
+
+  return msg[code as keyof typeof msg] || msg.INTERNAL_ERROR;
+};
+
 const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
   const { data: accountData } = useAccount();
   const account = accountData?.address;
@@ -101,6 +116,8 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
   });
 
   const verifyETHAddress = async () => {
+    setAPILoading(true);
+
     try {
       const data = await fetchWrapper.get(
         "/api/fairdrop/nonce?account=" + account
@@ -113,10 +130,12 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
           expiredAt: data.expiredAt || null,
         }),
       });
-    } catch (e) {
+    } catch (error) {
       // API error handling
-      // setAPIError("");
+      const code = (error as any)?.code;
+      setAPIError(getAPIErrorMessage(code));
     }
+    setAPILoading(false);
   };
 
   const verifyTwitterAccount = () => {
@@ -150,6 +169,8 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
   };
 
   const claimSpace = async () => {
+    setAPILoading(true);
+
     try {
       const data = await fetchWrapper.post("/api/fairdrop/confirm", {
         ...claimData,
@@ -170,8 +191,11 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
       });
     } catch (e) {
       // API error handling
-      // setAPIError("");
+      const code = (error as any)?.code;
+      setAPIError(getAPIErrorMessage(code));
     }
+
+    setAPILoading(false);
   };
 
   /**
@@ -190,7 +214,7 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
   }, [isAddressClaimed, isUserIdClaimed]);
 
   const isLoading = apiLoading || sigLoading || claimLoading || isWaitingTx;
-  const error = apiError || sigError || claimError;
+  const error = apiError || sigError?.message || claimError?.message;
 
   /**
    * Rendering
@@ -198,6 +222,7 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
   return (
     <section className={styles.steps}>
       {sigSuccess && <Toast status="success" reason="Signed successfully" />}
+      {error && <Toast status="failed" reason={error} />}
       <div className="container">
         <div className={styles.title}>
           <h2>Claim {amountPerAddress} $SPACE</h2>
@@ -289,13 +314,19 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
                     required
                   />
                   <div className={`${styles.buttons} buttons`}>
-                    <button
-                      className="btn fill"
-                      onClick={claimSpace}
-                      disabled={!twitterValidate}
-                    >
-                      Claim
-                    </button>
+                    {isLoading ? (
+                      <button className={`${styles.loading} btn fill disabled`}>
+                        &nbsp;
+                      </button>
+                    ) : (
+                      <button
+                        className="btn fill"
+                        onClick={claimSpace}
+                        disabled={!twitterValidate}
+                      >
+                        Claim
+                      </button>
+                    )}
                   </div>
                 </div>
               )}
