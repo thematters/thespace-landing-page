@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { addTokenToMetaMask } from "~/utils";
 
 import styles from "./styles.module.sass";
 
@@ -23,8 +24,15 @@ const Results = ({ status }: ResultsProps) => {
             <>
               <h3>Claim Successfully</h3>
               <p>
-                We&apos;ve sent $SPACE to your wallet. Please remember to add
-                $SPACE to MetaMask. Let&apos;s go playground.
+                We&apos;ve sent $SPACE to your wallet. Please remember to{" "}
+                <button
+                  type="button"
+                  className={styles.highlight}
+                  onClick={() => addTokenToMetaMask()}
+                >
+                  add $SPACE to MetaMask
+                </button>
+                . Let&apos;s go playground.
               </p>
             </>
           )}
