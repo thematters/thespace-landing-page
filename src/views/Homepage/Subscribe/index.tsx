@@ -2,7 +2,7 @@ import styles from "./styles.module.sass";
 
 const Subscribe = () => {
   return (
-    <section className={styles.subscribe}>
+    <section className={styles.subscribe} id="subscribe">
       <div className="container d-flex flex-column align-items-center">
         <div className={`${styles.title} text-center`}>
           <h2>Subscribe for Updates</h2>

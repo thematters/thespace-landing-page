@@ -20,7 +20,6 @@ const SocialMedia = () => {
           </div>
         </div>
         <div className={styles.board}>
-          <script async src="https://platform.twitter.com/widgets.js" />
           <a
             className="twitter-timeline"
             href="https://twitter.com/thespace2022"
@@ -29,6 +28,7 @@ const SocialMedia = () => {
           >
             Tweets by @thespace2022
           </a>
+          <script async src="https://platform.twitter.com/widgets.js" />
         </div>
       </div>
     </section>

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 import { useCountdown } from "~/hooks";
-import * as pkgInfo from "@/package.json";
+import pkgInfo from "@/package.json";
 
 import styles from "./styles.module.sass";
 

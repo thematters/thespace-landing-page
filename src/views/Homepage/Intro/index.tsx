@@ -59,12 +59,13 @@ const Intro = () => {
             <div className={styles.title}>
               <h1 className={styles.bar}>
                 The Space: <br />
-                World’s First NFT Pixel Art Game Governed by Radical Markets
+                World&apos;s First NFT Pixel Art Game Governed by Radical
+                Markets
               </h1>
             </div>
             <div className={styles.text}>
               <p>
-                Inspired by r/place, The Space is the world’s NFT pixel art
+                Inspired by r/place, The Space is the world&apos;s NFT pixel art
                 graffiti wall where players can own, color, and trade pixels
                 under Harberger Tax and Universal Basic Income (UBI). Pixels are
                 minted as ERC-721 tokens, and are fractional NFTs under common
