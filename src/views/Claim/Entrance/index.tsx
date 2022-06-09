@@ -50,14 +50,14 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
 
   const metaMaskClasses = classNames({
     [styles.metamask]: true,
-    [styles.disabled]: !injectedConnector.ready,
+    // [styles.disabled]: !injectedConnector.ready,
     [styles.connecting]:
       isConnecting && pendingConnector?.id === injectedConnector.id,
     [styles.active]: activeConnector?.id === injectedConnector.id,
   });
   const walletConnectClasses = classNames({
     [styles.walletconnect]: true,
-    [styles.disabled]: !injectedConnector.ready,
+    // [styles.disabled]: !injectedConnector.ready,
     [styles.connecting]:
       isConnecting && pendingConnector?.id === walletConnectConnector.id,
     [styles.active]: activeConnector?.id === walletConnectConnector.id,
