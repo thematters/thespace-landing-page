@@ -5,11 +5,11 @@ import Redis from "ioredis";
 
 import { throwInternalServerError } from "../utils/error";
 import { ErrorCode } from "../enums/error";
-import { getFairdropSignMessage } from "~/utils";
+import { getFairdropSignMessage, getTweetID } from "~/utils";
 import { logToSlack, SlackMsgType } from "../utils/slack";
 
 const wallet = new ethers.Wallet(process.env.FAIRDROP_PRIVATE_KEY || "");
-const fairdropContract = process.env.FAIRDROP_CONTRACT || "";
+const fairdropContract = process.env.NEXT_PUBLIC_FAIRDROP_CONTRACT || "";
 const twitterClient = new Client(process.env.TWITTER_BEARER_TOKEN || "");
 const redisClient = new Redis(process.env.REDIS_CONNECTION_URL || "");
 
@@ -53,7 +53,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       });
     }
 
-    // check exipredAt
+    // check expiredAt
     const expiredAt = new Date(body.expiredAt * 1000);
     if (expiredAt < new Date()) {
       return res.status(400).send({
@@ -87,7 +87,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
      * Retrieve Tweet
      */
     // check tweet url
-    const tweetId = body.tweetURL?.split("/").pop();
+    const tweetId = getTweetID(body.tweetURL);
     if (!tweetId) {
       return res.status(400).send({
         code: ErrorCode.INVALID_TWEET_URL,
@@ -156,7 +156,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       account,
       userId,
       nonce: body.nonce,
-      exipredAt: body.expiredAt,
+      expiredAt: body.expiredAt,
       sigV: splitedSig.v,
       sigR: splitedSig.r,
       sigS: splitedSig.s,

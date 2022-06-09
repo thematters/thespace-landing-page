@@ -2,11 +2,17 @@ import type { NextPage } from "next";
 import { Provider, createClient } from "wagmi";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 import Entrance from "./Entrance";
 import Airdrop from "./Airdrop";
+import Fairdrop from "./Fairdrop";
 import FollowUs from "~/components/FollowUs";
 import AboutSpaceToken from "~/components/AboutSpaceToken";
+
+import aboutIllu1Svg from "../../../public/img/about-illu-1.svg";
+import aboutIllu2Svg from "../../../public/img/about-illu-2.svg";
+import aboutIllu3Svg from "../../../public/img/about-illu-3.svg";
 
 import pkgInfo from "@/package.json";
 
@@ -50,8 +56,10 @@ const Claim: NextPage = () => {
       <Provider client={client}>
         <main className={styles.claim} id="main">
           {isEntrance && <Entrance next={() => setIsEntrance(false)} />}
-          {!isEntrance && <Airdrop back={() => setIsEntrance(true)} />}
-          <AboutSpaceToken
+
+          {/********** Airdrop **********/}
+          {/* {!isEntrance && <Airdrop back={() => setIsEntrance(true)} />} */}
+          {/* <AboutSpaceToken
             extraBtn={
               <a
                 className="btn fill"
@@ -62,7 +70,57 @@ const Claim: NextPage = () => {
                 Initial Airdrop
               </a>
             }
-          />
+            illu={
+              <>
+                <div className={`${styles.illu_1} d-none d-md-block`}>
+                  <figure>
+                    <Image
+                      className="img-fluid"
+                      src={aboutIllu1Svg}
+                      alt="About Illustration"
+                    />
+                  </figure>
+                </div>
+                <div className={`${styles.illu_2}`}>
+                  <figure>
+                    <Image
+                      className="img-fluid"
+                      src={aboutIllu2Svg}
+                      alt="About Illustration"
+                    />
+                  </figure>
+                </div>
+              </>
+            }
+          /> */}
+
+          {/********** Fairdrop **********/}
+          {!isEntrance && <Fairdrop back={() => setIsEntrance(true)} />}
+          {isEntrance && (
+            <AboutSpaceToken
+              extraBtn={
+                <a
+                  className="btn fill"
+                  href="#"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  How to claim
+                </a>
+              }
+              illu={
+                <div className={`${styles.illu_3}`}>
+                  <figure>
+                    <Image
+                      className="img-fluid"
+                      src={aboutIllu3Svg}
+                      alt="About Illustration"
+                    />
+                  </figure>
+                </div>
+              }
+            />
+          )}
           <FollowUs />
         </main>
       </Provider>

@@ -63,7 +63,7 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
       <section className={`${styles.entrance} text-center`}>
         <div className={styles.illu}>
           <figure>
-            <img className="img-fluid" src="/img/entrance-illu.svg" />
+            <img className="img-fluid" src="/img/entrance-illu-1.svg" />
           </figure>
         </div>
         <div className={`${styles.container} container`}>
