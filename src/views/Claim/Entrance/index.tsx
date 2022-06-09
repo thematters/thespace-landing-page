@@ -57,26 +57,27 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
   });
   const walletConnectClasses = classNames({
     [styles.walletconnect]: true,
-    // [styles.disabled]: !walletConnectConnector.ready,
+    // [styles.disabled]: !injectedConnector.ready,
     [styles.connecting]:
       isConnecting && pendingConnector?.id === walletConnectConnector.id,
     [styles.active]: activeConnector?.id === walletConnectConnector.id,
   });
+  const amountPerAddress =
+    process.env.NEXT_PUBLIC_FAIRDROP_AMOUNT_PER_ADDRESS || "your";
 
   return (
     <>
       <section className={`${styles.entrance} text-center`}>
         <div className={styles.illu}>
           <figure>
-            <img className="img-fluid" src="/img/entrance-illu.svg" />
+            <img className="img-fluid" src="/img/entrance-illu-1.svg" />
           </figure>
         </div>
         <div className={`${styles.container} container`}>
           <div className={styles.title}>
-            <h2>Claim Your $SPACE</h2>
+            <h2>Claim {amountPerAddress} $SPACE</h2>
           </div>
           <div className={styles.text}>
-            {/* <strong>May 11, 2022 - May 15, 2022</strong> */}
             <span>
               Before claiming $SPACE, let&apos;s connect your wallet first.
             </span>
@@ -90,12 +91,12 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
               MetaMask
             </button>
 
-            {/* <button
+            <button
               className={walletConnectClasses}
               onClick={() => connect(walletConnectConnector)}
             >
               WalletConnect
-            </button> */}
+            </button>
 
             {isUnsupportedNetwork && (
               <p className={styles.error}>

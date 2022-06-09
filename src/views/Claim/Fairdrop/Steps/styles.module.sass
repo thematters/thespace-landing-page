@@ -1,0 +1,99 @@
+section.steps
+  padding: 42px 0 42px 0
+  margin: 0 0 150px 0
+  .title
+    margin: 0 0 32px 0
+    h2
+      @extend %section-title
+      margin: 0 0 40px 0
+    p
+      @entend %article-body
+  .content
+    ol
+      @extend %article-title
+      &.default
+        padding: 0 0 0 48px
+        margin: 0 0 32px 0
+      &.start
+        padding: 0
+        list-style: none
+        li
+          padding: 16px 24px
+          border-radius: 20px
+          color: #b3b3b3
+          span::before
+            content: ''
+            display: inline-block
+            width: 24px
+            height: 24px
+            border-radius: 50%
+            border: 2px solid #b3b3b3
+            margin: 0 8px 0 0
+            transform: translateY(4px)
+          &.active
+            background-color: $white
+            color: $black
+            span::before
+              background-color: $lime
+              border-color: $black
+          &.actived
+            span::before
+              +bg('/img/icon-success.svg')
+              background-color: $black
+              border-color: $black
+          &.step4 > div
+            margin: 16px 0 0 0
+            input
+              flex: 1
+              margin: 0 24px 0 0
+              border: 1px solid $grey
+              width: 100%
+              height: 56px
+              border-radius: 20px
+              padding: 0 24px
+              color: $grey-dark
+              &::placeholder
+                color: $grey
+                opacity: 1
+              &:-ms-input-placeholder
+                color: $grey
+              &::-ms-input-placeholder
+                color: $grey
+      li
+        margin: 0 0 16px 0
+        &:last-child
+          margin: 0
+    p
+      margin: 0 0 32px 0
+    .form_check
+      @entend %article-body
+      font-weight: 700
+      margin: 0 0 40px 0
+      label
+        a
+          text-decoration: underline
+      input
+        width: 16px
+        height: 16px
+        margin: 0 8px 0 0
+        transform: translateY(2px)
+    .buttons
+      button[disabled]
+        opacity: .2
+    .loading
+      width: 100px
+      &::before
+        +bg('/img/icon-spinner.svg')
+        content: ''
+        display: inline-block
+        position: absolute
+        left: calc(50% - 16px)
+        width: 32px
+        height: 32px
+        animation: spinning 1s infinite linear
+
+@keyframes spinning
+  from
+    transform: rotate(0deg)
+  to
+    transform: rotate(360deg)

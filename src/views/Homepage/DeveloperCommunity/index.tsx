@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import * as pkgInfo from "@/package.json";
+import pkgInfo from "@/package.json";
 
 import developerIlluSvg from "../../../../public/img/developer-illu.svg";
 

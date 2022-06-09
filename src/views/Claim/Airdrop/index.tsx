@@ -71,13 +71,15 @@ const Airdrop: React.FC<AirdropProps> = ({ back }) => {
     process.env.NEXT_PUBLIC_CONTRACT_TOKEN || ""
   );
   const polygonScanAccount = toPolygonAddressUrl(account || "");
+  const amountPerAddress =
+    process.env.NEXT_PUBLIC_FAIRDROP_AMOUNT_PER_ADDRESS || "your";
 
   return (
     <>
       <section className={styles.airdrop}>
         <div className="container">
           <div className={styles.title}>
-            <h2>Claim Your $SPACE</h2>
+            <h2>Claim {amountPerAddress} $SPACE</h2>
           </div>
           <div className={styles.address}>
             Token Address:&nbsp;{" "}
