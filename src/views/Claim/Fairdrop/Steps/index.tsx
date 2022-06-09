@@ -9,7 +9,12 @@ import {
 } from "wagmi";
 
 import Toast from "~/components/Toast";
-import { fetchWrapper, getFairdropSignMessage, fairdropABI } from "~/utils";
+import {
+  fetchWrapper,
+  getFairdropSignMessage,
+  fairdropABI,
+  isTweetURL,
+} from "~/utils";
 
 import styles from "./styles.module.sass";
 import { ResultStatus } from "../Results";
@@ -117,6 +122,7 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
 
   const verifyETHAddress = async () => {
     setAPILoading(true);
+    setAPIError("");
 
     try {
       const data = await fetchWrapper.get(
@@ -160,16 +166,14 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
   };
 
   const validateTwitter = (url: string) => {
-    const rules = new RegExp(
-      /http(?:s)?:\/\/(?:www\.)?twitter\.com\/([a-zA-Z0-9_]+)/
-    );
-    const validate = rules.test(url);
+    const validate = isTweetURL(url);
     setTwitterValidate(validate);
     setTwitterUrl(url);
   };
 
   const claimSpace = async () => {
     setAPILoading(true);
+    setAPIError("");
 
     try {
       const data = await fetchWrapper.post("/api/fairdrop/confirm", {
@@ -189,7 +193,7 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
           data.sigS,
         ],
       });
-    } catch (e) {
+    } catch (error) {
       // API error handling
       const code = (error as any)?.code;
       setAPIError(getAPIErrorMessage(code));
