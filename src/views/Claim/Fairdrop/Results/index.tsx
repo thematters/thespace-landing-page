@@ -2,8 +2,10 @@ import Link from "next/link";
 
 import styles from "./styles.module.sass";
 
+export type ResultStatus = "already_claimed" | "success" | "";
+
 export interface ResultsProps {
-  status?: "have_send" | "success";
+  status?: ResultStatus;
 }
 
 const Results = ({ status }: ResultsProps) => {
@@ -26,7 +28,7 @@ const Results = ({ status }: ResultsProps) => {
               </p>
             </>
           )}
-          {status === "have_send" && (
+          {status === "already_claimed" && (
             <h3>We&apos;ve sent $SPACE to your wallet.</h3>
           )}
         </div>
@@ -34,8 +36,6 @@ const Results = ({ status }: ResultsProps) => {
           <figure>
             {status === "success" ? (
               <img className="img-fluid" src="/img/results-illu-3.svg" />
-            ) : status === "not_eligible" ? (
-              <img className="img-fluid" src="/img/results-illu-1.svg" />
             ) : (
               <img className="img-fluid" src="/img/results-illu-2.svg" />
             )}
@@ -57,7 +57,7 @@ const Results = ({ status }: ResultsProps) => {
               </a>
             </>
           )}
-          {status === "have_send" && (
+          {status === "already_claimed" && (
             <a
               className="btn fill"
               href="https://app.thespace.game/"

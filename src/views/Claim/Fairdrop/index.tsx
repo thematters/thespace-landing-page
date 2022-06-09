@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import Steps from "./Steps";
-import Results from "./Results";
+import Results, { ResultStatus } from "./Results";
 import { useAccount, useNetwork } from "wagmi";
 
 export interface FairdropProps {
@@ -14,7 +14,7 @@ const Fairdrop: React.FC<FairdropProps> = ({ back }) => {
   const account = accountData?.address;
   const isUnsupportedNetwork = activeChain?.unsupported;
 
-  const [resultStatus, setResultStatus] = useState("");
+  const [resultStatus, setResultStatus] = useState<ResultStatus>("");
 
   useEffect(() => {
     if (!account || isUnsupportedNetwork) {

@@ -11,9 +11,10 @@ import Toast from "~/components/Toast";
 import { fetchWrapper, getFairdropSignMessage, fairdropABI } from "~/utils";
 
 import styles from "./styles.module.sass";
+import { ResultStatus } from "../Results";
 
 type StepsProps = {
-  back: (val: "have_send" | "success") => void;
+  back: (val: ResultStatus) => void;
 };
 
 type ClaimData = {
@@ -86,7 +87,7 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
 
   useEffect(() => {
     if (isAddressClaimed || isUserIdClaimed) {
-      back("have_send");
+      back("already_claimed");
     }
   }, [isAddressClaimed, isUserIdClaimed]);
 
@@ -108,7 +109,7 @@ const Steps: React.FC<StepsProps> = ({ back }) => {
       // back("not_eligible");
       // back("under_review");
       // 無法申請
-      // back("have_send");
+      // back("already_claimed");
     }
   };
 
