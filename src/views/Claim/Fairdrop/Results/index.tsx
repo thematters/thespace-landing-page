@@ -52,9 +52,14 @@ const Results = ({ status }: ResultsProps) => {
         <div className={`${styles.buttons} buttons text-center`}>
           {status === "success" && (
             <>
-              <Link href="/#subscribe">
-                <a className="btn frame">Subscribe</a>
-              </Link>
+              <a
+                className="btn frame"
+                href="https://discord.gg/thespace"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Join Discord
+              </a>
               <a
                 className="btn fill"
                 href="https://app.thespace.game/"
