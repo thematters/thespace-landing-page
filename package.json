@@ -42,7 +42,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write \"{,!(.next|build|node_modules|coverage|out)/**/}*.{ts,js,jsx,tsx,json,md}\""
+    "format": "prettier --write \"{,!(.next|build|public|node_modules|coverage|out)/**/}*.{ts,js,jsx,tsx,json,md}\"",
+    "prepare": "husky install"
   },
   "dependencies": {
     "dayjs": "^1.11.2",
@@ -62,6 +63,7 @@
     "eslint": "^8.13.0",
     "eslint-config-next": "^12.1.5",
     "eslint-config-prettier": "^8.5.0",
+    "husky": "^8.0.1",
     "prettier": "^2.6.2",
     "sass": "^1.50.1",
     "typescript": "4.6.3"

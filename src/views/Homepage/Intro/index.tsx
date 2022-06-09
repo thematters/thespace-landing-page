@@ -114,27 +114,8 @@ const Intro = () => {
                     </Link>
                   </>
                 )
-              ) : (
-                isLaunch ? (
-                  <>
-                    <a
-                      className="btn frame"
-                      href="https://discord.gg/thespace"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Join Discord
-                    </a>
-                    <a
-                      className="btn fill"
-                      href="https://app.thespace.game/"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Launch App
-                    </a>
-                  </>
-                ) : (
+              ) : isLaunch ? (
+                <>
                   <a
                     className="btn frame"
                     href="https://discord.gg/thespace"
@@ -143,7 +124,24 @@ const Intro = () => {
                   >
                     Join Discord
                   </a>
-                )
+                  <a
+                    className="btn fill"
+                    href="https://app.thespace.game/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Launch App
+                  </a>
+                </>
+              ) : (
+                <a
+                  className="btn frame"
+                  href="https://discord.gg/thespace"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Join Discord
+                </a>
               )}
             </div>
           </div>

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useCountdown } from "~/hooks";
 import * as pkgInfo from "@/package.json";
 
-
 import styles from "./styles.module.sass";
 
 const Footer = () => {
@@ -57,13 +56,13 @@ const Footer = () => {
                     <a>Home</a>
                   </Link>
                 </li>
-                {isClaim &&
+                {isClaim && (
                   <li>
                     <Link href="/claim">
                       <a>Claim $SPACE</a>
                     </Link>
                   </li>
-                }
+                )}
                 {isLaunch && (
                   <li>
                     <a
@@ -119,7 +118,11 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="https://wiki.thespace.game/the-space-terms-of-use-community-code-of-conduct " target="_blank" rel="noreferrer">
+                  <a
+                    href="https://wiki.thespace.game/the-space-terms-of-use-community-code-of-conduct "
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     Term Of Use
                   </a>
                 </li>
