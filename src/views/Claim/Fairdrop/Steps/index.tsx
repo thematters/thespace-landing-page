@@ -3,6 +3,7 @@ import classNames from "classnames";
 import {
   useAccount,
   useContractRead,
+  useDisconnect,
   useSignMessage,
   useContractWrite,
   useWaitForTransaction,
@@ -14,6 +15,9 @@ import {
   getFairdropSignMessage,
   fairdropABI,
   isTweetURL,
+  addTokenToMetaMask,
+  canAddToMetaMask,
+  toPolygonAddressUrl,
 } from "~/utils";
 
 import styles from "./styles.module.sass";
@@ -53,6 +57,7 @@ const getAPIErrorMessage = (code: string) => {
 };
 
 const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
+  const { disconnect } = useDisconnect();
   const { data: accountData } = useAccount();
   const account = accountData?.address;
 
@@ -223,6 +228,11 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
   const isLoading = apiLoading || sigLoading || claimLoading || isWaitingTx;
   const error = apiError || sigError?.message || claimError?.message;
 
+  const polygonScanToken = toPolygonAddressUrl(
+    process.env.NEXT_PUBLIC_CONTRACT_TOKEN || ""
+  );
+  const polygonScanAccount = toPolygonAddressUrl(account || "");
+
   /**
    * Rendering
    */
@@ -233,12 +243,46 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
       <div className="container">
         <div className={styles.title}>
           <h2>Claim {amountPerAddress} $SPACE</h2>
+        </div>
+
+        <div className={styles.address}>
+          Token Address:&nbsp;{" "}
+          <a href={polygonScanToken.url} target="_blank" rel="noreferrer">
+            {polygonScanToken.maskedAddress}
+          </a>
+          &nbsp;&nbsp;
+          {canAddToMetaMask() && (
+            <button
+              className={styles.extraBtn}
+              type="button"
+              onClick={() => addTokenToMetaMask()}
+            >
+              Add $SPACE to MetaMask
+            </button>
+          )}
+        </div>
+
+        <div className={styles.address}>
+          Wallet Address:&nbsp;
+          <a href={polygonScanAccount.url} target="_blank" rel="noreferrer">
+            {polygonScanAccount.maskedAddress}
+          </a>
+          &nbsp;&nbsp;
+          <button
+            className={styles.extraBtn}
+            type="button"
+            onClick={() => disconnect()}
+          >
+            Change
+          </button>
+        </div>
+
+        <div className={styles.content}>
           <p>
             Congrats! You&apos;re eligible to claim tokens. Here are instruction
             to proceed:
           </p>
-        </div>
-        <div className={styles.content}>
+
           <ol
             className={classNames({
               [styles.default]: step === 0,
