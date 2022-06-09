@@ -104,14 +104,19 @@ const Header = () => {
             </Link>
           )
         ) : isLaunch ? (
-          <a
-            className={`${styles.btn} ${styles.fill}`}
-            href="https://app.thespace.game/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Launch App
-          </a>
+          <>
+            <Link href="/claim">
+              <a className={`${styles.btn} ${styles.frame}`}>Claim $SPACE</a>
+            </Link>
+            <a
+              className={`${styles.btn} ${styles.fill}`}
+              href="https://app.thespace.game/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Launch App
+            </a>
+          </>
         ) : (
           <a
             className={`${styles.btn} ${styles.fill}`}
