@@ -323,6 +323,7 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
                     type="text"
                     onChange={(e) => validateTwitter(e.target.value)}
                     required
+                    placeholder="https://twitter.com/thespace2022/status/1534453835934355456"
                   />
                   <div className={`${styles.buttons} buttons`}>
                     {isLoading ? (
