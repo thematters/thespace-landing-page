@@ -253,7 +253,7 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
               })}
             >
               <div className="d-flex justify-content-between align-items-center">
-                <span>Verify your Ethereum address</span>
+                <span>Verify your wallet address</span>
                 {step === 1 && (
                   <div className="buttons">
                     {isLoading ? (
