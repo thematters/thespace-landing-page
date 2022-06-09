@@ -3,8 +3,6 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import classNames from "classnames";
 
-import { useCountdown } from "~/hooks";
-
 import styles from "./styles.module.sass";
 
 const Header = () => {
@@ -42,11 +40,6 @@ const Header = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const { days, hours, minutes, seconds } = useCountdown({
-    end: process.env.NEXT_PUBLIC_LAUNCH_START_AT || "",
-    onEnd: () => setLaunch(true),
-  });
 
   return (
     <header
@@ -131,38 +124,6 @@ const Header = () => {
       <div className={`${styles.burger} ${activeClasses} d-lg-none`}>
         <button onClick={toggleActive}></button>
       </div>
-      {!isLaunch && !isClaimPage && (
-        <div
-          className={`${styles.countdown} d-flex justify-content-between align-items-center`}
-        >
-          <div className={`${styles.time}`}>
-            <div className="d-flex justify-content-between align-items-center">
-              <span className={styles.icon}></span>
-              <span>
-                <b className="d-none d-lg-inline-block">
-                  The Space Official Launch in
-                </b>{" "}
-                <b>{days}</b> days <b>{hours}</b> hours <b>{minutes}</b> mins{" "}
-                <b>{seconds}</b> sec
-              </span>
-            </div>
-          </div>
-          <div className={`${styles.buttons}`}>
-            <a
-              className="d-flex justify-content-between align-items-center"
-              href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20220531T120000Z%2F20220531T120000Z&text=The%20Space%20Official%20Launch"
-              title="Save Event in my Calendar"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span className="d-none d-lg-inline-block">
-                <b>Add to Calendar</b>
-              </span>
-              <span className={styles.icon}></span>
-            </a>
-          </div>
-        </div>
-      )}
     </header>
   );
 };
