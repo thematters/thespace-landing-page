@@ -166,7 +166,11 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
   };
 
   const validateTwitter = (url: string) => {
-    const validate = isTweetURL(url);
+    // const validate = isTweetURL(url);
+    const rules = new RegExp(
+      /http(?:s)?:\/\/(?:www\.)?twitter\.com\/([a-zA-Z0-9_]+)/
+    );
+    const validate = rules.test(url);
     setTwitterValidate(validate);
     setTwitterUrl(url);
   };
