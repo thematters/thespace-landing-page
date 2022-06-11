@@ -84,12 +84,14 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
           </div>
 
           <div className={styles.wallet}>
-            <button
-              className={metaMaskClasses}
-              onClick={() => connect(injectedConnector)}
-            >
-              MetaMask
-            </button>
+            {injectedConnector?.ready && (
+              <button
+                className={metaMaskClasses}
+                onClick={() => connect(injectedConnector)}
+              >
+                MetaMask
+              </button>
+            )}
 
             <button
               className={walletConnectClasses}
