@@ -24,7 +24,7 @@ import styles from "./styles.module.sass";
 import { useState } from "react";
 
 const client = createClient({
-  autoConnect: true,
+  autoConnect: false,
   connectors: [injectedConnector, walletConnectConnector],
   provider,
   webSocketProvider,
