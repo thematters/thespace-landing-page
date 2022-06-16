@@ -25,7 +25,7 @@ section.steps
         height: 16px
         margin: 0 0 0 8px
         transform: translateY(1px)
-    .extraBtn
+    .extra_btn
       font-size: 12px
       font-weight: 500
       line-height: 1
@@ -66,32 +66,52 @@ section.steps
               +bg('/img/icon-success.svg')
               background-color: $black
               border-color: $black
-          &.step4 > div
-            margin: 16px 0 0 0
-            input
-              flex: 1
-              margin: 0 24px 0 0
-              border: 1px solid $grey
-              width: 100%
-              height: 56px
-              border-radius: 20px
-              padding: 0 24px
-              color: $grey-dark
-              &::placeholder
-                color: $grey
-                opacity: 1
-              &:-ms-input-placeholder
-                color: $grey
-              &::-ms-input-placeholder
-                color: $grey
       li
         margin: 0 0 16px 0
         &:last-child
           margin: 0
     p
       margin: 0 0 32px 0
+    .sub_step
+      width: 100%
+      p
+        margin: 24px 0 0 0
+        font-size: 18px
+        font-weight: 400
+      .tweet_content
+        padding: 16px
+        margin-top: 8px
+        font-size: 20px
+        line-height: 28px
+        font-weight: 500
+        background: $grey-light
+        border-radius: 20px
+        white-space: pre-line
+      .buttons
+        margin-top: 24px
+        .copy_btn
+          font-size: 18px !important
+          font-weight: 400 !important
+          text-decoration: underline
+      input
+        margin-top: 8px
+        border: 1px solid $grey
+        width: 100%
+        height: 56px
+        border-radius: 20px
+        padding: 0 24px
+        color: $grey-dark
+        background: $grey-light
+        &::placeholder
+          color: $grey
+          opacity: 1
+        &:-ms-input-placeholder
+          color: $grey
+        &::-ms-input-placeholder
+          color: $grey
     .form_check
       @entend %article-body
+      +flex(row, wrap, flex-start, center)
       font-weight: 700
       margin: 0 0 40px 0
       label
@@ -101,10 +121,12 @@ section.steps
         width: 16px
         height: 16px
         margin: 0 8px 0 0
-        transform: translateY(2px)
-    .buttons
+    .opening_footer
       button[disabled]
         opacity: .2
+      .error
+        margin: 0
+        color: $error
     .loading
       width: 100px
       &::before

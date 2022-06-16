@@ -6,8 +6,10 @@ import {
   useDisconnect,
   useSignMessage,
   useContractWrite,
+  useBalance,
   useWaitForTransaction,
 } from "wagmi";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import Toast from "~/components/Toast";
 import {
@@ -60,6 +62,14 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
   const { disconnect } = useDisconnect();
   const { data: accountData } = useAccount();
   const account = accountData?.address;
+  const {
+    data: balanceData,
+    error: balanceError,
+    refetch: balanceRefetch,
+    isLoading: balanceLoading,
+  } = useBalance({
+    addressOrName: account,
+  });
 
   const [step, setStep] = useState(0);
   const [checked, setChecked] = useState(false);
@@ -67,6 +77,7 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
   const [apiError, setAPIError] = useState("");
   const [apiLoading, setAPILoading] = useState(false);
 
+  const [isCopied, setIsCopied] = useState(false);
   const [twitterValidate, setTwitterValidate] = useState(false);
   const [twitterUrl, setTwitterUrl] = useState("");
   const [claimData, setClaimData] = useState<ClaimData>();
@@ -149,26 +160,26 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
     setAPILoading(false);
   };
 
-  const verifyTwitterAccount = () => {
-    const content = `Inspired by #RedditPlace, The Space is the world's first #NFT #pixelart graffiti wall where players can own, color, and trade pixels under Harberger Tax and Universal Basic Income (UBI).\n#TheSpaceGame #烏塗邦\n\n💰Claim your $SPACE💰 at: https://thespace.game/claim?nonce=${claimData?.nonce}`;
+  const tweetContent = `Inspired by #RedditPlace, The Space is the world's first #NFT #pixelart graffiti wall where players can own, color, and trade pixels under Harberger Tax and Universal Basic Income (UBI).\n#TheSpaceGame #烏塗邦\n\n💰Claim your $SPACE💰 at: https://thespace.game/claim?nonce=${claimData?.nonce}`;
+
+  const sendTweet = () => {
     window.open(
       `https://twitter.com/intent/tweet?text=${window.encodeURIComponent(
-        content
+        tweetContent
       )}`,
       "mywin",
       "left=0,top=0,width=650,height=650"
     );
-    setStep(3);
   };
 
-  const followUs = () => {
-    window.open(
-      "https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fpublish.twitter.com%2F&ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Efollow%7Ctwgr%5Ethespace2022&screen_name=thespace2022",
-      "mywin",
-      "left=0,top=0,width=650,height=650"
-    );
-    setStep(4);
-  };
+  // const followUs = () => {
+  //   window.open(
+  //     "https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fpublish.twitter.com%2F&ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Efollow%7Ctwgr%5Ethespace2022&screen_name=thespace2022",
+  //     "mywin",
+  //     "left=0,top=0,width=650,height=650"
+  //   );
+  //   setStep(4);
+  // };
 
   const validateTwitter = (url: string) => {
     const validate = isTweetURL(url);
@@ -225,13 +236,19 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
     }
   }, [isAddressClaimed, isUserIdClaimed]);
 
-  const isLoading = apiLoading || sigLoading || claimLoading || isWaitingTx;
-  const error = apiError || sigError?.message || claimError?.message;
+  const isLoading =
+    balanceLoading || apiLoading || sigLoading || claimLoading || isWaitingTx;
+  const error =
+    balanceError?.message ||
+    apiError ||
+    sigError?.message ||
+    claimError?.message;
 
   const polygonScanToken = toPolygonAddressUrl(
     process.env.NEXT_PUBLIC_CONTRACT_TOKEN || ""
   );
   const polygonScanAccount = toPolygonAddressUrl(account || "");
+  const hasMatic = balanceData?.value.gt(0);
 
   /**
    * Rendering
@@ -239,6 +256,7 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
   return (
     <section className={styles.steps}>
       {sigSuccess && <Toast status="success" reason="Signed successfully" />}
+      {isCopied && <Toast status="success" reason="Copied" />}
       {error && <Toast status="failed" reason={error} />}
       <div className="container">
         <div className={styles.title}>
@@ -253,7 +271,7 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
           &nbsp;&nbsp;
           {canAddToMetaMask() && (
             <button
-              className={styles.extraBtn}
+              className={styles.extra_btn}
               type="button"
               onClick={() => addTokenToMetaMask()}
             >
@@ -269,7 +287,7 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
           </a>
           &nbsp;&nbsp;
           <button
-            className={styles.extraBtn}
+            className={styles.extra_btn}
             type="button"
             onClick={() => disconnect()}
           >
@@ -279,8 +297,8 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
 
         <div className={styles.content}>
           <p>
-            Congrats! You&apos;re eligible to claim tokens. Here are instruction
-            to proceed:
+            Congrats! You&apos;re eligible to claim $SPACE tokens. Here are
+            instructions to proceed:
           </p>
 
           <ol
@@ -317,79 +335,83 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
               className={classNames({
                 [styles.step2]: true,
                 [styles.active]: step === 2,
-                [styles.actived]: step > 2,
+                // [styles.actived]: step > 2,
               })}
             >
-              <div className="d-flex justify-content-between align-items-center">
-                <span>Verify your Twitter account and tweet</span>
+              <div className="d-flex flex-column align-items-start">
+                <span>
+                  Tweet to verify your Twitter account and claim{" "}
+                  {amountPerAddress} $SPACE
+                </span>
                 {step === 2 && (
-                  <div className="buttons">
-                    <button className="btn fill" onClick={verifyTwitterAccount}>
-                      Verify
-                    </button>
-                  </div>
-                )}
-              </div>
-            </li>
-            <li
-              className={classNames({
-                [styles.step3]: true,
-                [styles.active]: step === 3,
-                [styles.actived]: step > 3,
-              })}
-            >
-              <div className="d-flex justify-content-between align-items-center">
-                <span>Follow us on Twitter</span>
-                {step === 3 && (
-                  <div className="buttons">
-                    <button className="btn fill" onClick={followUs}>
-                      Follow
-                    </button>
-                  </div>
-                )}
-              </div>
-            </li>
-            <li
-              className={classNames({
-                [styles.step4]: true,
-                [styles.active]: step === 4,
-              })}
-            >
-              <span>Copy and paste the tweet link and claim your $SPACE</span>
-              {step === 4 && (
-                <div className="d-flex justify-content-between align-items-center">
-                  <input
-                    className="form-control"
-                    type="text"
-                    onChange={(e) => validateTwitter(e.target.value)}
-                    required
-                    placeholder="https://twitter.com/thespace2022/status/1534453835934355456"
-                  />
-                  <div className={`${styles.buttons} buttons`}>
-                    {isLoading ? (
-                      <button className={`${styles.loading} btn fill disabled`}>
-                        &nbsp;
-                      </button>
-                    ) : (
-                      <button
-                        className="btn fill"
-                        onClick={claimSpace}
-                        disabled={!twitterValidate}
+                  <>
+                    <section className={`${styles.sub_step}`}>
+                      <p>
+                        Step1: Copy content, post a tweet. And copy tweet link
+                      </p>
+                      <div className={styles.tweet_content}>{tweetContent}</div>
+                      <div
+                        className={`${styles.buttons} buttons d-flex justify-content-between align-items-center`}
                       >
-                        Claim
-                      </button>
-                    )}
-                  </div>
-                </div>
-              )}
+                        <p />
+                        <div>
+                          <CopyToClipboard
+                            text={tweetContent}
+                            onCopy={() => {
+                              setIsCopied(true);
+                              setTimeout(() => {
+                                setIsCopied(false);
+                              }, 5000);
+                            }}
+                          >
+                            <button className={`btn ${styles.copy_btn}`}>
+                              Copy
+                            </button>
+                          </CopyToClipboard>
+
+                          <button
+                            className={`btn fill ${styles.send_btn}`}
+                            onClick={sendTweet}
+                          >
+                            Send Tweet
+                          </button>
+                        </div>
+                      </div>
+                    </section>
+
+                    <section className={`${styles.sub_step}`}>
+                      <p>Step2: Paste tweet link here </p>
+                      <input
+                        className="form-control"
+                        type="text"
+                        onChange={(e) => validateTwitter(e.target.value)}
+                        required
+                        placeholder="https://twitter.com/thespace2022/status/1534453835934355456"
+                      />
+                      <div
+                        className={`${styles.buttons} buttons d-flex justify-content-between align-items-center text-end`}
+                      >
+                        <p />
+                        {isLoading ? (
+                          <button
+                            className={`${styles.loading} btn fill disabled`}
+                          >
+                            &nbsp;
+                          </button>
+                        ) : (
+                          <button className="btn fill" onClick={claimSpace}>
+                            Claim
+                          </button>
+                        )}
+                      </div>
+                    </section>
+                  </>
+                )}
+              </div>
             </li>
           </ol>
           {step === 0 && (
             <>
-              <p>
-                Once verification process completed, you will receive $SPACE
-                token
-              </p>
               <div className={styles.form_check}>
                 <input
                   className="form-check-input"
@@ -411,14 +433,34 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
                   .
                 </label>
               </div>
-              <div className={`${styles.buttons} buttons text-end`}>
-                <button
-                  className="btn fill"
-                  disabled={!checked}
-                  onClick={() => setStep(1)}
-                >
-                  Get Started
-                </button>
+              <div
+                className={`${styles.opening_footer} buttons d-flex justify-content-between align-items-center text-end`}
+              >
+                {!hasMatic ? (
+                  <p className={styles.error}>
+                    You don&apos;t have enough $MATIC to finish the claim
+                    process.
+                  </p>
+                ) : (
+                  <p />
+                )}
+                {isLoading ? (
+                  <button className={`${styles.loading} btn fill disabled`}>
+                    &nbsp;
+                  </button>
+                ) : hasMatic ? (
+                  <button
+                    className="btn fill"
+                    disabled={!checked}
+                    onClick={() => setStep(1)}
+                  >
+                    Get Started
+                  </button>
+                ) : (
+                  <button className="btn fill" onClick={() => balanceRefetch()}>
+                    Retry
+                  </button>
+                )}
               </div>
             </>
           )}
