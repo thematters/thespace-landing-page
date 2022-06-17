@@ -14,6 +14,7 @@ export const addTokenToMetaMask = async () => {
     // @ts-ignore
     method: "wallet_watchAsset",
     params: {
+      // @ts-ignore
       type: "ERC20",
       options: {
         address: process.env.NEXT_PUBLIC_CONTRACT_TOKEN,

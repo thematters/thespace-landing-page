@@ -10,6 +10,9 @@ type EntranceProps = {
   next: () => void;
 };
 
+const amountPerAddress =
+  process.env.NEXT_PUBLIC_FAIRDROP_AMOUNT_PER_ADDRESS || "your";
+
 const Entrance: React.FC<EntranceProps> = ({ next }) => {
   const {
     activeConnector,
@@ -27,12 +30,12 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
   } = useNetwork();
 
   const account = accountData?.address;
-  const isUnsupportedNetwork = activeChain?.unsupported;
+  const isUnsupportedNetwork = !!activeChain?.unsupported;
   const targetChainName = chains[0]?.name;
   const targetChainId = chains[0]?.id;
   const errorMessage = connectError?.message || networkError?.message;
 
-  const switchToTargetNetwork = () => {
+  const switchToTargetNetwork = async () => {
     if (!switchNetwork) return;
 
     switchNetwork(targetChainId);
@@ -40,7 +43,6 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
 
   // go forward if wallet is connected
   useEffect(() => {
-    console.log({ account, isUnsupportedNetwork });
     if (!account || isUnsupportedNetwork) {
       return;
     }
@@ -64,8 +66,6 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
       isConnecting && pendingConnector?.id === walletConnectConnector.id,
     [styles.active]: activeConnector?.id === walletConnectConnector.id,
   });
-  const amountPerAddress =
-    process.env.NEXT_PUBLIC_FAIRDROP_AMOUNT_PER_ADDRESS || "your";
 
   return (
     <>
