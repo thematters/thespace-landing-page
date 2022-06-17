@@ -89,7 +89,7 @@ const Airdrop: React.FC<AirdropProps> = ({ back }) => {
             &nbsp;&nbsp;
             {canAddToMetaMask() && (
               <button
-                className={styles.extraBtn}
+                className={styles.extra_btn}
                 type="button"
                 onClick={() => addTokenToMetaMask()}
               >
@@ -104,7 +104,7 @@ const Airdrop: React.FC<AirdropProps> = ({ back }) => {
             </a>
             &nbsp;&nbsp;
             <button
-              className={styles.extraBtn}
+              className={styles.extra_btn}
               type="button"
               onClick={() => disconnect()}
             >
