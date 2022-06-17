@@ -26,12 +26,15 @@ section.steps
         margin: 0 0 0 8px
         transform: translateY(1px)
     .extra_btn
+      display: none
       font-size: 12px
       font-weight: 500
       line-height: 1
       padding: 6px 8px
       border-radius: 20px
       border: 2px solid #333
+      +min($md)
+        display: inline-block
   .content
     margin: 40px 0 0 0
     ol
@@ -87,12 +90,22 @@ section.steps
         background: $grey-light
         border-radius: 20px
         white-space: pre-line
+        overflow: hidden
       .buttons
         margin-top: 24px
         .copy_btn
-          font-size: 18px !important
-          font-weight: 400 !important
-          text-decoration: underline
+          +min($md)
+            color: $black !important
+            font-size: 18px !important
+            font-weight: 400 !important
+            text-decoration: underline
+            background: none !important
+            border: none !important
+            box-shadow: none !important
+        .send_btn
+          display: none !important
+          +min($md)
+            display: inline-block !important
       input
         margin-top: 8px
         border: 1px solid $grey
@@ -110,14 +123,14 @@ section.steps
         &::-ms-input-placeholder
           color: $grey
     .form_check
-      @entend %article-body
-      +flex(row, wrap, flex-start, center)
+      +flex(row, nowrap, flex-start, center)
       font-weight: 700
       margin: 0 0 40px 0
       label
         a
           text-decoration: underline
       input
+        flex-shrink: 0
         width: 16px
         height: 16px
         margin: 0 8px 0 0

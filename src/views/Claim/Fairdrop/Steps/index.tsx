@@ -364,7 +364,7 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
                               }, 5000);
                             }}
                           >
-                            <button className={`btn ${styles.copy_btn}`}>
+                            <button className={`btn fill ${styles.copy_btn}`}>
                               Copy
                             </button>
                           </CopyToClipboard>
