@@ -102,6 +102,14 @@ section.steps
             background: none !important
             border: none !important
             box-shadow: none !important
+            &::before
+              +bg('/img/icon-copy.svg')
+              content: ''
+              display: inline-block
+              width: 16px
+              height: 16px
+              margin: 0 8px 0 0
+              transform: translateY(1px)
         .send_btn
           display: none !important
           +min($md)
