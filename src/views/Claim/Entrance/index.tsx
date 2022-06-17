@@ -49,15 +49,17 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
   }, [account, isUnsupportedNetwork]);
 
   const metaMaskClasses = classNames({
+    [styles.connect_btn]: true,
     [styles.metamask]: true,
-    // [styles.disabled]: !injectedConnector.ready,
+    [styles.disabled]: isUnsupportedNetwork,
     [styles.connecting]:
       isConnecting && pendingConnector?.id === injectedConnector.id,
     [styles.active]: activeConnector?.id === injectedConnector.id,
   });
   const walletConnectClasses = classNames({
+    [styles.connect_btn]: true,
     [styles.walletconnect]: true,
-    // [styles.disabled]: !injectedConnector.ready,
+    [styles.disabled]: isUnsupportedNetwork,
     [styles.connecting]:
       isConnecting && pendingConnector?.id === walletConnectConnector.id,
     [styles.active]: activeConnector?.id === walletConnectConnector.id,
@@ -84,42 +86,65 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
           </div>
 
           <div className={styles.wallet}>
-            {injectedConnector?.ready && (
+            <div className={styles.connect_btn_wrapper}>
+              {injectedConnector?.ready && (
+                <button
+                  className={metaMaskClasses}
+                  onClick={() => connect(injectedConnector)}
+                >
+                  MetaMask
+                </button>
+              )}
+
+              {isUnsupportedNetwork &&
+                activeConnector?.id === injectedConnector.id && (
+                  <span
+                    className={styles.switch_nwtwork}
+                    role="button"
+                    onClick={switchToTargetNetwork}
+                  >
+                    Switch to {targetChainName}
+                  </span>
+                )}
+            </div>
+
+            <div className={styles.connect_btn_wrapper}>
               <button
-                className={metaMaskClasses}
-                onClick={() => connect(injectedConnector)}
+                className={walletConnectClasses}
+                onClick={() => connect(walletConnectConnector)}
               >
-                MetaMask
+                WalletConnect
               </button>
-            )}
 
-            <button
-              className={walletConnectClasses}
-              onClick={() => connect(walletConnectConnector)}
-            >
-              WalletConnect
-            </button>
+              {isUnsupportedNetwork &&
+                activeConnector?.id === walletConnectConnector.id && (
+                  <span
+                    className={styles.switch_nwtwork}
+                    role="button"
+                    onClick={switchToTargetNetwork}
+                  >
+                    Switch to {targetChainName}
+                  </span>
+                )}
+            </div>
 
-            {isUnsupportedNetwork && (
-              <p className={styles.error}>
-                Unsupported network: {currentChainName}.&nbsp;
-                <span role="button" onClick={switchToTargetNetwork}>
-                  Switch to {targetChainName}.
-                </span>
-              </p>
-            )}
+            <section className={styles.swap}>
+              <div className={styles.divider}>or</div>
+              <a
+                className={styles.uniswap_btn}
+                target="_blank"
+                rel="noreferrer"
+                href="https://app.uniswap.org/#/swap?chain=polygon&outputCurrency=0x264808855b0a6a5a318d238c6ee9f299179f27fc"
+              >
+                Swap on Uniswap
+              </a>
+            </section>
 
             {errorMessage && (
               <p className={styles.error}>
                 {errorMessage ?? "Failed to connect"}
               </p>
             )}
-
-            {/* {account && (
-              <p className={styles.info}>
-                {toPolygonAddressUrl(account || "").maskedAddress}
-              </p>
-            )} */}
           </div>
         </div>
       </section>
