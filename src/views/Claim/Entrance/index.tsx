@@ -28,7 +28,6 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
 
   const account = accountData?.address;
   const isUnsupportedNetwork = activeChain?.unsupported;
-  const currentChainName = activeChain?.name;
   const targetChainName = chains[0]?.name;
   const targetChainId = chains[0]?.id;
   const errorMessage = connectError?.message || networkError?.message;
@@ -41,6 +40,7 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
 
   // go forward if wallet is connected
   useEffect(() => {
+    console.log({ account, isUnsupportedNetwork });
     if (!account || isUnsupportedNetwork) {
       return;
     }

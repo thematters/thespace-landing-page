@@ -17,7 +17,7 @@ URI: https://thespace.game/claim
 Version: 1
 Chain ID: 137
 Nonce: ${nonce}
-Exipred At: ${expiredAt}`;
+Expired At: ${expiredAt}`;
 
 export const fairdropABI = [
   "constructor(address token_, address signer_, address owner_, uint256 amountPerAddress_)",
