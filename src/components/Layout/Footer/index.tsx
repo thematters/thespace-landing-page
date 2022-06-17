@@ -119,6 +119,15 @@ const Footer = () => {
                 </li>
                 <li>
                   <a
+                    href={process.env.NEXT_PUBLIC_SWAP_SPACE_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Swap $SPACE
+                  </a>
+                </li>
+                <li>
+                  <a
                     href="https://wiki.thespace.game/the-space-terms-of-use-community-code-of-conduct "
                     target="_blank"
                     rel="noreferrer"

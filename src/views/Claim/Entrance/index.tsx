@@ -28,7 +28,6 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
 
   const account = accountData?.address;
   const isUnsupportedNetwork = activeChain?.unsupported;
-  const currentChainName = activeChain?.name;
   const targetChainName = chains[0]?.name;
   const targetChainId = chains[0]?.id;
   const errorMessage = connectError?.message || networkError?.message;
@@ -41,6 +40,7 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
 
   // go forward if wallet is connected
   useEffect(() => {
+    console.log({ account, isUnsupportedNetwork });
     if (!account || isUnsupportedNetwork) {
       return;
     }
@@ -134,7 +134,7 @@ const Entrance: React.FC<EntranceProps> = ({ next }) => {
                 className={styles.uniswap_btn}
                 target="_blank"
                 rel="noreferrer"
-                href="https://app.uniswap.org/#/swap?chain=polygon&outputCurrency=0x264808855b0a6a5a318d238c6ee9f299179f27fc"
+                href={process.env.NEXT_PUBLIC_SWAP_SPACE_URL}
               >
                 Swap on Uniswap
               </a>
