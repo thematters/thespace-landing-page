@@ -1,35 +1,40 @@
-import { chain, etherscanBlockExplorers } from "wagmi";
+import {
+  chain,
+  configureChains,
+  defaultChains,
+  etherscanBlockExplorers,
+} from "wagmi";
 import { InjectedConnector } from "wagmi/connectors/injected";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { providers } from "ethers";
+import { publicProvider } from "wagmi/providers/public";
+import { alchemyProvider } from "wagmi/providers/alchemy";
 
 const isProd = process.env.NEXT_PUBLIC_RUNTIME_ENV === "production";
+const alchemyId = process.env.NEXT_PUBLIC_ALCHEMY_API_KEY || "";
 
 export const supportedChains = isProd ? [chain.polygon] : [chain.polygonMumbai];
 
+export const { chains } = configureChains(supportedChains, [
+  alchemyProvider({ alchemyId }),
+  publicProvider(),
+]);
+
 export const injectedConnector = new InjectedConnector({
   chains: supportedChains,
-  options: { shimDisconnect: true },
+  options: { shimChainChangedDisconnect: true, shimDisconnect: true },
 });
 
 export const walletConnectConnector = new WalletConnectConnector({
+  chains: supportedChains,
   options: {
-    infuraId: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY || "",
+    chainId: supportedChains[0].id,
     qrcode: true,
   },
 });
 
 export const provider = ({ chainId }: { chainId?: any }) =>
-  new providers.AlchemyProvider(
-    chainId,
-    process.env.NEXT_PUBLIC_ALCHEMY_API_KEY
-  );
-
-export const webSocketProvider = ({ chainId }: { chainId?: any }) =>
-  new providers.AlchemyWebSocketProvider(
-    chainId,
-    process.env.NEXT_PUBLIC_ALCHEMY_API_KEY
-  );
+  new providers.AlchemyProvider(chainId, alchemyId);
 
 export const maskAddress = (address: string, prefixLen: number = 6) => {
   return `${address.substring(0, prefixLen)}...${address.substring(

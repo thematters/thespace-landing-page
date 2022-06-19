@@ -8,11 +8,14 @@ export const getFairdropSignMessage = ({
   account: string;
   nonce: string;
   expiredAt: number;
-}) => `Welcome to join The Space!
+}) => `thespace.game wants you to sign in with your Ethereum account:
+${account}
 
-Sign this message to prove you have access to this wallet. This request will not cost any gas fee.
+I accept The Space Terms of Use: https://wiki.thespace.game/the-space-terms-of-use-community-code-of-conduct
 
-Account: ${account}
+URI: https://thespace.game/claim
+Version: 1
+Chain ID: 137
 Nonce: ${nonce}
 Expired At: ${expiredAt}`;
 
