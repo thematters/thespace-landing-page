@@ -99,6 +99,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const tweet = await twitterClient.tweets.findTweetById(tweetId, {
       expansions: ["author_id"],
       "tweet.fields": ["entities"],
+      "user.fields": ["public_metrics"],
     });
     const tweetContent = tweet.data?.text;
     const authorId = tweet.data?.author_id;
@@ -106,6 +107,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const isURLIncludesNonce = !!tweet.data?.entities?.urls?.some((urlObj) =>
       urlObj.expanded_url?.includes(body.nonce)
     );
+    const author = tweet.includes?.users?.find((user) => user.id === authorId);
+
+    const followerCount = author?.public_metrics?.followers_count;
+
+    if (!followerCount || followerCount <= 0) {
+      return res.status(400).send({
+        code: ErrorCode.INELIGIBLE_USER,
+        message: "Twitter account is ineligible to claim.",
+      });
+    }
 
     if (!authorId || (!isContentIncludesNonce && !isURLIncludesNonce)) {
       return res.status(400).send({
