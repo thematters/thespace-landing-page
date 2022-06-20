@@ -10,6 +10,10 @@ import { logToSlack, SlackMsgType } from "../utils/slack";
 
 const wallet = new ethers.Wallet(process.env.FAIRDROP_PRIVATE_KEY || "");
 const fairdropContract = process.env.NEXT_PUBLIC_FAIRDROP_CONTRACT || "";
+const twitterFollowersCountMin = parseInt(
+  process.env.FAIRDROP_TWITTER_FOLLOWERS_MIN || "0",
+  10
+);
 const twitterClient = new Client(process.env.TWITTER_BEARER_TOKEN || "");
 const redisClient = new Redis(process.env.REDIS_CONNECTION_URL || "");
 
@@ -111,7 +115,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const followerCount = author?.public_metrics?.followers_count;
 
-    if (!followerCount || followerCount <= 0) {
+    if (!followerCount || followerCount <= twitterFollowersCountMin) {
       await logToSlack({
         message: `${endpoint} 400 ineligible twitter account`,
         data: { authorId, userName: author?.username, tweetId, followerCount },
