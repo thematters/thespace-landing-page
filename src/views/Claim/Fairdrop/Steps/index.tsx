@@ -52,6 +52,8 @@ const getAPIErrorMessage = (code: string) => {
     INVALID_SIGNATURE: "Signature is invalid, please retry.",
     INVALID_TWEET_URL:
       "Please provide a tweet url that Twitter account has never claimed.",
+    INELIGIBLE_USER:
+      "Your Twitter account is ineligible to claim the fairdrop.",
     CLAIM_EXPIRED: "Fairdrop claim has expired, please retry.",
   };
 
