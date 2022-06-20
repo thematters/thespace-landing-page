@@ -112,6 +112,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const followerCount = author?.public_metrics?.followers_count;
 
     if (!followerCount || followerCount <= 0) {
+      await logToSlack({
+        message: `${endpoint} 400 ineligible twitter account`,
+        data: { authorId, userName: author?.username, tweetId, followerCount },
+        type: SlackMsgType.warning,
+      });
+
       return res.status(400).send({
         code: ErrorCode.INELIGIBLE_USER,
         message: "Twitter account is ineligible to claim.",
