@@ -263,13 +263,21 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
       {isCopied && <Toast status="success" reason="Copied" />}
       {error && <Toast status="failed" reason={error} />}
 
-      {popup && 
+      {popup && (
         <div className={`${styles.popup} text-center`}>
           <div className={styles.content}>
-            <button className={styles.close} onClick={()=>{setPopup(false)}}></button>
+            <button
+              className={styles.close}
+              onClick={() => {
+                setPopup(false);
+              }}
+            ></button>
             <div className={styles.title}>
               <h2>Claim Successfully</h2>
-              <p>We've sent $SPACE to your wallet. Please remember to add$SPACE to MetaMask. Let's go launch app.</p>
+              <p>
+                We've sent $SPACE to your wallet. Please remember to add$SPACE
+                to MetaMask. Let's go launch app.
+              </p>
             </div>
             <div className={styles.illu}>
               <figure>
@@ -283,7 +291,7 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
             </div>
           </div>
         </div>
-      }
+      )}
 
       <div className="container">
         <div className={styles.title}>
