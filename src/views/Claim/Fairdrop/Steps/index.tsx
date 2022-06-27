@@ -84,6 +84,8 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
   const [twitterUrl, setTwitterUrl] = useState("");
   const [claimData, setClaimData] = useState<ClaimData>();
 
+  const [popup, setPopup] = useState(false);
+
   // Verify Ethereum address
   const {
     data: sigData,
@@ -133,7 +135,7 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
     hash: claimTx?.hash,
     confirmations: 3,
     onSuccess(data) {
-      setResultStatus("success");
+      setPopup(true);
       console.log("Success", data);
     },
   });
@@ -174,14 +176,14 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
     );
   };
 
-  // const followUs = () => {
-  //   window.open(
-  //     "https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fpublish.twitter.com%2F&ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Efollow%7Ctwgr%5Ethespace2022&screen_name=thespace2022",
-  //     "mywin",
-  //     "left=0,top=0,width=650,height=650"
-  //   );
-  //   setStep(4);
-  // };
+  const followUs = () => {
+    window.open(
+      "https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fpublish.twitter.com%2F&ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Efollow%7Ctwgr%5Ethespace2022&screen_name=thespace2022",
+      "mywin",
+      "left=0,top=0,width=650,height=650"
+    );
+    setResultStatus("success");
+  };
 
   const validateTwitter = (url: string) => {
     const validate = isTweetURL(url);
@@ -260,6 +262,29 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
       {sigSuccess && <Toast status="success" reason="Signed successfully" />}
       {isCopied && <Toast status="success" reason="Copied" />}
       {error && <Toast status="failed" reason={error} />}
+
+      {popup && 
+        <div className={`${styles.popup} text-center`}>
+          <div className={styles.content}>
+            <button className={styles.close} onClick={()=>{setPopup(false)}}></button>
+            <div className={styles.title}>
+              <h2>Claim Successfully</h2>
+              <p>We've sent $SPACE to your wallet. Please remember to add$SPACE to MetaMask. Let's go launch app.</p>
+            </div>
+            <div className={styles.illu}>
+              <figure>
+                <img className="img-fluid" src="/img/results-illu-3.svg" />
+              </figure>
+            </div>
+            <div className="buttons">
+              <button className="btn fill" onClick={followUs}>
+                Follow our twitter and complete process
+              </button>
+            </div>
+          </div>
+        </div>
+      }
+
       <div className="container">
         <div className={styles.title}>
           <h2>Claim {amountPerAddress} $SPACE</h2>

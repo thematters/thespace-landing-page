@@ -43,7 +43,7 @@ const Results = ({ status }: ResultsProps) => {
         <div className={`${styles.illu} text-center`}>
           <figure>
             {status === "success" ? (
-              <img className="img-fluid" src="/img/results-illu-3.svg" />
+              <img className="img-fluid" src="/img/results-illu-4.svg" />
             ) : (
               <img className="img-fluid" src="/img/results-illu-2.svg" />
             )}
