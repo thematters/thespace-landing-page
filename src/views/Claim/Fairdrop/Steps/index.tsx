@@ -84,7 +84,7 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
   const [twitterUrl, setTwitterUrl] = useState("");
   const [claimData, setClaimData] = useState<ClaimData>();
 
-  const [popup, setPopup] = useState(true);
+  const [popup, setPopup] = useState(false);
 
   // Verify Ethereum address
   const {
@@ -265,7 +265,7 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
 
       {popup && (
         <div className={`${styles.popup} text-center`}>
-          <div 
+          <div
             className={styles.bg}
             onClick={() => {
               setPopup(false);
