@@ -7,8 +7,6 @@ import styles from "./styles.module.sass";
 
 const Header = () => {
   const [isActive, setActive] = useState(false);
-  const [isLaunch, setLaunch] = useState(false);
-  const [isClaim, setClaim] = useState(false);
 
   const activeClasses = classNames({
     [styles.active]: isActive,
@@ -19,7 +17,6 @@ const Header = () => {
   };
 
   const router = useRouter();
-  const isClaimPage = router.pathname === "/claim";
 
   useEffect(() => {
     if (isActive) {
@@ -27,19 +24,6 @@ const Header = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.asPath]);
-
-  useEffect(() => {
-    if (new Date() > new Date(process.env.NEXT_PUBLIC_LAUNCH_START_AT || "")) {
-      setLaunch(true);
-    }
-    if (
-      new Date() > new Date(process.env.NEXT_PUBLIC_CLAIM_START_AT || "") &&
-      new Date() < new Date(process.env.NEXT_PUBLIC_CLAIM_END_AT || "")
-    ) {
-      setClaim(true);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <header
@@ -76,50 +60,17 @@ const Header = () => {
         >
           $SPACE
         </a>
-        {isClaim ? (
-          isLaunch ? (
-            <>
-              <Link href="/claim">
-                <a className={`${styles.btn} ${styles.frame}`}>Claim $SPACE</a>
-              </Link>
-              <a
-                className={`${styles.btn} ${styles.fill}`}
-                href="https://app.thespace.game/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Launch App
-              </a>
-            </>
-          ) : (
-            <Link href="/claim">
-              <a className={`${styles.btn} ${styles.fill}`}>Claim $SPACE</a>
-            </Link>
-          )
-        ) : isLaunch ? (
-          <>
-            <Link href="/claim">
-              <a className={`${styles.btn} ${styles.frame}`}>Claim $SPACE</a>
-            </Link>
-            <a
-              className={`${styles.btn} ${styles.fill}`}
-              href="https://app.thespace.game/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Launch App
-            </a>
-          </>
-        ) : (
-          <a
-            className={`${styles.btn} ${styles.fill}`}
-            href="https://discord.gg/thespace"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Join Discord
-          </a>
-        )}
+        <Link href="/claim">
+          <a className={`${styles.btn} ${styles.frame}`}>Claim $SPACE</a>
+        </Link>
+        <a
+          className={`${styles.btn} ${styles.fill}`}
+          href="https://app.thespace.game/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Launch App
+        </a>
       </div>
       <div className={`${styles.burger} ${activeClasses} d-lg-none`}>
         <button onClick={toggleActive}></button>
