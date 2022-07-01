@@ -1,33 +1,10 @@
-import { useState, useEffect } from "react";
 import Link from "next/link";
 
-import { useCountdown } from "~/hooks";
 import pkgInfo from "@/package.json";
 
 import styles from "./styles.module.sass";
 
 const Footer = () => {
-  const [isLaunch, setLaunch] = useState(false);
-  const [isClaim, setClaim] = useState(false);
-
-  useEffect(() => {
-    if (new Date() > new Date(process.env.NEXT_PUBLIC_LAUNCH_START_AT || "")) {
-      setLaunch(true);
-    }
-    if (
-      new Date() > new Date(process.env.NEXT_PUBLIC_CLAIM_START_AT || "") &&
-      new Date() < new Date(process.env.NEXT_PUBLIC_CLAIM_END_AT || "")
-    ) {
-      setClaim(true);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useCountdown({
-    end: process.env.NEXT_PUBLIC_LAUNCH_START_AT || "",
-    onEnd: () => setLaunch(true),
-  });
-
   return (
     <footer id={styles.footer}>
       <div className="container">
@@ -52,29 +29,23 @@ const Footer = () => {
             <div className={styles.list}>
               <ul>
                 <li>
-                  <Link href="/">
-                    <a>Home</a>
-                  </Link>
+                  <a
+                    href="https://app.thespace.game/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Launch App
+                  </a>
                 </li>
-                {isClaim && (
-                  <li>
-                    <Link href="/claim">
-                      <a>Claim $SPACE</a>
-                    </Link>
-                  </li>
-                )}
-                {isLaunch && (
-                  <li>
-                    <a
-                      href="https://app.thespace.game/"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Launch App
-                    </a>
-                  </li>
-                )}
-
+                <li>
+                  <a
+                    href={process.env.NEXT_PUBLIC_SWAP_SPACE_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Swap $SPACE
+                  </a>
+                </li>
                 <li>
                   <a
                     href="https://matters.news/"
@@ -119,11 +90,11 @@ const Footer = () => {
                 </li>
                 <li>
                   <a
-                    href={process.env.NEXT_PUBLIC_SWAP_SPACE_URL}
+                    href="https://wiki.thespace.game/the-space-bug-bounty-program"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Swap $SPACE
+                    Bug Bounty
                   </a>
                 </li>
                 <li>
