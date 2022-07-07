@@ -434,9 +434,7 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
                       >
                         <p />
                         {isLoading ? (
-                          <button
-                            className={`${styles.loading} btn fill`}
-                          >
+                          <button className={`${styles.loading} btn fill`}>
                             &nbsp;
                           </button>
                         ) : (
