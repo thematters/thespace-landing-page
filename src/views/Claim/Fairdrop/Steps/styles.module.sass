@@ -181,7 +181,7 @@ section.steps
         &::-ms-input-placeholder
           color: $grey
     .form_check
-      +flex(row, nowrap, flex-start, center)
+      +flex(row, nowrap, flex-start, flex-start)
       font-weight: 700
       margin: 0 0 40px 0
       label
@@ -191,7 +191,7 @@ section.steps
         flex-shrink: 0
         width: 16px
         height: 16px
-        margin: 0 8px 0 0
+        margin: 3px 8px 0 0
     .opening_footer
       button[disabled]
         opacity: .2
@@ -200,12 +200,14 @@ section.steps
         color: $error
     .loading
       width: 100px
+      pointer-events: none
       &::before
         +bg('/img/icon-spinner.svg')
         content: ''
         display: inline-block
         position: absolute
         left: calc(50% - 16px)
+        top: calc(50% - 16px)
         width: 32px
         height: 32px
         animation: spinning 1s infinite linear
