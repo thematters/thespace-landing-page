@@ -1,13 +1,63 @@
 section.steps
   padding: 42px 0 42px 0
   margin: 0 0 150px 0
+  .popup
+    +flex(row, wrap, center, center)
+    position: fixed
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    z-index: 8
+    opacity: 0
+    animation: popupIn .5s ease forwards
+    padding: 0 16px
+    .bg
+      position: absolute
+      width: 100%
+      height: 100%
+      top: 0
+      left: 0
+      z-index: -1
+      background-color: rgba($white, .5)
+    .content
+      width: 100%
+      max-width: 584px
+      background-color: $white
+      box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08)
+      border-radius: 20px
+      padding: 16px 24px
+      position: relative
+      transform: translateY(60px)
+      opacity: 0
+      animation: contentIn .5s ease forwards
+      animation-delay: .25s
+      .close
+        +bg('/img/icon-close2.svg')
+        width: 24px
+        height: 24px
+        position: absolute
+        top: 19px
+        left: 16px
+      .title
+        h2
+          @extend %header-title
+          margin: 0 0 24px 0
+        p
+          @extend %article-body
+      .illu
+        margin: 0 0 40px 0
+        figure
+          +max($md)
+            width: 80px
+            margin: 0 auto
   .title
     margin: 0 0 32px 0
     h2
       @extend %section-title
       margin: 0 0 40px 0
     p
-      @entend %article-body
+      @extend %article-body
   .address
     @extend %article-body
     display: flex
@@ -131,7 +181,7 @@ section.steps
         &::-ms-input-placeholder
           color: $grey
     .form_check
-      +flex(row, nowrap, flex-start, center)
+      +flex(row, nowrap, flex-start, flex-start)
       font-weight: 700
       margin: 0 0 40px 0
       label
@@ -141,7 +191,7 @@ section.steps
         flex-shrink: 0
         width: 16px
         height: 16px
-        margin: 0 8px 0 0
+        margin: 3px 8px 0 0
     .opening_footer
       button[disabled]
         opacity: .2
@@ -150,12 +200,14 @@ section.steps
         color: $error
     .loading
       width: 100px
+      pointer-events: none
       &::before
         +bg('/img/icon-spinner.svg')
         content: ''
         display: inline-block
         position: absolute
         left: calc(50% - 16px)
+        top: calc(50% - 16px)
         width: 32px
         height: 32px
         animation: spinning 1s infinite linear
@@ -165,3 +217,17 @@ section.steps
     transform: rotate(0deg)
   to
     transform: rotate(360deg)
+
+@keyframes popupIn
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+@keyframes contentIn
+  from
+    opacity: 0
+    transform: translateY(40px)
+  to
+    opacity: 1
+    transform: translateY(0px)
