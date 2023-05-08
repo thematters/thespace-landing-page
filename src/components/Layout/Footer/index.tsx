@@ -48,11 +48,11 @@ const Footer = () => {
                 </li>
                 <li>
                   <a
-                    href="https://matters.news/"
+                    href="https://matters.town/"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Matters.news
+                    Matters.town
                   </a>
                 </li>
                 <li>
@@ -163,7 +163,7 @@ const Footer = () => {
           </div>
           <div className="col-12 d-md-none">
             <div className={`${styles.copyright} text-center`}>
-              <span>Copyright © 2022 matters-lab.io</span>
+              <span>Copyright © 2023 matters-lab.io</span>
             </div>
           </div>
         </div>
