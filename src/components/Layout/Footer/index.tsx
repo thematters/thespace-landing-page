@@ -21,7 +21,7 @@ const Footer = () => {
                 and color pixels.
               </p>
               <p className="d-none d-md-block">
-                Copyright © 2022 matters-lab.io
+                Copyright © 2023 matters-lab.io
               </p>
             </div>
           </div>
