@@ -52,7 +52,7 @@ const Footer = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Matters.town
+                    Matters.Town
                   </a>
                 </li>
                 <li>
