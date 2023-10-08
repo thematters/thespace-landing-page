@@ -51,7 +51,7 @@
     "ethers": "^5.6.5",
     "ioredis": "^5.0.6",
     "nanoid": "^3.3.4",
-    "next": "12.1.5",
+    "next": "13.5.4",
     "react": "18.0.0",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "18.0.0",
