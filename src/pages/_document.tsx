@@ -57,7 +57,7 @@ class TheSpaceDocument extends Document {
           <meta
             key="twitter:site"
             name="twitter:site"
-            content="@TheSpace2022"
+            content="@0x_SpaceDAO"
           />
           <meta
             key="twitter:creator"

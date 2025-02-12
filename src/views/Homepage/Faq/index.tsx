@@ -134,7 +134,7 @@ const Faq = () => {
         <div className={`${styles.buttons} buttons d-flex justify-content-end`}>
           <a
             className="btn fill"
-            href="https://discord.gg/thespace"
+            href="https://discord.gg/Th3q7pZsFx"
             target="_blank"
             rel="noreferrer"
           >
@@ -144,7 +144,7 @@ const Faq = () => {
         <div className={`${styles.social} text-center`}>
           <a
             className={styles.twitter}
-            href="https://twitter.com/thespace2022"
+            href="https://x.com/0x_SpaceDAO"
             target="_blank"
             rel="noreferrer"
           >
@@ -152,7 +152,7 @@ const Faq = () => {
           </a>
           <a
             className={styles.discord}
-            href="https://discord.gg/thespace"
+            href="https://discord.gg/Th3q7pZsFx"
             target="_blank"
             rel="noreferrer"
           >

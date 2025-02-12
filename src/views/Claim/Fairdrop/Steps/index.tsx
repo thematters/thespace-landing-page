@@ -172,7 +172,7 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
 
   const followUs = () => {
     window.open(
-      "https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fpublish.twitter.com%2F&ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Efollow%7Ctwgr%5Ethespace2022&screen_name=thespace2022",
+      "https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fpublish.twitter.com%2F&ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Efollow%7Ctwgr%5E0x_SpaceDAO&screen_name=0x_SpaceDAO",
       "mywin",
       "left=0,top=0,width=650,height=650"
     );
@@ -421,7 +421,7 @@ const Steps: React.FC<StepsProps> = ({ setResultStatus }) => {
                         type="text"
                         onChange={(e) => validateTwitter(e.target.value)}
                         required
-                        placeholder="https://twitter.com/thespace2022/status/1534453835934355456"
+                        placeholder="https://x.com/0x_SpaceDAO/status/1534453835934355456"
                       />
                       <div
                         className={`${styles.buttons} buttons d-flex justify-content-between align-items-center text-end`}
