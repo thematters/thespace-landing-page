@@ -10,7 +10,7 @@ const FollowUs = () => {
         <div className={`${styles.social} text-center`}>
           <a
             className={styles.twitter}
-            href="https://twitter.com/thespace2022"
+            href="https://x.com/0x_SpaceDAO"
             target="_blank"
             rel="noreferrer"
           >
@@ -18,7 +18,7 @@ const FollowUs = () => {
           </a>
           <a
             className={styles.discord}
-            href="https://discord.gg/thespace"
+            href="https://discord.gg/Th3q7pZsFx"
             target="_blank"
             rel="noreferrer"
           >

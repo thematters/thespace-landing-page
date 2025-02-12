@@ -14,7 +14,7 @@ const Empty = () => {
       <div className={`${styles.buttons} buttons text-end`}>
         <a
           className="btn fill"
-          href="https://discord.gg/thespace"
+          href="https://discord.gg/Th3q7pZsFx"
           target="_blank"
           rel="noreferrer"
         >
